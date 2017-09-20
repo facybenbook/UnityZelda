@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c5b21546d978df448b7562aeb1732da5
+timeCreated: 1493724792
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 320
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TLOZ Minish Cap/A Link to the Past/Four Sword
+  fontNames:
+  - TLOZ Minish Cap/A Link to the Past/Four Sword_copy
+  fallbackFontReferences: []
+  customCharacters: abcdefghijklmnopqrstuvwxyz
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

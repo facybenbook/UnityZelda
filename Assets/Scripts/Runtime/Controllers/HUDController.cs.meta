@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4cadcb8ffe2b5c84aa0f89f6ca630139
+timeCreated: 1493066673
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - heart: {instanceID: 0}
+  - rupeeSound: {fileID: 8300000, guid: 81a5b4e553c07bf489c570d99c1aaedc, type: 3}
+  - heartSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

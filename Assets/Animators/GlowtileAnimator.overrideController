@@ -1,0 +1,12 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GlowtileAnimator
+  m_Controller: {fileID: 9100000, guid: dd97c54d448834148a9383c341df1078, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1b69527deea53134aa4b01ad188c1641, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a83ce9f94938c854eb8a93f5d4c6f1b4, type: 2}

@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RupeeOrangeAnimator
+  m_Controller: {fileID: 9100000, guid: e58df11d5fdc4e645b70972e50f62dd7, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2b1e1c922b236614d91bf72004b4eafd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f447fcf1f49db6848a817e09e90426de, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 65180872ff0563e48b750f88fb31c427, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9f10b7b768c6cf245b939f0fd9e1cc6a, type: 2}

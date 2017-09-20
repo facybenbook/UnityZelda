@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: 677d22072dc040c4088355690416f5d9
+timeCreated: 1493127660
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Linkblack[11]_0
+    21300002: Linkblack[11]_1
+    21300004: Linkblack[11]_2
+    21300006: Linkblack[11]_3
+    21300008: Linkblack[11]_4
+    21300010: Linkblack[11]_5
+    21300012: Linkblack[11]_6
+    21300014: Linkblack[11]_7
+    21300016: Linkblack[11]_8
+    21300018: Linkblack[11]_9
+    21300020: Linkblack[11]_10
+    21300022: Linkblack[11]_11
+    21300024: Linkblack[11]_12
+    21300026: Linkblack[11]_13
+    21300028: Linkblack[11]_14
+    21300030: Linkblack[11]_15
+    21300032: Linkblack[11]_16
+    21300034: Linkblack[11]_17
+    21300036: Linkblack[11]_18
+    21300038: Linkblack[11]_19
+    21300040: Linkblack[11]_20
+    21300042: Linkblack[11]_21
+    21300044: Linkblack[11]_22
+    21300046: Linkblack[11]_23
+    21300048: Linkblack[11]_24
+    21300050: Linkblack[11]_25
+    21300052: Linkblack[11]_26
+    21300054: Linkblack[11]_27
+    21300056: Linkblack[11]_28
+    21300058: Linkblack[11]_29
+    21300060: Linkblack[11]_30
+    21300062: Linkblack[11]_31
+    21300064: Linkblack[11]_32
+    21300066: Linkblack[11]_33
+    21300068: Linkblack[11]_34
+    21300070: Linkblack[11]_35
+    21300072: Linkblack[11]_36
+    21300074: Linkblack[11]_37
+    21300076: Linkblack[11]_38
+    21300078: Linkblack[11]_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Linkblack[11]_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_3
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_4
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_5
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_6
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_7
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_8
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_9
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 162
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_11
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_12
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_13
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_14
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_15
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_16
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_17
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_18
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_19
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 108
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_21
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_22
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_23
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_24
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_25
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_26
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_27
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_28
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_29
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 54
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_31
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_32
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_33
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_34
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_35
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_36
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_37
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_38
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Linkblack[11]_39
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 0
+        width: 63.8
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,540 @@
+fileFormatVersion: 2
+guid: 66c90662b0f8fdb4c822aeef7be0c8bd
+timeCreated: 1491063919
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Link_w_11_0
+    21300002: Link_w_11_1
+    21300004: Link_w_11_2
+    21300006: Link_w_11_3
+    21300008: Link_w_11_4
+    21300010: Link_w_11_5
+    21300012: Link_w_11_6
+    21300014: Link_w_11_7
+    21300016: Link_w_11_8
+    21300018: Link_w_11_9
+    21300020: Link_w_11_10
+    21300022: Link_w_11_11
+    21300024: Link_w_11_12
+    21300026: Link_w_11_13
+    21300028: Link_w_11_14
+    21300030: Link_w_11_15
+    21300032: Link_w_11_16
+    21300034: Link_w_11_17
+    21300036: Link_w_11_18
+    21300038: Link_w_11_19
+    21300040: Link_w_11_20
+    21300042: Link_w_11_21
+    21300044: Link_w_11_22
+    21300046: Link_w_11_23
+    21300048: Link_w_11_24
+    21300050: Link_w_11_25
+    21300052: Link_w_11_26
+    21300054: Link_w_11_27
+    21300056: Link_w_11_28
+    21300058: Link_w_11_29
+    21300060: Link_w_11_30
+    21300062: Link_w_11_31
+    21300064: Link_w_11_32
+    21300066: Link_w_11_33
+    21300068: Link_w_11_34
+    21300070: Link_w_11_35
+    21300072: Link_w_11_36
+    21300074: Link_w_11_37
+    21300076: Link_w_11_38
+    21300078: Link_w_11_39
+    21300080: Link_w_11_40
+    21300082: Link_w_11_41
+    21300084: Link_w_11_42
+    21300086: Link_w_11_43
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Link_w_11_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_5
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_6
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_7
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_8
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_9
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_10
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 162
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_12
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_13
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_14
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_15
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_16
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_17
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_18
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_19
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_20
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_21
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 108
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_23
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_24
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_25
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_26
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_27
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_28
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_29
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_30
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_31
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_32
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 54
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_34
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_35
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_36
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_37
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_38
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_39
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_40
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_41
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_42
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Link_w_11_43
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 0
+        width: 58
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
