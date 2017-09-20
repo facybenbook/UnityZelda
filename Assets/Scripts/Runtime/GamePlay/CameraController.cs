@@ -16,10 +16,10 @@ public class CameraController : MonoBehaviour
 	void Start ()
 	{
 		//boundaries from left top corner
-		minX = mapTarget.transform.position.x;
-		maxX = minX + mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesWide;
-		minY = mapTarget.transform.position.y;
-		maxY = minY - mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesHigh;
+		minX = mapTarget.transform.position.x * mapTarget.transform.localScale.x;
+		maxX = (minX + mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesWide) * mapTarget.transform.lossyScale.x;
+		minY = mapTarget.transform.position.y * mapTarget.transform.localScale.y;
+		maxY = (minY - mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesHigh) * mapTarget.transform.lossyScale.x;
 		speed = 6;
 		if (target == null)
 			target = GameObject.Find ("Player");

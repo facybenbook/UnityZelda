@@ -15,11 +15,7 @@ public class ChestController : Activable
 			GetComponent<BoxCollider2D> ().enabled = false;
 		}
 	}
-	// Update is called once per frame
-	void Update ()
-	{
-		CheckConditions ();
-	}
+
 	void OnTriggerStay2D(Collider2D coll)
 	{
 		if (state == true && open == false) {
@@ -29,7 +25,6 @@ public class ChestController : Activable
 				if (coll.gameObject.GetComponent<PlayerMovement> ().direction.y == 1 && Input.GetKeyDown ("u")) {
 					open = true;
 					GameObject.Instantiate (content);
-					this.GetComponent<SpriteRenderer> ().sprite = offSprite;
 					GetComponent<AudioSource> ().Play ();
 				}
 			}

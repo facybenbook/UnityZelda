@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class WarpController : MonoBehaviour {
 	
 	public Object scene;
-	public Object zone;
 	public Vector2 destination;
 
 	void OnTriggerEnter2D(Collider2D coll)

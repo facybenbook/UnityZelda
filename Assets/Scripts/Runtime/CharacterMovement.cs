@@ -6,7 +6,7 @@ public class CharacterMovement : MonoBehaviour
 	protected Rigidbody2D rbody;
 	protected Animator anim;
 	protected Vector2 lastMovement;
-	public float speed = 1;
+	public float speed;
 	public Vector2 movement_vector;
 	public Vector2 direction;
 	// Use this for initialization
@@ -35,13 +35,13 @@ public class CharacterMovement : MonoBehaviour
 	public void Move (Vector2 direction, int multipleSpeed)
 	{
 		if (direction != Vector2.zero)
-			rbody.MovePosition (rbody.position + direction * speed * multipleSpeed * Time.deltaTime);
+			rbody.MovePosition (rbody.position + direction *transform.lossyScale.x * speed * multipleSpeed * Time.deltaTime);
 	}
 
 	public void Jump (Vector2 direction, int multipleSpeed)
 	{
 		if (direction != Vector2.zero)
-			rbody.MovePosition (rbody.position + direction * multipleSpeed);
+			rbody.MovePosition (rbody.position  + direction * multipleSpeed);
 	}
 
 }

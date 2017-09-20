@@ -1,48 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class Activable : MonoBehaviour
 {
     public List<GameObject> conditions = new List<GameObject>();
-    protected bool state;
-    public Sprite onSprite;
-    public Sprite offSprite;
+    public bool state;
+	public UnityEvent actions;
+	private Animator anim;
     // Use this for initialization
     void Start()
     {
         state = false;
-        this.GetComponent<Animator>().SetBool("is_on", false);
+		if (GetComponent<Animator> ()) {
+			anim = GetComponent<Animator> ();
+			anim.SetBool ("activated", false);
+		}
     }
-    // Update is called once per frame
-    void Update()
-    {
-        CheckConditions();
-    }
-    protected void CheckConditions()
-    {
-        if(state == false)
-        {
-            foreach(GameObject trigger in conditions)
-            {
-                if(trigger.tag == "Enemy")
-                {
-                    if(trigger.GetComponent<LifeController>().health > 0)
-                        return;
-                }
-                if(trigger.tag == "Trigger")
-                {
-                    if(trigger.GetComponent<Trigger>().state == false)
-                        return;
-                }
-            }
-            GetComponent<BoxCollider2D>().enabled = true;
-            state = true;
-            if(onSprite != null && offSprite != null)
-                GetComponent<SpriteRenderer>().sprite = onSprite;
-            else if(GetComponent<Animator>() != null)
-                this.GetComponent<Animator>().SetBool("is_on", true);
-            else
-                print(this.name + "is badly made");
-        }
-    }
+
+    protected void OnCheckConditions()
+	{
+		if (state == false) {
+			foreach (GameObject trigger in conditions) {
+				if (trigger.tag == "Enemy") {
+					if (trigger.GetComponent<LifeController> ().health > 0)
+						return;
+				}
+				if (trigger.GetComponent<Trigger> ()) {
+					if (trigger.GetComponent<Trigger> ().state == false)
+						return;
+				}
+			}
+			actions.Invoke ();
+			state = true;
+		}
+	}
+
+	public void EnableAnimator()
+	{
+		print ("yoyoyo");
+		if (GetComponent<Animator> ()) {
+			anim.enabled = true;
+			anim.SetBool ("activated", true);
+		}
+	}
 }

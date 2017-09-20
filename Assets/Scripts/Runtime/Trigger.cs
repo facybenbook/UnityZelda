@@ -8,17 +8,16 @@ public class Trigger : MonoBehaviour
 	public Sprite off;
 
 	//stores the state of the trigger, used to know if a change happens
-	private bool currentState;
 
 	// Use this for initialization
 	void Start ()
 	{
-		currentState = false;
+		state = false;
 	}
 
 	public void ChangeState(bool state)
 	{
-		if (state != currentState) 
+		if (state != this.state)
 		{
 			if (state == true)
 			{
@@ -28,8 +27,12 @@ public class Trigger : MonoBehaviour
 			{
 				GetComponent<SpriteRenderer> ().sprite = off;
 			}
-			currentState = state;
+			this.state = state;
+			this.state = state;
 			GetComponent<AudioSource>().Play();
+			foreach (Activable obj in FindObjectsOfType<Activable>()) {
+				obj.gameObject.SendMessage ("OnCheckConditions", SendMessageOptions.DontRequireReceiver);
+			}
 		}
 	}
 

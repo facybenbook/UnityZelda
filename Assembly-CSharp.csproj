@@ -88,9 +88,10 @@
      <Compile Include="Assets\Scripts\Runtime\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Runtime\Chuchu_IA.cs" />
      <Compile Include="Assets\Scripts\Runtime\Controllers\ExplosionController.cs" />
+     <Compile Include="Assets\Scripts\Runtime\Controllers\GameController.cs" />
      <Compile Include="Assets\Scripts\Runtime\Controllers\HUDController.cs" />
      <Compile Include="Assets\Scripts\Runtime\Controllers\LifeController.cs" />
-     <Compile Include="Assets\Scripts\Runtime\GameController.cs" />
+     <Compile Include="Assets\Scripts\Runtime\Controllers\SoundController.cs" />
      <Compile Include="Assets\Scripts\Runtime\GameEvent.cs" />
      <Compile Include="Assets\Scripts\Runtime\GamePlay\Activable.cs" />
      <Compile Include="Assets\Scripts\Runtime\GamePlay\BreakableWallController.cs" />
@@ -106,7 +107,6 @@
      <Compile Include="Assets\Scripts\Runtime\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Runtime\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Runtime\RupeeStash.cs" />
-     <Compile Include="Assets\Scripts\Runtime\SoundController.cs" />
      <Compile Include="Assets\Scripts\Runtime\Trigger.cs" />
      <Compile Include="Assets\Scripts\Runtime\ZIndex.cs" />
      <Compile Include="Assets\Scripts\SlotDetailsScript.cs" />
