@@ -12,9 +12,11 @@ public class CameraController : MonoBehaviour
 	private float minY;
 	private float maxX;
 	private float maxY;
+	private float pixelUnit;
 	// Use this for initialization
 	void Start ()
 	{
+		pixelUnit = 0.625f;
 		//boundaries from left top corner
 		minX = mapTarget.transform.position.x * mapTarget.transform.localScale.x;
 		maxX = (minX + mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesWide) * mapTarget.transform.lossyScale.x;
@@ -41,7 +43,7 @@ public class CameraController : MonoBehaviour
 	}
 	void ChangeMap (GameObject newMap)
 	{
-		if (newMap != null) 
+		if (newMap != null)
 		{
 			minX = mapTarget.transform.position.x;
 			maxX = mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesWide + minX;
@@ -63,7 +65,7 @@ public class CameraController : MonoBehaviour
 		{
 			if (transitionToNewTarget)
 			{
-				this.transform.position = Vector3.MoveTowards (this.transform.position, target.transform.position, speed * Time.deltaTime);
+				this.transform.position = Vector3.MoveTowards (this.transform.position, target.transform.position, pixelUnit);
 				if (this.transform.position == target.transform.position)
 					transitionToNewTarget = false;
 			}
@@ -82,7 +84,7 @@ public class CameraController : MonoBehaviour
 			} 
 			else if (this.transform.position.y + 5 > minY)
 				this.transform.position = new Vector3(this.transform.position.x, minY - 5f, -10f);
-			
+
 		}
 	}
 }

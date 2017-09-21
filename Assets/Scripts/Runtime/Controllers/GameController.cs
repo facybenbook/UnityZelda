@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 	//GameObject player;
 	//GameObject mainCamera;
 	GameObject gameGUI;
-	public HUDController gameGUIController;
+	public HUDController hudController;
 	public bool firstOneRupee;
 	public bool firstFiveRupee;
 	public  GameObject[] objects;
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
 		//mainCamera = GameObject.Find("MainCamera");
 		gameGUI = GameObject.Find("HUD");
 		if (gameGUI)
-			gameGUIController = gameGUI.GetComponent<HUDController>();
+			hudController = gameGUI.GetComponent<HUDController>();
 		objects = (GameObject[])FindObjectsOfType (typeof(GameObject));
 	}
 	void OnGUI ()
@@ -93,32 +93,35 @@ public class GameController : MonoBehaviour {
 	public void ResumeGame() {
 		control.gamePaused = false;
 		foreach (GameObject go in objects) {
-			if (go != null) {
-				if (go.GetComponent<Animator> () != null)
-					go.GetComponent<Animator> ().speed = 1;
-				go.SendMessage ("OnResume", SendMessageOptions.DontRequireReceiver);
+			//don't affect the GUI when pausing
+			if (go.tag != "GUI") {
+				if (go != null) {
+					if (go.GetComponent<Animator> () != null)
+						go.GetComponent<Animator> ().speed = 1;
+					go.SendMessage ("OnResume", SendMessageOptions.DontRequireReceiver);
+				}
 			}
 		}
 	}
 
 	public void DisplayMessage(string text)
 	{
-		gameGUIController.DisplayMessage (text);
+		hudController.DisplayMessage (text);
 	}
 	public void NewHeart()
 	{
 		playerStats.maxHealth += 4;
 		playerStats.health = playerStats.maxHealth;
 		if (gameGUI)
-			gameGUIController.UpdateLife();
+			hudController.UpdateLife();
 	}
 	public void Heal(int amount)
 	{
 		playerStats.health += amount;
 		if (playerStats.health > playerStats.maxHealth)
 			playerStats.health = playerStats.maxHealth;
-		if (control.gameGUIController)
-			control.gameGUIController.UpdateLife ();
+		if (control.hudController)
+			control.hudController.UpdateLife ();
 	}
 //	static public void Hurt(int damage, Vector3 positionToEscape)
 //	{
@@ -153,10 +156,7 @@ public class GameController : MonoBehaviour {
 				playerStats.rupees = playerStats.rupeeLimit;
 			} else
 				playerStats.rupees += amount;
-			print (playerStats.rupees);
-			print (playerStats.rupees);
-			control.gameGUIController.UpdateRupees ();
-			print (playerStats.rupees);
+			control.hudController.UpdateRupees ();
 		}
 	}
 	public void ChangeRupeeStash(string size)
@@ -165,43 +165,44 @@ public class GameController : MonoBehaviour {
 		{
 		case "S":
 			{
-				control.gameGUIController.DisplayMessage ("Vous avez obtenu la petite bourse, transportez jusqu'à 100 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la petite bourse, transportez jusqu'à 100 rubis !");
 				if(control.playerStats.rupeeLimit < 150)
 					control.playerStats.rupeeLimit = 150;
 				else
-					control.gameGUIController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		case "M":
 			{
-				control.gameGUIController.DisplayMessage ("Vous avez obtenu la moyenne bourse, transportez jusqu'à 300 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la moyenne bourse, transportez jusqu'à 300 rubis !");
 
 				if(control.playerStats.rupeeLimit < 300)
 					control.playerStats.rupeeLimit = 300;
 				else
-					control.gameGUIController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 
 				break;
 			}
 		case "L":
 			{
-				control.gameGUIController.DisplayMessage ("Vous avez obtenu la grande bourse, transportez jusqu'à 500 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la grande bourse, transportez jusqu'à 500 rubis !");
 				if(control.playerStats.rupeeLimit < 600)
 					control.playerStats.rupeeLimit = 600;
 				else
-					control.gameGUIController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		case "XL":
 			{
-				control.gameGUIController.DisplayMessage ("Vous avez obtenu la Super bourse, vous pouvez maintenant transporter jusqu'à 999 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la Super bourse, vous pouvez maintenant transporter jusqu'à 999 rubis !");
 				if(control.playerStats.rupeeLimit < 999)
 					control.playerStats.rupeeLimit = 999;
 				else
-					control.gameGUIController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		}
+		control.hudController.UpdateRupees ();
 	}
 }
 [Serializable]

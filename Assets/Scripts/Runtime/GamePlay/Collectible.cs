@@ -15,11 +15,11 @@ public class Collectible : MonoBehaviour {
 		{
 			if (gameObject.tag == "Rupee") {
 				if (amount == 1 && GameController.control.firstOneRupee == false) {
-					GameController.control.gameGUIController.DisplayMessage ("Vous avez obtenu un rubis, c'est le début de la richesse !");
+					GameController.control.hudController.DisplayMessage ("Vous avez obtenu un rubis, c'est le début de la richesse !");
 					GameController.control.firstOneRupee = true;
 				}
 				else if (amount == 5 && GameController.control.firstFiveRupee == false) {
-					GameController.control.gameGUIController.DisplayMessage ("Vous avez obtenu un rubis, c'est le début de la richesse !");
+					GameController.control.hudController.DisplayMessage ("Vous avez obtenu un rubis, c'est le début de la richesse !");
 					GameController.control.firstFiveRupee = true;
 				}
 				GameController.control.AddRupees (amount);

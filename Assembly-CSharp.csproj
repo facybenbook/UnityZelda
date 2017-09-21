@@ -68,6 +68,7 @@
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
+     <Compile Include="Assets\PauseResumeGame.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasScreenSpaceScaler.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasWorldScaler.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\Internal\VectorSwizzleExtensions.cs" />
