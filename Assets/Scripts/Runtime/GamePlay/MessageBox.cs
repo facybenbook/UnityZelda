@@ -60,18 +60,41 @@ public class MessageBox : MonoBehaviour
 							textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
 							charsOnLine = 0;
 							lineNumber++;
+							if (lineNumber > 1) {
+								cursor.GetComponent<Image> ().enabled = true;
+								while (!Input.GetKeyDown (KeyCode.Return)) {
+									yield return null;	
+								}
+								cursor.GetComponent<Image> ().enabled = true;
+								//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
+								textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 16, 0);
+								//}
+								lineNumber--;
+							}
 						}
+
 						yield return AddLetters (words [j]);
 						charsOnLine += words [j].Length;
 					}
 					i += untilMatching;
 					indexInText += words [i].Length;
 				} else {
-					if (charsOnLine + words [i].Length >= maxCharsOnLine) {
-						textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
-						charsOnLine = 0;
-						lineNumber++;
+				if (charsOnLine + words [i].Length >= maxCharsOnLine) {
+					textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
+					charsOnLine = 0;
+					lineNumber++;
+					if (lineNumber > 1) {
+						cursor.GetComponent<Image> ().enabled = true;
+						while (!Input.GetKeyDown (KeyCode.Return)) {
+							yield return null;	
+						}
+						cursor.GetComponent<Image> ().enabled = true;
+						//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
+						textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 16, 0);
+						//}
+						lineNumber--;
 					}
+				}
 					yield return AddLetters (words [i]);
 					charsOnLine += words [i].Length;
 				}

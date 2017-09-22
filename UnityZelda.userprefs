@@ -7,10 +7,10 @@
       <File FileName="Assets\Scripts\Runtime\GamePlay\CameraController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Runtime\PlayerMovement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Runtime\CharacterMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Runtime\Controllers\HUDController.cs" Line="65" Column="22" />
-      <File FileName="Assets\Scripts\Runtime\Controllers\GameController.cs" Line="177" Column="55" />
+      <File FileName="Assets\Scripts\Runtime\Controllers\HUDController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Runtime\Controllers\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Runtime\GamePlay\Collectible.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Runtime\GamePlay\MessageBox.cs" Line="44" Column="6" />
+      <File FileName="Assets\Scripts\Runtime\GamePlay\MessageBox.cs" Line="81" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
