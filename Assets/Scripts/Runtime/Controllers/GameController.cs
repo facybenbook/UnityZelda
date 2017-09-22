@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour {
 		{
 		case "S":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la petite bourse, transportez jusqu'à 100 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>petite bourse</color>, transportez jusqu'à 100 rubis !");
 				if(control.playerStats.rupeeLimit < 150)
 					control.playerStats.rupeeLimit = 150;
 				else
@@ -174,7 +174,7 @@ public class GameController : MonoBehaviour {
 			}
 		case "M":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la moyenne bourse, transportez jusqu'à 300 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>moyenne bourse</color>, transportez jusqu'à 300 rubis !");
 
 				if(control.playerStats.rupeeLimit < 300)
 					control.playerStats.rupeeLimit = 300;
@@ -185,7 +185,7 @@ public class GameController : MonoBehaviour {
 			}
 		case "L":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la grande bourse, transportez jusqu'à 500 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>grande bourse</color>, transportez jusqu'à 500 rubis !");
 				if(control.playerStats.rupeeLimit < 600)
 					control.playerStats.rupeeLimit = 600;
 				else
@@ -194,7 +194,7 @@ public class GameController : MonoBehaviour {
 			}
 		case "XL":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la Super bourse, vous pouvez maintenant transporter jusqu'à 999 rubis !");
+				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>Super bourse</color>, vous pouvez maintenant transporter jusqu'à 999 rubis !");
 				if(control.playerStats.rupeeLimit < 999)
 					control.playerStats.rupeeLimit = 999;
 				else

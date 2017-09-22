@@ -13,13 +13,10 @@ public class HUDController : MonoBehaviour
 	private Text rupeesLabel;
 	private Image rupeesImage;
 	public GameObject lifeBar;
-	public GameObject rupeesPanel;
-	public GameObject messagePanel;
-	public GameObject cursor;
-	public bool messageDisplayed;
+	public Text rupeesPanel;
 	private AudioSource GUISource;
-
 	public GameObject heart;
+	public MessageBox messageBox;
 	public Sprite[] heartSprites = new Sprite[6];
 	public AudioClip heartSound;
 	private int health;
@@ -29,10 +26,10 @@ public class HUDController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		messageDisplayed = false;
 		rupeeLimit = GameController.control.playerStats.rupeeLimit;
 		rupees = GameController.control.playerStats.rupees;
 		rupeesToMove = 0;
+		messageBox = transform.FindChild ("MessageBox").GetComponent<MessageBox> ();
 		rupeesLabel = transform.FindChild ("RupeesPanel").FindChild ("RupeesLabel").GetComponent<Text> ();
 		rupeesImage = transform.FindChild ("RupeesPanel").FindChild ("RupeesImage").GetComponent<Image> ();
 		rupeesLabel.text = 0.ToString ("D3");
@@ -132,7 +129,11 @@ public class HUDController : MonoBehaviour
 		}
 		health = GameController.control.playerStats.health;
 	}
-
+	public void DisplayMessage(string message)
+	{
+		if (messageBox)
+			messageBox.DisplayMessage (message);
+	}
 	void AddHeart (int heartNumber)
 	{
 		GameObject newHeart = GameObject.Instantiate (heart);
@@ -165,124 +166,6 @@ public class HUDController : MonoBehaviour
 				rupeesImage.GetComponent<Image> ().sprite = rupeeSprites [3];
 				break;
 			}
-		}
-	}
-
-	public void DisplayMessage (string text)
-	{
-		if (messageDisplayed == false)
-			StartCoroutine (DisplayOneByOne (text));
-	}
-
-	IEnumerator DisplayOneByOne (string message)
-	{
-		int charsOnLine = 0;
-		int lineNumber = 0;
-		int maxCharsOnLine = 30;
-		GameController.control.PauseGame ();
-		messageDisplayed = true;
-		cursor.GetComponent<Image> ().enabled = false;
-		messagePanel.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
-		Text textGUI = messagePanel.GetComponentInChildren<Text> ();
-		textGUI.text = "";
-		for (int i = 0; i < message.Length; i++) {
-			string wordString = "";
-			//if rich text
-			if (message [i] == '<') {
-				wordString = GetWord (textGUI, message, i);
-			}
-			//otherwise
-			else
-				wordString = GetWord (textGUI, message, i);
-			i += wordString.Length;
-			//insert the word in the GUIText one letter at a time
-			for (int j = 0; j < wordString.Length; j++) {
-				textGUI.text.Insert (i, wordString [j].ToString());
-
-			}
-
-			//---------------------------WIP---------------
-			//add opening tag
-			while (message [i] != '>' && i < message.Length) {
-				textGUI.text += message [i++];
-			}
-			textGUI.text += message [i++];
-			int wordStart = i;
-			//get the enriched word(s) between the > and <
-			while (message [i] != '<' && i < message.Length) {
-				//grab a word
-				//wordString = GetWord (message);
-				if (wordString.Length + charsOnLine >= maxCharsOnLine) {
-					textGUI.text += '\n';
-					message.Insert (i, "\n");
-				}
-				for (int j = 0; j < wordString.Length; j++)
-					textGUI.text += ' ';
-				i += wordString.Length;
-				charsOnLine += wordString.Length;
-			}
-			//add spaces for the word to be inserted
-			for (int j = 0; j < wordString.Length; i++)
-				message += ' ';
-			charsOnLine += wordString.Length;
-			//add closing tag
-			while (message [i] != '>' && i < message.Length)
-				textGUI.text += message [i++];
-			textGUI.text += message [i++];
-			//adding the word between tags one letter by one
-			char[] strBuffer = textGUI.text.ToCharArray ();
-			for (int j = 0; j < wordString.Length; j++) {
-				strBuffer [wordStart + j] = wordString [j];
-				textGUI.text = new string (strBuffer);
-				yield return WaitForRealTime (1 / 60f);
-			}
-			//fetch the next word to make sure it fits in the left space of the line otherwise, add a return
-			//wordString = GetWord (message);
-			if (wordString.Length + charsOnLine >= maxCharsOnLine) {
-				textGUI.text += ' ';
-				lineNumber++;
-			}
-			for (int j = 0; j < wordString.Length; j++) {
-				textGUI.text += message [i++];
-				charsOnLine++;
-				yield return WaitForRealTime (1 / 60f);
-			}
-		}
-		cursor.GetComponent<Image> ().enabled = true;
-		while (!Input.GetKeyDown (KeyCode.Return))
-			yield return null;
-		messagePanel.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (0, -55, 0);
-		messageDisplayed = false;
-		GameController.control.ResumeGame ();
-	}
-
-	string GetWord (Text text, string message, int i)
-	{
-		int start = 0;
-		int length = 0;
-		while (message [i] != '>' && i < message.Length) {
-			text.text += message [i++];
-		}
-		start = i;
-		//'>' reached
-		while (message [i] != '<' && i < message.Length) {
-			i++;
-		}
-		length = i;
-		while (message [i] != '>' && i < message.Length) {
-			text.text += message [i++];
-		}
-		return (message.Substring (start, length));
-	}
-
-	public static IEnumerator WaitForRealTime (float delay)
-	{
-		while (true) {
-			float pauseEndTime = Time.realtimeSinceStartup + delay;
-			while (Time.realtimeSinceStartup < pauseEndTime) {
-				yield return 0;
-			}
-			break;
 		}
 	}
 }

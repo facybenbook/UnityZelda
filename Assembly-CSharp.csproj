@@ -101,6 +101,7 @@
      <Compile Include="Assets\Scripts\Runtime\GamePlay\Collectible.cs" />
      <Compile Include="Assets\Scripts\Runtime\GamePlay\Destructible.cs" />
      <Compile Include="Assets\Scripts\Runtime\GamePlay\HighlightFix.cs" />
+     <Compile Include="Assets\Scripts\Runtime\GamePlay\MessageBox.cs" />
      <Compile Include="Assets\Scripts\Runtime\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\Runtime\Hurt_touch.cs" />
      <Compile Include="Assets\Scripts\Runtime\Item.cs" />
