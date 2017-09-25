@@ -4,7 +4,6 @@ using System.Collections;
 public class Attacking_sword : MonoBehaviour 
 {
 	void OnTriggerEnter2D(Collider2D coll) {
-		print ("coll" + coll.gameObject);
 		if (coll.gameObject.tag == "Destructible")
 		{
 			if (coll.gameObject.name != "Herb" || !this.GetComponentInParent<Animator>().GetBool("is_charging"))

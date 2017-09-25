@@ -39,7 +39,7 @@ public class EllipseCollider2D : MonoBehaviour {
     public float radiusX = 1, radiusY = 2;
 
     [Range(10,90)]
-    public int smoothness = 30;
+    public int smoothness = 15;
 
     [Range(0, 180)]
     public int rotation = 0;

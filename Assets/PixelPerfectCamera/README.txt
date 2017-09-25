@@ -29,7 +29,7 @@ Below the controls, you can see some numbers regarding the size calculation:
 
 - Pixels Per Unit: the number of screen pixels a unit is rendered to (this is *not* the assets pixels per unit)
 
-- Pixels: the resolution of the screen given as a multiple of 2 numbers. The first is the number of screen pixels an asset pixel will render to. The second is the camera resolution in asset pixels. For example: 4 x [100.5, 300.0] means that the screen resolution is [402, 1200] and it corresponds to a width of 100.5 pixels and a height of 300 pixels in asset pixels. A single asset pixel is rendered to 4 screen pixels. A non pixel-perfect resolution would have a non-integer in the place of "4".
+- Pixels: the resolution of the screen given as a multiple of 2 numbers. The first is the number of screen pixels an asset pixel will render to. The second is the camera resolution in asset pixels. For example: 4 x [100.5, 150.0] means that the screen resolution is [402, 1200] and it corresponds to a width of 100.5 pixels and a height of 150 pixels in asset pixels. A single asset pixel is rendered to 4 screen pixels. A non pixel-perfect resolution would have a non-integer in the place of "4".
 
 - Coverage: the percentage of the resulting size to the target size. This is usually 100%, which means that the resulting size is the same as the targeted one. However, if "Pixel Perfect" is enabled, the percentage may be higher or lower than 100% if the resulting size is bigger or smaller than the target size. Also, if "max width/height" restricts the size it can reduce the coverage.
 

@@ -38,7 +38,6 @@ public class Activable : MonoBehaviour
 
 	public void EnableAnimator()
 	{
-		print ("yoyoyo");
 		if (GetComponent<Animator> ()) {
 			anim.enabled = true;
 			anim.SetBool ("activated", true);

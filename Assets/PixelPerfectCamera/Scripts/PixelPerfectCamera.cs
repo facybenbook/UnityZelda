@@ -59,7 +59,7 @@ public class PixelPerfectCamera : MonoBehaviour {
     //void testMethod()
     //{
     //    float assetsPixelsPerUnit = 100;
-    //    float assetWidth = 300;
+    //    float assetWidth = 150;
     //    Resolution resolution = new Resolution();
     //    resolution.width = 1080;
     //    resolution.height = 1920;
@@ -200,7 +200,7 @@ public class PixelPerfectCamera : MonoBehaviour {
             // Make a background box
             GUIStyle boxStyle = new GUIStyle(GUI.skin.box);
             boxStyle.fontSize = (int)(13 * scale);
-            GUI.Box(new Rect(10 * scale, 10 * scale, 130 * scale, 90 * scale), "Camera", boxStyle);
+            GUI.Box(new Rect(10 * scale, 10 * scale, 115 * scale, 90 * scale), "Camera", boxStyle);
 
             // Make the first button. If it is pressed, update
             // http://forum.unity3d.com/threads/toggle-size.55615/

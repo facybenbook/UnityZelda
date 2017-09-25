@@ -65,7 +65,7 @@ public class PlayerMovement : CharacterMovement
 					}
 				}
 			}
-			if (Input.GetKeyDown ("o")) {
+			else if (Input.GetKeyDown ("o")) {
 				switch (GameController.control.playerStats.slotB) {
 				case PlayerStats.Equipments.Sword: 
 					{

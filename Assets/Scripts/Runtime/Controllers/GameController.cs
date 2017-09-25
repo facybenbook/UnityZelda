@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -17,6 +18,7 @@ public class GameController : MonoBehaviour {
 	public bool firstOneRupee;
 	public bool firstFiveRupee;
 	public  GameObject[] objects;
+	public bool pauseMenu;
 
 	//singleton pattern
 	void Awake () {
@@ -28,38 +30,52 @@ public class GameController : MonoBehaviour {
 			Destroy (gameObject);
 		//player = GameObject.Find("Player");
 		//mainCamera = GameObject.Find("MainCamera");
-		gameGUI = GameObject.Find("HUD");
+		gameGUI = GameObject.Find("GUI");
 		if (gameGUI)
-			hudController = gameGUI.GetComponent<HUDController>();
+			hudController = gameGUI.transform.FindChild("HUD").GetComponent<HUDController>();
 		objects = (GameObject[])FindObjectsOfType (typeof(GameObject));
+		//globally set the FPS to 60 maximum;
+		Application.targetFrameRate = 60;
 	}
-	void OnGUI ()
-	{
-		if (GUI.Button (new Rect (10, 10, 100, 30), "health up"))
-			GameController.control.Heal (1);
-		if (GUI.Button (new Rect (10, 40, 100, 30), "health down"))
-			GameController.control.Heal (-1);
-		if (GUI.Button (new Rect (110, 10, 100, 30), "maxhealth up"))
-			GameController.control.NewHeart ();
-		if (GUI.Button (new Rect (10, 70, 100, 30), "save1"))
-			GameController.control.Save(1);
-		if (GUI.Button (new Rect (10, 100, 100, 30), "save2"))
-			GameController.control.Save(2);
-		if (GUI.Button (new Rect (10, 130, 100, 30), "save3"))
-			GameController.control.Save(3);
-		if (GUI.Button (new Rect (10, 160, 100, 30), "load"))
-			GameController.control.Load(1);
-	}
-
 	// Update is called once per frame
 	void Update () {
 		if (playerStats.health <= 0)
 			GameOver ();
+		if (Input.GetKeyDown (KeyCode.Return))
+		{
+			if (gamePaused == false) {
+				pauseMenu = true;
+				PauseGame ();
+			} else 
+			{
+				pauseMenu = false;
+				ResumeGame ();
+			}
+		}
 	}
+
+	void OnGUI ()
+	{
+		if (GUI.Button (new Rect ( 10, 10,  50, 15), "health up"))
+			Heal (1);
+		if (GUI.Button (new Rect ( 10, 40,  50, 15), "health down"))
+			Heal (-1);
+		if (GUI.Button (new Rect (110, 10,  50, 15), "maxhealth up"))
+			NewHeart ();
+		if (GUI.Button (new Rect ( 10, 70,  50, 15), "save1"))
+			Save(1);
+		if (GUI.Button (new Rect ( 10, 100, 50, 15), "save2"))
+			Save(2);
+		if (GUI.Button (new Rect ( 10, 130, 50, 15), "save3"))
+			Save(3);
+		if (GUI.Button (new Rect ( 10, 160, 50, 15), "load"))
+			Load(1);
+	}
+		
 	public void Save(int saveNumber) {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Create (Application.persistentDataPath + "/save"+ saveNumber +".dat");
-		PlayerStats data = control.playerStats;
+		PlayerStats data = playerStats;
 		bf.Serialize (file, data);
 		file.Close ();
 
@@ -71,20 +87,20 @@ public class GameController : MonoBehaviour {
 			FileStream file = File.Open (Application.persistentDataPath + "/save"+ saveNumber +".dat", FileMode.Open);
 			PlayerStats data = (PlayerStats)bf.Deserialize (file);
 			file.Close ();
-			control.playerStats = data;
+			playerStats = data;
 		}
 	}
 	public void CameraFocus(GameObject target, bool transitionToTarget) {
 		
 	}
 	public void GameOver()	{
-		control.gameOverState = true;
+		gameOverState = true;
 	}
 	public void PauseGame() {
-		control.gamePaused = true;
+		gamePaused = true;
 		foreach (GameObject go in objects) {
-			if (go.tag != "GUI") {
-				if (go != null) {
+			if (go != null) {
+				if (go.tag != "GUI") {
 					if (go.GetComponent<Animator> () != null)
 						go.GetComponent<Animator> ().speed = 0;
 					go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
@@ -93,7 +109,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 	public void ResumeGame() {
-		control.gamePaused = false;
+		gamePaused = false;
 		foreach (GameObject go in objects) {
 			//don't affect the GUI when pausing
 			if (go.tag != "GUI") {
@@ -105,7 +121,6 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-
 	public void DisplayMessage(string text)
 	{
 		hudController.DisplayMessage (text);
@@ -114,7 +129,7 @@ public class GameController : MonoBehaviour {
 	{
 		playerStats.maxHealth += 4;
 		playerStats.health = playerStats.maxHealth;
-		if (gameGUI)
+		if (hudController)
 			hudController.UpdateLife();
 	}
 	public void Heal(int amount)
@@ -122,18 +137,18 @@ public class GameController : MonoBehaviour {
 		playerStats.health += amount;
 		if (playerStats.health > playerStats.maxHealth)
 			playerStats.health = playerStats.maxHealth;
-		if (control.hudController)
-			control.hudController.UpdateLife ();
+		if (hudController)
+			hudController.UpdateLife ();
 	}
 //	static public void Hurt(int damage, Vector3 positionToEscape)
 //	{
 //		if (damage > 0)
 //		{
-//			control.playerStats.health -= damage;
-//			if (control.playerStats.health < 0)
-//				control.playerStats.health = 0;
+//			playerStats.health -= damage;
+//			if (playerStats.health < 0)
+//				playerStats.health = 0;
 //			//movement to escape hit && lock animator
-//			control.GetComponent<Animator> ().SetBool ("is_busy", true);
+//			GetComponent<Animator> ().SetBool ("is_busy", true);
 //			GetComponent<Animator> ().SetBool ("is_hurt", true);
 //			//sets the objects movement vector to escape
 //			positionToEscape = this.transform.position - positionToEscape;
@@ -158,7 +173,7 @@ public class GameController : MonoBehaviour {
 				playerStats.rupees = playerStats.rupeeLimit;
 			} else
 				playerStats.rupees += amount;
-			control.hudController.UpdateRupees ();
+			hudController.UpdateRupees ();
 		}
 	}
 	public void ChangeRupeeStash(string size)
@@ -167,58 +182,94 @@ public class GameController : MonoBehaviour {
 		{
 		case "S":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>petite bourse</color>, transportez jusqu'à 100 rubis !");
-				if(control.playerStats.rupeeLimit < 150)
-					control.playerStats.rupeeLimit = 150;
+				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>petite bourse</color>, transportez jusqu'à 100 rubis !");
+				if(playerStats.rupeeLimit < 150)
+					playerStats.rupeeLimit = 150;
 				else
-					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		case "M":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>moyenne bourse</color>, transportez jusqu'à 300 rubis !");
+				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>moyenne bourse</color>, transportez jusqu'à 300 rubis !");
 
-				if(control.playerStats.rupeeLimit < 300)
-					control.playerStats.rupeeLimit = 300;
+				if(playerStats.rupeeLimit < 300)
+					playerStats.rupeeLimit = 300;
 				else
-					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 
 				break;
 			}
 		case "L":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>grande bourse</color>, transportez jusqu'à 500 rubis !");
-				if(control.playerStats.rupeeLimit < 600)
-					control.playerStats.rupeeLimit = 600;
+				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>grande bourse</color>, transportez jusqu'à 500 rubis !");
+				if(playerStats.rupeeLimit < 600)
+					playerStats.rupeeLimit = 600;
 				else
-					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		case "XL":
 			{
-				control.hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>Super bourse</color>, vous pouvez maintenant transporter jusqu'à 999 rubis !");
-				if(control.playerStats.rupeeLimit < 999)
-					control.playerStats.rupeeLimit = 999;
+				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>Super bourse</color>, vous pouvez maintenant transporter jusqu'à 999 rubis !");
+				if(playerStats.rupeeLimit < 999)
+					playerStats.rupeeLimit = 999;
 				else
-					control.hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		}
-		control.hudController.UpdateRupees ();
+		hudController.UpdateRupees ();
 	}
 }
 [Serializable]
 public class PlayerStats {
-	public String name;
 	//public Scene scene;
-	public enum Equipments {Default, Sword, Bow, MoleClaws};
+	public enum Equipments {None, Sword, Bow, MoleClaws, Bottle};
+	public String name;
 	public Equipments slotA = Equipments.Sword;
 	public Equipments slotB;
-	public int health = 10;
-	public int maxHealth = 12;
-	public int rupees = 0;
-	public int rupeeLimit = 100;
-	public int keys = 0;
-	public bool bossKey = false;
-	public bool[] elements = new bool[8];
+	public int health;
+	public int maxHealth;
+	public int rupees;
+	public int rupeeLimit;
+	public int keys;
+	public bool bossKey;
+	public bool[] elements;
+	public List<InventorySlot> inventorySlots;
+	public List<InventorySlot> bottleSlots;
+
+	public PlayerStats()
+	{
+		health = 12;
+		maxHealth = 12;
+		rupees = 0;
+		rupeeLimit = 100;
+		keys = 0;
+		bossKey = false;
+		elements = new bool[8];
+		slotA = Equipments.None;
+		slotB = Equipments.None;
+		inventorySlots = new List<InventorySlot>();
+		inventorySlots.Add (new InventorySlot (0, Equipments.Sword));
+
+		bottleSlots = new List<InventorySlot>();
+		bottleSlots.Add (new InventorySlot (0, Equipments.Bottle));
+	}
+
+	public class InventorySlot {
+		public enum BottleContent: int {None = -1, Empty = 0, Fairy = 1, Water = 2, RedPotion = 3, BluePotion = 4};
+
+		public int position;
+		public Equipments item;
+		public BottleContent content = BottleContent.Fairy;
+
+		public InventorySlot(int position, Equipments item)
+		{
+			this.position = position;
+			this.item = item;
+			if (item == Equipments.Bottle)
+				content = BottleContent.Fairy;
+		}
+	}
 }

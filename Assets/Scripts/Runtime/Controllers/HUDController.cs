@@ -22,10 +22,12 @@ public class HUDController : MonoBehaviour
 	private int health;
 	private int maxHealth;
 	private List<GameObject> hearts;
+	private bool rupeeLimited;
 
 	// Use this for initialization
 	void Start ()
 	{
+		rupeeLimited = false;
 		rupeeLimit = GameController.control.playerStats.rupeeLimit;
 		rupees = GameController.control.playerStats.rupees;
 		rupeesToMove = 0;
@@ -141,7 +143,7 @@ public class HUDController : MonoBehaviour
 		hearts.Add (newHeart);
 		newHeart.transform.SetParent (transform.FindChild ("LifeBar"));
 		newHeart.name = "Heart" + heartNumber;
-		newHeart.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (heartNumber % 10 * 16, heartNumber / 10 * -16, 0f);
+		newHeart.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (heartNumber % 10 * 8, heartNumber / 10 * -8, 0f);
 		newHeart.GetComponent<Image> ().sprite = heartSprites [0];
 		if (heartNumber > 0)
 			hearts [heartNumber - 1].GetComponent<Image> ().sprite = heartSprites [5];
@@ -151,6 +153,13 @@ public class HUDController : MonoBehaviour
 	{
 		if (GameController.control.playerStats.rupees != rupees) {
 			rupeesToMove = GameController.control.playerStats.rupees - rupees;
+			if (rupees + rupeesToMove == rupeeLimit && rupeeLimited == false) {
+				rupeesLabel.font = Resources.Load<Font> ("Fonts/HUD_Numbers_Yellow");
+				rupeeLimited = true;
+			} else if (rupeeLimited == true) {
+				rupeesLabel.font = Resources.Load<Font> ("Fonts/HUD_Numbers");
+				rupeeLimited = false;
+			}
 		}
 		if (GameController.control.playerStats.rupeeLimit != rupeeLimit) {
 			switch (GameController.control.playerStats.rupeeLimit) {
