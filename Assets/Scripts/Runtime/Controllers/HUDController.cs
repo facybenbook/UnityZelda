@@ -13,7 +13,7 @@ public class HUDController : MonoBehaviour
 	private Text rupeesLabel;
 	private Image rupeesImage;
 	public GameObject lifeBar;
-	public Text rupeesPanel;
+	public GameObject rupeesPanel;
 	private AudioSource GUISource;
 	public GameObject heart;
 	public MessageBox messageBox;
@@ -30,8 +30,9 @@ public class HUDController : MonoBehaviour
 		rupees = GameController.control.playerStats.rupees;
 		rupeesToMove = 0;
 		messageBox = transform.FindChild ("MessageBox").GetComponent<MessageBox> ();
-		rupeesLabel = transform.FindChild ("RupeesPanel").FindChild ("RupeesLabel").GetComponent<Text> ();
-		rupeesImage = transform.FindChild ("RupeesPanel").FindChild ("RupeesImage").GetComponent<Image> ();
+		rupeesPanel = transform.FindChild ("RupeesPanel").gameObject;
+		rupeesLabel = rupeesPanel.transform.FindChild ("RupeesLabel").GetComponent<Text> ();
+		rupeesImage = rupeesPanel.transform.FindChild ("RupeesImage").GetComponent<Image> ();
 		rupeesLabel.text = 0.ToString ("D3");
 		rupeesImage.sprite = rupeeSprites [0];
 		GUISource = gameObject.AddComponent<AudioSource> ();

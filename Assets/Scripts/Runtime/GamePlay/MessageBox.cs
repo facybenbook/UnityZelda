@@ -6,19 +6,22 @@ using System.Text.RegularExpressions;
 
 public class MessageBox : MonoBehaviour
 {
-	public int numberOfLines = 2;
-	public int maxCharsOnLine = 30;
+	public int numberOfLines;
+	public int maxCharsOnLine;
 	bool messageDisplayed;
 	public GameObject messagePanel;
 	public GameObject cursor;
 	private Text textGUI;
 	private int indexInText;
+	public int charsOnLine;
+	private int lineNumber;
+
 	void Start ()
 	{
 		messageDisplayed = false;
-		cursor = transform.FindChild("Cursor").gameObject;
+		cursor = transform.FindChild ("Cursor").gameObject;
 		messagePanel = gameObject;
-		textGUI = transform.FindChild("Mask/Text").GetComponentInChildren<Text> ();
+		textGUI = transform.FindChild ("Mask/Text").GetComponentInChildren<Text> ();
 	}
 
 	public void DisplayMessage (string text)
@@ -32,8 +35,8 @@ public class MessageBox : MonoBehaviour
 
 	IEnumerator DisplayOneByOne (string message)
 	{
-		int charsOnLine = 0;
-		int lineNumber = 0;
+		charsOnLine = 0;
+		lineNumber = 0;
 		string[] words;
 		GameController.control.PauseGame ();
 		cursor.GetComponent<Image> ().enabled = false;
@@ -42,78 +45,37 @@ public class MessageBox : MonoBehaviour
 		textGUI.text = "";
 //		while(lineNumber < numberOfLines)
 //		{
-		words = Regex.Split (message, "\\s|(\\<.*?\\>)");
+		MatchCollection matches = Regex.Matches (message, "(\\s|\\<.*?\\>|[^\\<\\s]+)");
+		words = new string[matches.Count];
+		for (int i = 0; i < matches.Count; i++) {
+			words [i] = matches [i].ToString ();
+		}
 		indexInText = 0;
 		for (int i = 0; i < words.Length; i++) {
-				if (words [i].IndexOf (('<')) == 0) {
-					int untilMatching = 0;
-					indexInText += words [i].Length;
-					textGUI.text += words [i++];
-					while (words [i + untilMatching].IndexOf (('<')) != 0) {
-						untilMatching++;
-					}
-					//add the closing tag
-					textGUI.text += words [i + untilMatching];
-					//fill the middle
-					for (int j = i; j < i + untilMatching; j++) {
-						if (charsOnLine + words [i].Length >= maxCharsOnLine) {
-							textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
-							charsOnLine = 0;
-							lineNumber++;
-							if (lineNumber > 1) {
-								cursor.GetComponent<Image> ().enabled = true;
-								while (!Input.GetKeyDown (KeyCode.Return)) {
-									yield return null;	
-								}
-								cursor.GetComponent<Image> ().enabled = true;
-								//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
-								textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 16, 0);
-								//}
-								lineNumber--;
-							}
-						}
-
-						yield return AddLetters (words [j]);
-						charsOnLine += words [j].Length;
-					}
-					i += untilMatching;
-					indexInText += words [i].Length;
-				} else {
-				if (charsOnLine + words [i].Length >= maxCharsOnLine) {
-					textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
-					charsOnLine = 0;
-					lineNumber++;
-					if (lineNumber > 1) {
-						cursor.GetComponent<Image> ().enabled = true;
-						while (!Input.GetKeyDown (KeyCode.Return)) {
-							yield return null;	
-						}
-						cursor.GetComponent<Image> ().enabled = true;
-						//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
-						textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 16, 0);
-						//}
-						lineNumber--;
-					}
+			if (words [i].IndexOf (('<')) == 0) {
+				int untilMatching = 0;
+				indexInText += words [i].Length;
+				textGUI.text += words [i++];
+				while (words [i + untilMatching].IndexOf (('<')) != 0) {
+					untilMatching++;
 				}
-					yield return AddLetters (words [i]);
-					charsOnLine += words [i].Length;
+				//add the closing tag
+				textGUI.text += words [i + untilMatching];
+				//fill the middle
+				for (int j = i; j < i + untilMatching; j++) {
+					yield return CheckEndOfLine (words [j]);
+					yield return AddLetters (words [j]);
+					yield return CheckIfNextLine ();
 				}
-			if (lineNumber > 1) {
-				cursor.GetComponent<Image> ().enabled = true;
-				while (!Input.GetKeyDown (KeyCode.Return)) {
-					yield return null;	
-				}
-				cursor.GetComponent<Image> ().enabled = true;
-				//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
-					textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 16, 0);
-				//}
-				lineNumber--;
+				i += untilMatching;
+				indexInText += words [i].Length;
+			} else {
+				yield return CheckEndOfLine (words [i]);
+				yield return AddLetters (words [i]);
+				yield return CheckIfNextLine ();
 			}
 		}
 		//debug
-//		for (int i = 0; i < words.Length; i++)
-//			print (words [i]);
-
 		cursor.GetComponent<Image> ().enabled = true;
 		while (!Input.GetKeyDown (KeyCode.Return))
 			yield return null;
@@ -122,19 +84,48 @@ public class MessageBox : MonoBehaviour
 		GameController.control.ResumeGame ();
 	}
 
-	IEnumerator AddLetters(string word)
+	IEnumerator CheckIfNextLine ()
 	{
-		print (word);
+		if (lineNumber > 1) {
+			cursor.GetComponent<Image> ().enabled = true;
+			while (!Input.GetKeyDown (KeyCode.Return)) {
+				yield return null;
+			}
+			cursor.GetComponent<Image> ().enabled = false;
+			//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
+			textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 15, 0);
+			//}
+			lineNumber--;
+		}
+	}
+
+	IEnumerator CheckEndOfLine (string word)
+	{
+		if (charsOnLine + word.Length >= maxCharsOnLine) {
+			if (word [0] != ' ') {
+				textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
+				charsOnLine = 0;
+				lineNumber++;
+				yield return CheckIfNextLine ();
+			}
+		}
+	}
+
+	IEnumerator AddLetters (string word)
+	{
 		char[] tmp = word.ToCharArray ();
 		//if empty word, add space
-		if (tmp.Length == 0) {
-			textGUI.text = textGUI.text.Insert (indexInText++, ' '.ToString ());
-		} 
-		else {
+		if (tmp.Length == 1 && tmp [0] == ' ') {
+			if (maxCharsOnLine != 0) {
+				textGUI.text = textGUI.text.Insert (indexInText++, ' '.ToString ());
+				charsOnLine++;
+			}
+		} else {
 			for (int j = 0; j < tmp.Length; j++) {
 				textGUI.text = textGUI.text.Insert (indexInText++, tmp [j].ToString ());
 				yield return WaitForRealTime (1 / 60f);
 			}
+			charsOnLine += word.Length;
 		}
 	}
 

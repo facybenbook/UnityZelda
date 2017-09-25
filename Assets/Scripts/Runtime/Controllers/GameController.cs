@@ -83,10 +83,12 @@ public class GameController : MonoBehaviour {
 	public void PauseGame() {
 		control.gamePaused = true;
 		foreach (GameObject go in objects) {
-			if (go != null) {
-				if (go.GetComponent<Animator> () != null)
-					go.GetComponent<Animator> ().speed = 0;
-				go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
+			if (go.tag != "GUI") {
+				if (go != null) {
+					if (go.GetComponent<Animator> () != null)
+						go.GetComponent<Animator> ().speed = 0;
+					go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
+				}
 			}
 		}
 	}
