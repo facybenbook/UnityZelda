@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4000012276439324}
   - component: {fileID: 60000011944309448}
   m_Layer: 0
-  m_Name: HitboxPlayer
+  m_Name: PlayerHitbox
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4497634058534536}
   - component: {fileID: 60608518226660876}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerShadow
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012171294870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.6, y: -12.62, z: 0}
+  m_LocalPosition: {x: 19.65, y: -213.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000010874051278}
@@ -239,23 +239,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.375, y: 0}
-      - {x: 0.3464548, y: -0.047835432}
-      - {x: 0.26516503, y: -0.088388346}
-      - {x: 0.14350629, y: -0.11548494}
-      - {x: -0.00000001639177, y: -0.125}
-      - {x: -0.14350627, y: -0.115484945}
-      - {x: -0.26516503, y: -0.088388346}
-      - {x: -0.3464548, y: -0.047835436}
-      - {x: -0.375, y: 0.000000010927847}
-      - {x: -0.3464548, y: 0.04783543}
-      - {x: -0.26516506, y: 0.08838834}
-      - {x: -0.14350635, y: 0.11548494}
-      - {x: 0.00000000447183, y: 0.125}
-      - {x: 0.14350635, y: 0.11548493}
-      - {x: 0.265165, y: 0.08838836}
-      - {x: 0.34645483, y: 0.04783543}
-      - {x: 0.375, y: -0.000000021855694}
+    - - {x: 0.1875, y: 0.125}
+      - {x: 0.375, y: 0}
+      - {x: 0.1875, y: -0.125}
+      - {x: -0.1875, y: -0.125}
+      - {x: -0.375, y: 0}
+      - {x: -0.1875, y: 0.125}
 --- !u!61 &61000010080328768
 BoxCollider2D:
   m_ObjectHideFlags: 1

@@ -68,6 +68,7 @@
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
+     <Compile Include="Assets\MenuHeartContainerScript.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasScreenSpaceScaler.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasWorldScaler.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\Internal\VectorSwizzleExtensions.cs" />
@@ -101,6 +102,7 @@
      <Compile Include="Assets\Scripts\Runtime\GamePlay\Destructible.cs" />
      <Compile Include="Assets\Scripts\Runtime\GamePlay\HighlightFix.cs" />
      <Compile Include="Assets\Scripts\Runtime\GamePlay\MessageBox.cs" />
+     <Compile Include="Assets\Scripts\Runtime\GamePlay\Switch.cs" />
      <Compile Include="Assets\Scripts\Runtime\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\Runtime\Hurt_touch.cs" />
      <Compile Include="Assets\Scripts\Runtime\ImageScroll.cs" />
@@ -112,7 +114,6 @@
      <Compile Include="Assets\Scripts\Runtime\RupeeStash.cs" />
      <Compile Include="Assets\Scripts\Runtime\SlotDetailsScript.cs" />
      <Compile Include="Assets\Scripts\Runtime\SwordScript.cs" />
-     <Compile Include="Assets\Scripts\Runtime\Trigger.cs" />
      <Compile Include="Assets\Scripts\Runtime\WarpController.cs" />
      <Compile Include="Assets\Scripts\Runtime\ZIndex.cs" />
      <None Include="Assets\Extensions\Tiled2Unity\Shaders\shaDefault.shader" />

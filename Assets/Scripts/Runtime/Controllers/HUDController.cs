@@ -14,7 +14,7 @@ public class HUDController : MonoBehaviour
 	private Image rupeesImage;
 	public GameObject lifeBar;
 	public GameObject rupeesPanel;
-	private AudioSource GUISource;
+	private AudioSource soundSource;
 	public GameObject heart;
 	public MessageBox messageBox;
 	public Sprite[] heartSprites = new Sprite[6];
@@ -37,7 +37,7 @@ public class HUDController : MonoBehaviour
 		rupeesImage = rupeesPanel.transform.FindChild ("RupeesImage").GetComponent<Image> ();
 		rupeesLabel.text = 0.ToString ("D3");
 		rupeesImage.sprite = rupeeSprites [0];
-		GUISource = gameObject.AddComponent<AudioSource> ();
+		soundSource = gameObject.AddComponent<AudioSource> ();
 		maxHealth = GameController.control.playerStats.maxHealth;
 		health = GameController.control.playerStats.health;
 		hearts = new List<GameObject> ();
@@ -59,7 +59,7 @@ public class HUDController : MonoBehaviour
 				rupeesToMove++;
 			}
 			rupeesLabel.text = rupees.ToString ("D3");//Update label
-			GUISource.PlayOneShot (rupeeSound);
+			soundSource.PlayOneShot (rupeeSound);
 		}
 	}
 	// Update is called once per frame
@@ -132,11 +132,6 @@ public class HUDController : MonoBehaviour
 		}
 		health = GameController.control.playerStats.health;
 	}
-	public void DisplayMessage(string message)
-	{
-		if (messageBox)
-			messageBox.DisplayMessage (message);
-	}
 	void AddHeart (int heartNumber)
 	{
 		GameObject newHeart = GameObject.Instantiate (heart);
@@ -148,7 +143,6 @@ public class HUDController : MonoBehaviour
 		if (heartNumber > 0)
 			hearts [heartNumber - 1].GetComponent<Image> ().sprite = heartSprites [5];
 	}
-
 	public void UpdateRupees ()
 	{
 		if (GameController.control.playerStats.rupees != rupees) {
@@ -161,7 +155,7 @@ public class HUDController : MonoBehaviour
 				rupeeLimited = false;
 			}
 		}
-		if (GameController.control.playerStats.rupeeLimit != rupeeLimit) {
+		else if (GameController.control.playerStats.rupeeLimit != rupeeLimit) {
 			switch (GameController.control.playerStats.rupeeLimit) {
 			case 150:
 				rupeesImage.GetComponent<Image> ().sprite = rupeeSprites [0];
@@ -177,5 +171,7 @@ public class HUDController : MonoBehaviour
 				break;
 			}
 		}
+		else
+			soundSource.PlayOneShot (rupeeSound);
 	}
 }

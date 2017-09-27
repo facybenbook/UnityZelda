@@ -1,9 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Runtime\Controllers\GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Runtime\GameEvent.cs">
     <Files>
-      <File FileName="Assets\InventoryPage.cs" Line="20" Column="5" />
-      <File FileName="Assets\Scripts\Runtime\Controllers\GameController.cs" Line="49" Column="15" />
+      <File FileName="Assets\Scripts\Runtime\Controllers\GameController.cs" Line="73" Column="3" />
+      <File FileName="Assets\Scripts\Runtime\GamePlay\MessageBox.cs" Line="35" Column="17" />
+      <File FileName="Assets\Scripts\Runtime\Controllers\HUDController.cs" Line="134" Column="3" />
+      <File FileName="Assets\Scripts\Runtime\GamePlay\Collectible.cs" Line="9" Column="4" />
+      <File FileName="Assets\Scripts\Runtime\GameEvent.cs" Line="80" Column="14" />
+      <File FileName="Assets\Scripts\Editor\GameEventEditor.cs" Line="46" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

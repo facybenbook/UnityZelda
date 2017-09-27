@@ -1,34 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChestController : Activable
+public class ChestController : MonoBehaviour
 {
 	public GameObject content;
-	bool open;
-
+	bool state;
+	private IEnumerator coroutine;
+	public Sprite close;
+	public Sprite open;
 	void Start()
 	{
 		state = false;
-		open = false;
-		if (conditions.Count > 0) {
-			GetComponent<SpriteRenderer> ().sprite = null;
-			GetComponent<BoxCollider2D> ().enabled = false;
-		}
 	}
 
-	void OnTriggerStay2D(Collider2D coll)
+	IEnumerator OnTriggerEnter2D(Collider2D coll)
 	{
-		if (state == true && open == false) {
-			
-			if (coll.gameObject.tag == "Player") {
-				print (coll.gameObject.GetComponent<PlayerMovement> ().direction.y);
-				if (coll.gameObject.GetComponent<PlayerMovement> ().direction.y == 1 && Input.GetKeyDown ("u")) {
-					open = true;
-					GameObject.Instantiate (content);
-					GetComponent<AudioSource> ().Play ();
-				}
+		if (state == false){
+			if (coll.gameObject.name == "PlayerShadow") {
+				coroutine = WaitForEnterWhileUp (coll);
+				yield return StartCoroutine(coroutine);
 			}
 		}
 	}
+
+	IEnumerator WaitForEnterWhileUp(Collider2D coll)
+	{
+		while (!(Input.GetKeyDown (GameKeys.ENTER) && coll.transform.parent.GetComponent<PlayerMovement>().direction.y == 1))
+			yield return null;
+		state = true;
+		GetComponent<SpriteRenderer> ().sprite = open;
+		GameObject.Instantiate (content);
+		GetComponent<AudioSource> ().Play ();
+	}
+
+	void OnTriggerExit2D(Collider2D coll)
+	{
+		if (coll.gameObject.name == "PlayerShadow") {
+			StopCoroutine (coroutine);
+		}
+	}
+
+
 
 }

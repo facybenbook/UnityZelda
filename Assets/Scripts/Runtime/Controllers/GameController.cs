@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		if (playerStats.health <= 0)
 			GameOver ();
-		if (Input.GetKeyDown (KeyCode.Return))
+		if (Input.GetKeyDown (KeyCode.Delete))
 		{
 			if (gamePaused == false) {
 				pauseMenu = true;
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour {
 		if (GUI.Button (new Rect ( 10, 160, 50, 15), "load"))
 			Load(1);
 	}
-		
+
 	public void Save(int saveNumber) {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Create (Application.persistentDataPath + "/save"+ saveNumber +".dat");
@@ -99,11 +99,17 @@ public class GameController : MonoBehaviour {
 	public void PauseGame() {
 		gamePaused = true;
 		foreach (GameObject go in objects) {
-			if (go != null) {
-				if (go.tag != "GUI") {
-					if (go.GetComponent<Animator> () != null)
+			if (go != null)
+			{
+				if (go.tag != "GUI") 
+				{
+					if (go.GetComponent<Animator> () != null) 
+					{
+						if (go.tag == "Player")
+							go.GetComponent<Animator> ().SetTrigger ("stop_action");
 						go.GetComponent<Animator> ().speed = 0;
-					go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
+						go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
+					}
 				}
 			}
 		}
@@ -112,8 +118,8 @@ public class GameController : MonoBehaviour {
 		gamePaused = false;
 		foreach (GameObject go in objects) {
 			//don't affect the GUI when pausing
-			if (go.tag != "GUI") {
-				if (go != null) {
+			if (go != null) {
+				if (go.tag != "GUI") {				
 					if (go.GetComponent<Animator> () != null)
 						go.GetComponent<Animator> ().speed = 1;
 					go.SendMessage ("OnResume", SendMessageOptions.DontRequireReceiver);
@@ -121,16 +127,47 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-	public void DisplayMessage(string text)
+
+	void WaitForNextFrame()
 	{
-		hudController.DisplayMessage (text);
+		float timer = 0;
+		while(timer < 1/60f)
+		{
+			timer += Time.deltaTime;
+		}
 	}
-	public void NewHeart()
+
+	public IEnumerator DisplayMessage(string text)
 	{
+		yield return hudController.messageBox.DisplayMessage (text);
+	}
+	public IEnumerator NewHeart()
+	{
+		bool pausedEnter = gamePaused;
+		if (gamePaused == false)
+		PauseGame ();
+		//if true, NewHeartPiece has been calling the method
+		if (pausedEnter == false)
+			yield return DisplayMessage ("Vous avez obtenu un nouveau receptacle de coeur !");
 		playerStats.maxHealth += 4;
 		playerStats.health = playerStats.maxHealth;
 		if (hudController)
 			hudController.UpdateLife();
+		ResumeGame ();
+	}
+	public IEnumerator NewHeartPiece()
+	{
+		PauseGame ();
+		playerStats.containerPieces++;
+		if (playerStats.containerPieces == 4) {
+			yield return DisplayMessage("Vous avez obtenu un nouveau quart de coeur, 4 quarts de coeur forment un nouveau receptacle !");
+			yield return NewHeart();
+			playerStats.containerPieces = 0;
+		}
+		else
+			yield return DisplayMessage("Vous avez obtenu un nouveau quart de coeur, vous en avez maintenant " + playerStats.containerPieces + " rassemblez en 4 pour obtenir un receptacle entier.");
+		if (gamePaused == true)
+			ResumeGame ();
 	}
 	public void Heal(int amount)
 	{
@@ -164,9 +201,17 @@ public class GameController : MonoBehaviour {
 //			}
 //		}
 //	}
-	public void AddRupees(int amount) {
+	public IEnumerator AddRupees(int amount, bool isDrop) {
 		if (amount != 0)
 		{
+			if (isDrop && amount == 1 && firstOneRupee == false) {
+				yield return DisplayMessage ("Vous avez obtenu un rubis, c'est le début de la richesse !");
+				firstOneRupee = true;
+			}
+			else if (isDrop && amount == 5 && firstFiveRupee == false) {
+				yield return DisplayMessage ("Vous avez obtenu 5 rubis, c'est pas mal !");
+				firstFiveRupee = true;
+			}
 			if ((playerStats.rupees + amount) < 0) {
 				playerStats.rupees = 0;
 			} else if (playerStats.rupees + amount > playerStats.rupeeLimit) {
@@ -178,48 +223,57 @@ public class GameController : MonoBehaviour {
 	}
 	public void ChangeRupeeStash(string size)
 	{
+		PauseGame ();
 		switch(size)
 		{
 		case "S":
 			{
-				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>petite bourse</color>, transportez jusqu'à 100 rubis !");
-				if(playerStats.rupeeLimit < 150)
+				DisplayMessage ("Vous avez obtenu la <color=#f85030>petite bourse</color> !");
+
+				if (playerStats.rupeeLimit < 150) {
+					DisplayMessage ("Vous pouvez mainenant transporter jusqu'à 150 rubis !");
 					playerStats.rupeeLimit = 150;
-				else
-					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+				} else {
+					DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+				}
 				break;
 			}
 		case "M":
 			{
-				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>moyenne bourse</color>, transportez jusqu'à 300 rubis !");
-
-				if(playerStats.rupeeLimit < 300)
+				DisplayMessage ("Vous avez obtenu la <color=#f85030>moyenne bourse</color>, transportez jusqu'à 300 rubis !");
+				if (playerStats.rupeeLimit < 300) {
+					DisplayMessage ("Vous pouvez mainenant transporter jusqu'à 300 rubis !");
 					playerStats.rupeeLimit = 300;
+				}
 				else
-					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
-
+					DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		case "L":
 			{
-				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>grande bourse</color>, transportez jusqu'à 500 rubis !");
-				if(playerStats.rupeeLimit < 600)
+				DisplayMessage ("Vous avez obtenu la <color=#f85030>grande bourse</color>, transportez jusqu'à 500 rubis !");
+				if (playerStats.rupeeLimit < 600) {
+					DisplayMessage ("Vous pouvez mainenant transporter jusqu'à 600 rubis !");
 					playerStats.rupeeLimit = 600;
+				} 
 				else
-					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		case "XL":
 			{
-				hudController.DisplayMessage ("Vous avez obtenu la <color=#f85030>Super bourse</color>, vous pouvez maintenant transporter jusqu'à 999 rubis !");
-				if(playerStats.rupeeLimit < 999)
+				DisplayMessage ("Vous avez obtenu la <color=#f85030>Super bourse</color>, vous pouvez maintenant transporter jusqu'à 999 rubis !");
+				if (playerStats.rupeeLimit < 999) {
+					DisplayMessage ("Vous pouvez mainenant transporter jusqu'à 999 rubis !");
 					playerStats.rupeeLimit = 999;
+				}
 				else
-					hudController.DisplayMessage ("Mais vous avez deja une plus grande bourse.");
+					DisplayMessage ("Mais vous avez deja une plus grande bourse.");
 				break;
 			}
 		}
 		hudController.UpdateRupees ();
+		ResumeGame ();
 	}
 }
 [Serializable]
@@ -236,11 +290,14 @@ public class PlayerStats {
 	public int keys;
 	public bool bossKey;
 	public bool[] elements;
+	public int containerPieces;
 	public List<InventorySlot> inventorySlots;
 	public List<InventorySlot> bottleSlots;
 
 	public PlayerStats()
 	{
+		name = "Link";
+		containerPieces = 0;
 		health = 12;
 		maxHealth = 12;
 		rupees = 0;
@@ -272,4 +329,14 @@ public class PlayerStats {
 				content = BottleContent.Fairy;
 		}
 	}
+
+}
+public class GameKeys
+{
+	public const KeyCode A = KeyCode.I;
+	public const KeyCode B = KeyCode.O;
+	public const KeyCode R = KeyCode.L;
+	public const KeyCode L = KeyCode.R;
+	public const KeyCode START = KeyCode.Delete;
+	public const KeyCode ENTER = KeyCode.Return;
 }

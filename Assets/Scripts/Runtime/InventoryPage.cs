@@ -23,7 +23,6 @@ public class InventoryPage : MonoBehaviour {
 			item.GetComponent<RectTransform>().anchoredPosition = new Vector3(-58 + i * 20, -34, 0);
 			item.name = "Bottle" + (i);
 			inventory.Add (item);
-			print (GameController.control.playerStats.bottleSlots[i].content);
 			item.GetComponent<Animator> ().SetInteger ("Content", (int)GameController.control.playerStats.bottleSlots [i].content);
 		}
 	}

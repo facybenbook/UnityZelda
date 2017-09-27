@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Trigger : MonoBehaviour 
-{
+public class Switch : MonoBehaviour {
+	
 	public bool state;
 	public Sprite on;
 	public Sprite off;
@@ -14,6 +15,8 @@ public class Trigger : MonoBehaviour
 	{
 		state = false;
 	}
+
+
 
 	public void ChangeState(bool state)
 	{
@@ -27,7 +30,6 @@ public class Trigger : MonoBehaviour
 			{
 				GetComponent<SpriteRenderer> ().sprite = off;
 			}
-			this.state = state;
 			this.state = state;
 			GetComponent<AudioSource>().Play();
 			foreach (Activable obj in FindObjectsOfType<Activable>()) {

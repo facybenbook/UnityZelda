@@ -7,35 +7,37 @@ using System.Text.RegularExpressions;
 public class MessageBox : MonoBehaviour
 {
 	public int numberOfLines;
-	public int maxCharsOnLine;
-	bool messageDisplayed;
+	public int maxCharacterPixelsOnLine;
+	public bool messageDisplayed;
 	public GameObject messagePanel;
 	public GameObject cursor;
 	private Text textGUI;
 	private int indexInText;
-	public int charsOnLine;
+	private float characterPixelsOnLine;
 	private int lineNumber;
-
+	private float[] charsSize;
+	private bool fastForward;
 	void Start ()
 	{
 		messageDisplayed = false;
 		cursor = transform.FindChild ("Cursor").gameObject;
 		messagePanel = gameObject;
 		textGUI = transform.FindChild ("Mask/Text").GetComponentInChildren<Text> ();
+		maxCharacterPixelsOnLine = (int)textGUI.gameObject.GetComponent<RectTransform> ().rect.width;
+		characterPixelsOnLine = 0;
 	}
 
-	public void DisplayMessage (string text)
+	public IEnumerator DisplayMessage (string text)
 	{
 		if (messageDisplayed == false) {
-			textGUI.text = "";
 			messageDisplayed = true;
-			StartCoroutine (DisplayOneByOne (text));
+			yield return DisplayOneByOne (text);
 		}
 	}
 
 	IEnumerator DisplayOneByOne (string message)
 	{
-		charsOnLine = 0;
+		characterPixelsOnLine = 0;
 		lineNumber = 0;
 		string[] words;
 		GameController.control.PauseGame ();
@@ -43,14 +45,14 @@ public class MessageBox : MonoBehaviour
 		messagePanel.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
 		textGUI.rectTransform.anchoredPosition = new Vector3 (0, 0, 0);
 		textGUI.text = "";
-//		while(lineNumber < numberOfLines)
-//		{
 		MatchCollection matches = Regex.Matches (message, "(\\s|\\<.*?\\>|[^\\<\\s]+)");
 		words = new string[matches.Count];
 		for (int i = 0; i < matches.Count; i++) {
 			words [i] = matches [i].ToString ();
 		}
 		indexInText = 0;
+		fastForward = false;
+		StartCoroutine (FastForward ());
 		for (int i = 0; i < words.Length; i++) {
 			if (words [i].IndexOf (('<')) == 0) {
 				int untilMatching = 0;
@@ -63,48 +65,70 @@ public class MessageBox : MonoBehaviour
 				textGUI.text += words [i + untilMatching];
 				//fill the middle
 				for (int j = i; j < i + untilMatching; j++) {
-					yield return CheckEndOfLine (words [j]);
 					yield return AddLetters (words [j]);
-					yield return CheckIfNextLine ();
 				}
 				i += untilMatching;
 				indexInText += words [i].Length;
 			} else {
-				yield return CheckEndOfLine (words [i]);
 				yield return AddLetters (words [i]);
-				yield return CheckIfNextLine ();
 			}
 		}
-		//debug
 		cursor.GetComponent<Image> ().enabled = true;
-		while (!Input.GetKeyDown (KeyCode.Return))
-			yield return null;
+		StopCoroutine (FastForward ());
+		yield return WaitForInput (GameKeys.ENTER);
 		messagePanel.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (0, -55, 0);
 		messageDisplayed = false;
-		GameController.control.ResumeGame ();
+	}
+
+	IEnumerator FastForward()
+	{
+		while (true) {
+			if (!fastForward) {
+				yield return WaitForInput (GameKeys.ENTER);
+				fastForward = true;
+			}
+			else
+				yield return null;
+		}	
 	}
 
 	IEnumerator CheckIfNextLine ()
 	{
 		if (lineNumber > 1) {
 			cursor.GetComponent<Image> ().enabled = true;
-			while (!Input.GetKeyDown (KeyCode.Return)) {
-				yield return null;
-			}
+			yield return WaitForInput (GameKeys.ENTER);
 			cursor.GetComponent<Image> ().enabled = false;
-			//while (textGUI.rectTransform.anchoredPosition.y != textGUI.rectTransform.anchoredPosition.y + 16) {
 			textGUI.rectTransform.anchoredPosition = new Vector3 (0, textGUI.rectTransform.anchoredPosition.y + 15, 0);
-			//}
 			lineNumber--;
+			fastForward = false;
 		}
+	}
+		
+	int WordLengthInPixels(string word)
+	{
+		int length = 0;
+		CharacterInfo character;
+		if (word.Length == 1 && word [0] == ' ')
+			return 4;
+		for (int i = 0; i < word.Length; i++) {
+			textGUI.font.GetCharacterInfo (word [i], out character);
+			length += character.glyphWidth;
+			//add one pixel for the letter spacing
+			if (i < word.Length - 1)
+				length++;
+		}
+		return (length);
 	}
 
 	IEnumerator CheckEndOfLine (string word)
 	{
-		if (charsOnLine + word.Length >= maxCharsOnLine) {
+		//<debug>
+//		print (word + ":\t" +characterPixelsOnLine +":+\t" + WordLengthInPixels(word) + ":\t" + maxCharacterPixelsOnLine);
+		//<\debug>
+		if (characterPixelsOnLine + WordLengthInPixels(word) > maxCharacterPixelsOnLine) {
 			if (word [0] != ' ') {
 				textGUI.text = textGUI.text.Insert (indexInText++, '\n'.ToString ());
-				charsOnLine = 0;
+				characterPixelsOnLine = 0;
 				lineNumber++;
 				yield return CheckIfNextLine ();
 			}
@@ -113,30 +137,40 @@ public class MessageBox : MonoBehaviour
 
 	IEnumerator AddLetters (string word)
 	{
+		yield return CheckEndOfLine (word);
+		CharacterInfo infos;
 		char[] tmp = word.ToCharArray ();
 		//if empty word, add space
 		if (tmp.Length == 1 && tmp [0] == ' ') {
-			if (maxCharsOnLine != 0) {
+			if (maxCharacterPixelsOnLine != 0) {
 				textGUI.text = textGUI.text.Insert (indexInText++, ' '.ToString ());
-				charsOnLine++;
+				textGUI.font.GetCharacterInfo (tmp [0], out infos);
+				characterPixelsOnLine += 4;
 			}
-		} else {
+		}
+		else {
 			for (int j = 0; j < tmp.Length; j++) {
 				textGUI.text = textGUI.text.Insert (indexInText++, tmp [j].ToString ());
-				yield return WaitForRealTime (1 / 60f);
+				if (fastForward == false)
+					yield return Wait (1 / 60f);
+				textGUI.font.GetCharacterInfo (tmp [j], out infos);
+				characterPixelsOnLine += infos.glyphWidth; 
+				//add one pixel for the lette spacing
+				if (j < tmp.Length - 1)
+					characterPixelsOnLine++;
 			}
-			charsOnLine += word.Length;
 		}
 	}
 
-	public static IEnumerator WaitForRealTime (float delay)
+	IEnumerator WaitForInput(KeyCode key)
 	{
-		while (true) {
-			float pauseEndTime = Time.realtimeSinceStartup + delay;
-			while (Time.realtimeSinceStartup < pauseEndTime) {
-				yield return 0;
-			}
-			break;
+		while (!Input.GetKeyDown (key)) {
+			yield return null;
 		}
+	}
+
+	IEnumerator Wait(float time)
+	{
+		yield return new WaitForSeconds(time);
 	}
 }

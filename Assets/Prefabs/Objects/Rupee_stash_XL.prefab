@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000014071895254}
   - component: {fileID: 212000012717333120}
-  - component: {fileID: 61000014110892490}
-  - component: {fileID: 114295012683217186}
+  - component: {fileID: 60625098744290330}
   m_Layer: 8
   m_Name: Rupee_stash_XL
   m_TagString: Untagged
@@ -42,8 +41,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61000014110892490
-BoxCollider2D:
+--- !u!60 &60625098744290330
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -53,7 +52,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -64,44 +63,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &114295012683217186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012934563364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbfd56f101513aa46b8c0396f7809c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  none: 0
-  all: 0
-  triggersOn: 0000010000000000000000
-  onTriggerCommands:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeRupeeStash
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: XL
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onUpdateCommands:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  m_Points:
+    m_Paths:
+    - - {x: 0.4375, y: 0.1875}
+      - {x: 0.12125, y: 0.5}
+      - {x: -0.12125, y: 0.5}
+      - {x: -0.4375, y: 0.1875}
+      - {x: -0.4375, y: -0.1875}
+      - {x: -0.1875, y: -0.5}
+      - {x: 0.1875, y: -0.5}
+      - {x: 0.4375, y: -0.1875}
 --- !u!212 &212000012717333120
 SpriteRenderer:
   m_ObjectHideFlags: 1

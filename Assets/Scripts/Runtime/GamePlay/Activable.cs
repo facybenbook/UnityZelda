@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public class Activable : MonoBehaviour
+public class Activable : Switch
 {
     public List<GameObject> conditions = new List<GameObject>();
-    public bool state;
 	public UnityEvent actions;
 	private Animator anim;
     // Use this for initialization
@@ -26,8 +25,8 @@ public class Activable : MonoBehaviour
 					if (trigger.GetComponent<LifeController> ().health > 0)
 						return;
 				}
-				if (trigger.GetComponent<Trigger> ()) {
-					if (trigger.GetComponent<Trigger> ().state == false)
+				if (trigger.GetComponent<Switch> ()) {
+					if (trigger.GetComponent<Switch> ().state == false)
 						return;
 				}
 			}

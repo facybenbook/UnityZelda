@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4000014076415122}
   - component: {fileID: 212000013175343048}
-  - component: {fileID: 61000014130275194}
+  - component: {fileID: 60341032058152208}
   - component: {fileID: 95000010107382344}
-  - component: {fileID: 114277132076819398}
+  - component: {fileID: 114760415469779618}
   m_Layer: 8
-  m_Name: Heart_container
+  m_Name: HeartContainer
   m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,14 +37,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010221591994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29, y: 3.62, z: 0}
+  m_LocalPosition: {x: 21.08, y: -12.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61000014130275194
-BoxCollider2D:
+--- !u!60 &60341032058152208
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -55,19 +55,25 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03125}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.46875}
     oldSize: {x: 1, y: 0.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.875, y: 0.75}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.3125, y: 0.40625}
+      - {x: -0.3125, y: 0.40625}
+      - {x: -0.5, y: 0.21875}
+      - {x: -0.5, y: 0.03125}
+      - {x: 0, y: -0.46875}
+      - {x: 0.5, y: -0.03125}
+      - {x: 0.5, y: 0.21875}
 --- !u!95 &95000010107382344
 Animator:
   serializedVersion: 3
@@ -85,7 +91,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114277132076819398
+--- !u!114 &114760415469779618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,44 +99,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010221591994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbfd56f101513aa46b8c0396f7809c37, type: 3}
+  m_Script: {fileID: 11500000, guid: acb7d2fd91292ac449bd4d96f32da112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  none: 0
-  all: 0
-  triggersOn: 0000010000000000000000
-  onTriggerCommands:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114277132076819398}
-        m_MethodName: NewHeartContainer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114277132076819398}
-        m_MethodName: Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onUpdateCommands:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  type: 2
+  amount: 0
 --- !u!212 &212000013175343048
 SpriteRenderer:
   m_ObjectHideFlags: 1
