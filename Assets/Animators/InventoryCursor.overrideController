@@ -1,0 +1,12 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: InventoryCursor
+  m_Controller: {fileID: 9100000, guid: 7b6f34427a6948149a67e5556639287e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1e9b165ad9cbe3c489388724441ed71c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 96d890199dea3e54a8a64227e5c53f38, type: 2}

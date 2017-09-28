@@ -52,6 +52,7 @@
      <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\EllipseCollider2D.cs" />
      <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\RoundedBoxCollider2D.cs" />
      <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\StarCollider2D.cs" />
+     <Compile Include="Assets\Extensions\SpritePixelsPerUnitChanger.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\GroupLayer.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
@@ -68,13 +69,13 @@
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
-     <Compile Include="Assets\MenuHeartContainerScript.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasScreenSpaceScaler.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasWorldScaler.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\Internal\VectorSwizzleExtensions.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\PixelPerfectCamera.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\PixelSnap.cs" />
      <Compile Include="Assets\PixelPerfectCamera\Scripts\Scroller.cs" />
+     <Compile Include="Assets\Scripts\MenuHeartContainerScript.cs" />
      <Compile Include="Assets\Scripts\Runtime\Animations\ArrowShootState.cs" />
      <Compile Include="Assets\Scripts\Runtime\Animations\BowState.cs" />
      <Compile Include="Assets\Scripts\Runtime\Animations\DestroyAfterAnimation.cs" />

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114000014091393538}
   - component: {fileID: 82000011166694990}
   - component: {fileID: 61000010121418094}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Chest_small_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.375, y: 0.75}
+  m_Size: {x: 0.0625, y: 0.75}
   m_EdgeRadius: 0
 --- !u!61 &61000013215970060
 BoxCollider2D:
@@ -219,7 +219,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9834ede0f57e1124a8d6cfc6441bb977, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
