@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ec3e7b0cd7ee93b4cbcefee8e49c1137
-timeCreated: 1505921377
+timeCreated: 1506963683
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -17,6 +17,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -32,10 +34,13 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -86,6 +91,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape:
+      - - {x: 5, y: 8}
+        - {x: -5, y: 8}
+        - {x: -8, y: 6}
+        - {x: -8, y: -6}
+        - {x: -5, y: -8}
+        - {x: 5, y: -8}
+        - {x: 8, y: -6}
+        - {x: 8, y: 6}
       tessellationDetail: 0
     - serializedVersion: 2
       name: mapInteractives_1
@@ -99,6 +113,16 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape:
+      - - {x: -7, y: 7}
+        - {x: -8, y: 2}
+        - {x: -8, y: -2}
+        - {x: -7, y: -6}
+        - {x: 7, y: -6}
+        - {x: 7, y: 0}
+        - {x: 6, y: 6}
+        - {x: 0, y: 8}
+        - {x: -2, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: mapInteractives_2
@@ -112,6 +136,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape:
+      - - {x: -8, y: 7}
+        - {x: -8, y: -5}
+        - {x: 8, y: -5}
+        - {x: 8, y: 7}
       tessellationDetail: 0
     - serializedVersion: 2
       name: mapInteractives_3
@@ -125,6 +154,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape:
+      - - {x: 4, y: 8}
+        - {x: -1, y: -2}
+        - {x: 4, y: -2}
+        - {x: 8, y: 4}
+        - {x: 8, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: mapInteractives_4
@@ -138,8 +173,14 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

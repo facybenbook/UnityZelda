@@ -3,19 +3,23 @@ using System.Collections;
 
 public class BowState : StateMachineBehaviour {
 
-	// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (!Input.GetKey((GameController.control.playerStats.slotA == PlayerStats.Equipments.Bow) ? "i" : "o"))
+        {
+            animator.SetBool("is_bow", false);
+        }
+    }
 
-	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		if (Input.GetKeyUp ((GameController.control.playerStats.slotA == PlayerStats.Equipments.Bow) ? "i": "o"))
 		{
-			animator.SetBool ("is_arrow_shoot", true);
+            animator.SetTrigger("Arrow_Shoot");
 			animator.SetBool("is_bow", false);
 		}
-	}
+    }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

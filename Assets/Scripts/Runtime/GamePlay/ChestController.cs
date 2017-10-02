@@ -29,10 +29,8 @@ public class ChestController : MonoBehaviour
 			yield return null;
 		state = true;
 		GetComponent<SpriteRenderer> ().sprite = open;
-		GameObject drop = GameObject.Instantiate (content);
-		drop.transform.SetParent (transform);
-		drop.transform.localPosition = new Vector3 (0, 0.5f, 0);
-		GetComponent<AudioSource> ().Play ();
+		GameObject.Instantiate (content, transform.position + new Vector3(0,0.5f,0), new Quaternion(0,0,0,0), transform);
+        GetComponent<AudioSource> ().Play ();
 	}
 
 	void OnTriggerExit2D(Collider2D coll)

@@ -20,9 +20,9 @@ public class MessageBox : MonoBehaviour
 	void Start ()
 	{
 		messageDisplayed = false;
-		cursor = transform.FindChild ("Cursor").gameObject;
+		cursor = transform.Find ("Cursor").gameObject;
 		messagePanel = gameObject;
-		textGUI = transform.FindChild ("Mask/Text").GetComponentInChildren<Text> ();
+		textGUI = transform.Find ("Mask/Text").GetComponentInChildren<Text> ();
 		maxCharacterPixelsOnLine = (int)textGUI.gameObject.GetComponent<RectTransform> ().rect.width;
 		characterPixelsOnLine = 0;
 	}

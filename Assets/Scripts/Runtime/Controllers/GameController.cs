@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 		//mainCamera = GameObject.Find("MainCamera");
 		gameGUI = GameObject.Find("GUI");
 		if (gameGUI)
-			hudController = gameGUI.transform.FindChild("HUD").GetComponent<HUDController>();
+			hudController = gameGUI.transform.Find("HUD").GetComponent<HUDController>();
 		objects = (GameObject[])FindObjectsOfType (typeof(GameObject));
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;

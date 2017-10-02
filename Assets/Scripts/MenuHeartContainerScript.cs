@@ -10,7 +10,7 @@ public class MenuHeartContainerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		pieces = 0;
-		text = transform.FindChild("Text").gameObject.GetComponent<Text> ();
+		text = transform.Find("Text").gameObject.GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame

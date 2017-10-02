@@ -14,9 +14,9 @@ public class SlotDetailsScript : MonoBehaviour {
 	public GameObject[] slotsTexts = new GameObject[3];
 	// Use this for initialization
 	void Start () {
-		elementsBar = transform.FindChild("ElementsBar").gameObject;
-		heartsBar = transform.FindChild("HeartsBar").gameObject;
-		playerNameLabel = transform.FindChild("PlayerNameLabel").gameObject;
+		elementsBar = transform.Find("ElementsBar").gameObject;
+		heartsBar = transform.Find("HeartsBar").gameObject;
+		playerNameLabel = transform.Find("PlayerNameLabel").gameObject;
 		if (playerNameLabel)
 			playerNameLabel.GetComponent<Text> ().text = "";
 		slotsTexts[0] = GameObject.Find("Slot1/Button/Text").gameObject;

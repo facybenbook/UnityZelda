@@ -31,7 +31,6 @@ public class Destructible : MonoBehaviour {
 		for (int i = 0; i < lootChances.Length; i++) {
 			top += lootChances [i];
 			if (rand < top) {
-				print ("looted");
 				return lootList [i];
 			}
 		}

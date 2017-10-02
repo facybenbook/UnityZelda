@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7f41f730b6e82734694136660782a00b
-timeCreated: 1506005031
+timeCreated: 1506961776
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -35,10 +37,13 @@ TextureImporter:
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -88,8 +93,24 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+      outline:
+      - - {x: -6, y: 7.5}
+        - {x: -8, y: 5.5}
+        - {x: -8, y: -4.5}
+        - {x: -4, y: -7.5}
+        - {x: 4, y: -7.5}
+        - {x: 8, y: -3.5}
+        - {x: 8, y: 5.5}
+        - {x: 6, y: 7.5}
+      physicsShape:
+      - - {x: -5, y: 6.5}
+        - {x: -8, y: 3.5}
+        - {x: -8, y: -0.5}
+        - {x: 0, y: -7.5}
+        - {x: 8, y: -0.5}
+        - {x: 8, y: 3.5}
+        - {x: 5, y: 6.5}
+      tessellationDetail: 1
     - serializedVersion: 2
       name: Heart_container_1
       rect:
@@ -101,7 +122,20 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -6, y: 6.5}
+        - {x: -8, y: 4.5}
+        - {x: -8, y: -0.5}
+        - {x: 0, y: -7.5}
+        - {x: 8, y: -0.5}
+        - {x: 8, y: 4.5}
+        - {x: 6, y: 6.5}
+      physicsShape:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -5.5}
+        - {x: -5, y: -7.5}
+        - {x: 8, y: -7.5}
+        - {x: 8, y: 7.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Heart_container_2
@@ -114,7 +148,20 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -5.5}
+        - {x: -5, y: -7.5}
+        - {x: 6, y: -7.5}
+        - {x: 8, y: -5.5}
+        - {x: 8, y: 7.5}
+      physicsShape:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -5.5}
+        - {x: -5, y: -7.5}
+        - {x: 6, y: -7.5}
+        - {x: 8, y: -5.5}
+        - {x: 8, y: 7.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Heart_container_3
@@ -127,7 +174,24 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -5, y: 7.5}
+        - {x: -8, y: 4.5}
+        - {x: -8, y: -6.5}
+        - {x: -6, y: -7.5}
+        - {x: 7, y: -7.5}
+        - {x: 8, y: -6.5}
+        - {x: 8, y: 4.5}
+        - {x: 7, y: 7.5}
+      physicsShape:
+      - - {x: -5, y: 7.5}
+        - {x: -8, y: 4.5}
+        - {x: -8, y: -6.5}
+        - {x: -6, y: -7.5}
+        - {x: 7, y: -7.5}
+        - {x: 8, y: -6.5}
+        - {x: 8, y: 4.5}
+        - {x: 7, y: 7.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Heart_container_4
@@ -140,7 +204,22 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -6, y: 7.5}
+        - {x: -7, y: 4.5}
+        - {x: -7, y: -4.5}
+        - {x: -4, y: -7.5}
+        - {x: 4, y: -7.5}
+        - {x: 7, y: -3.5}
+        - {x: 7, y: 7.5}
+      physicsShape:
+      - - {x: -6, y: 7.5}
+        - {x: -7, y: 4.5}
+        - {x: -7, y: -4.5}
+        - {x: -4, y: -7.5}
+        - {x: 4, y: -7.5}
+        - {x: 7, y: -3.5}
+        - {x: 7, y: 7.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Heart_container_5
@@ -153,7 +232,22 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -4.5}
+        - {x: -6, y: -7.5}
+        - {x: 6, y: -7.5}
+        - {x: 8, y: -6.5}
+        - {x: 8, y: 5.5}
+        - {x: 7, y: 7.5}
+      physicsShape:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -4.5}
+        - {x: -6, y: -7.5}
+        - {x: 6, y: -7.5}
+        - {x: 8, y: -6.5}
+        - {x: 8, y: 5.5}
+        - {x: 7, y: 7.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Heart_container_6
@@ -166,7 +260,22 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -4.5}
+        - {x: -6, y: -7.5}
+        - {x: 6, y: -7.5}
+        - {x: 8, y: -6.5}
+        - {x: 8, y: 5.5}
+        - {x: 7, y: 7.5}
+      physicsShape:
+      - - {x: -8, y: 7.5}
+        - {x: -8, y: -4.5}
+        - {x: -6, y: -7.5}
+        - {x: 6, y: -7.5}
+        - {x: 8, y: -6.5}
+        - {x: 8, y: 5.5}
+        - {x: 7, y: 7.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Heart_container_7
@@ -179,9 +288,25 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5, y: 0.46875}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -7, y: 7.5}
+        - {x: -8, y: 6.5}
+        - {x: -8, y: -5.5}
+        - {x: -5, y: -7.5}
+        - {x: 5, y: -7.5}
+        - {x: 8, y: -5.5}
+        - {x: 8, y: 7.5}
+      physicsShape:
+      - - {x: -6, y: 6.5}
+        - {x: -8, y: 4.5}
+        - {x: -8, y: -0.5}
+        - {x: 0, y: -7.5}
+        - {x: 8, y: -0.5}
+        - {x: 8, y: 4.5}
+        - {x: 6, y: 6.5}
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

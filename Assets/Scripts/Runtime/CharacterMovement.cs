@@ -5,14 +5,14 @@ public class CharacterMovement : MonoBehaviour
 {
 	protected Rigidbody2D rbody;
 	protected Animator anim;
-	protected Vector2 lastMovement;
+	protected Vector2 lastInputVector;
 	public int pixelPerFrameSpeed;
-	public Vector2 movement_vector;
+	public Vector2 inputVector;
 	public Vector2 direction;
 	// Use this for initialization
 	void Start ()
 	{
-		lastMovement = Vector2.zero;
+		lastInputVector = Vector2.zero;
 		direction = Vector2.down;
 		rbody = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
@@ -53,5 +53,4 @@ public class CharacterMovement : MonoBehaviour
 		if (direction != Vector2.zero)
 			rbody.MovePosition (rbody.position  + direction * multipleSpeed);
 	}
-
 }

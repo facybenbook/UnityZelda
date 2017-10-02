@@ -31,10 +31,10 @@ public class HUDController : MonoBehaviour
 		rupeeLimit = GameController.control.playerStats.rupeeLimit;
 		rupees = GameController.control.playerStats.rupees;
 		rupeesToMove = 0;
-		messageBox = transform.FindChild ("MessageBox").GetComponent<MessageBox> ();
-		rupeesPanel = transform.FindChild ("RupeesPanel").gameObject;
-		rupeesLabel = rupeesPanel.transform.FindChild ("RupeesLabel").GetComponent<Text> ();
-		rupeesImage = rupeesPanel.transform.FindChild ("RupeesImage").GetComponent<Image> ();
+		messageBox = transform.Find ("MessageBox").GetComponent<MessageBox> ();
+		rupeesPanel = transform.Find ("RupeesPanel").gameObject;
+		rupeesLabel = rupeesPanel.transform.Find ("RupeesLabel").GetComponent<Text> ();
+		rupeesImage = rupeesPanel.transform.Find ("RupeesImage").GetComponent<Image> ();
 		rupeesLabel.text = 0.ToString ("D3");
 		rupeesImage.sprite = rupeeSprites [0];
 		soundSource = gameObject.AddComponent<AudioSource> ();
@@ -136,7 +136,7 @@ public class HUDController : MonoBehaviour
 	{
 		GameObject newHeart = GameObject.Instantiate (heart);
 		hearts.Add (newHeart);
-		newHeart.transform.SetParent (transform.FindChild ("LifeBar"));
+		newHeart.transform.SetParent (transform.Find ("LifeBar"));
 		newHeart.name = "Heart" + heartNumber;
 		newHeart.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (heartNumber % 10 * 8, heartNumber / 10 * -8, 0f);
 		newHeart.GetComponent<Image> ().sprite = heartSprites [0];

@@ -13,8 +13,8 @@ public class InventoryPage : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		itemList = transform.FindChild ("ItemList");
-		cursor = transform.FindChild("Cursor").gameObject;
+		itemList = transform.Find ("ItemList");
+		cursor = transform.Find("Cursor").gameObject;
 		cursor.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (-54, 38, 0);
 		cursorIndex = 0;
 		oldCursorIndex = 0;
