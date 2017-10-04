@@ -5,14 +5,11 @@ public class CharacterMovement : MonoBehaviour
 {
 	protected Rigidbody2D rbody;
 	protected Animator anim;
-	protected Vector2 lastInputVector;
 	public int pixelPerFrameSpeed;
-	public Vector2 inputVector;
 	public Vector2 direction;
 	// Use this for initialization
 	void Start ()
 	{
-		lastInputVector = Vector2.zero;
 		direction = Vector2.down;
 		rbody = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
@@ -28,14 +25,14 @@ public class CharacterMovement : MonoBehaviour
 		}
 	}
 
-	void LaterUpdate()
-	{
-		Vector3 tmp;
-		tmp.x = (int)(this.transform.position.x / 0.0625f) * 0.0625f;
-		tmp.y = (int)(this.transform.position.y / 0.0625f) * 0.0625f;
-		tmp.z = 0;
-		this.transform.position = tmp;
-	}
+//	void LaterUpdate()
+//	{
+//		Vector3 tmp;
+//		tmp.x = (int)(this.transform.position.x / 0.0625f) * 0.0625f;
+//		tmp.y = (int)(this.transform.position.y / 0.0625f) * 0.0625f;
+//		tmp.z = 0;
+//		this.transform.position = tmp;
+//	}
 
 	protected virtual void Action ()
 	{

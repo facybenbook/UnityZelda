@@ -20,14 +20,16 @@ TextureImporter:
     21300026: link_dig_down_13
     21300028: link_dig_down_14
     21300030: link_dig_down_15
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -37,23 +39,22 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -61,10 +62,23 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -80,6 +94,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_1
@@ -93,6 +108,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_2
@@ -106,6 +122,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_3
@@ -119,6 +136,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_4
@@ -132,6 +150,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_5
@@ -145,6 +164,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_6
@@ -158,6 +178,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_7
@@ -171,6 +192,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_8
@@ -184,6 +206,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_9
@@ -197,6 +220,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_10
@@ -210,6 +234,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_11
@@ -223,6 +248,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_12
@@ -236,6 +262,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_13
@@ -249,6 +276,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_14
@@ -262,6 +290,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: link_dig_down_15
@@ -275,8 +304,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.4022988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

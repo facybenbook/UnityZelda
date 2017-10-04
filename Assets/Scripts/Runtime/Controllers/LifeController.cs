@@ -37,7 +37,7 @@ public class LifeController : MonoBehaviour {
 			else
 			{
 				positionToEscape = this.transform.position - positionToEscape;
-				GetComponent<CharacterMovement> ().inputVector = Vector2.zero;
+				GetComponent<CharacterMovement> ().direction = Vector2.zero;
 			}
 			audioSource.PlayOneShot (hurtSound);
 			if (health == 0) {

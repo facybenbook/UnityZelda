@@ -9,14 +9,14 @@ public class Chuchu_IA : CharacterMovement
 	{
 		rbody = gameObject.GetComponent<Rigidbody2D> ();
 		hidden = true;
-		inputVector = Vector2.zero;
+		direction = Vector2.zero;
 	}
 	
 	// Update is called once per frame
 
 	protected override void Action() {
 			rbody.velocity = Vector3.zero;
-			Move (inputVector, 1);
+			Move (direction, 1);
 	}
 	void OnTriggerEnter2D(Collider2D coll)
 	{
@@ -33,9 +33,9 @@ public class Chuchu_IA : CharacterMovement
 		if (GetComponent<Animator>().GetBool("is_hurt") == false && coll.gameObject.tag == "Player")
 		{
 			//move toward the player
-			inputVector.x = (coll.gameObject.transform.position.x - rbody.position.x);
-			inputVector.y = coll.gameObject.transform.position.y - rbody.position.y;
-			inputVector.Normalize ();
+			direction.x = (coll.gameObject.transform.position.x - rbody.position.x);
+			direction.y = coll.gameObject.transform.position.y - rbody.position.y;
+			direction.Normalize ();
 		}
 	}
 	void OnTriggerExit2D(Collider2D coll)
@@ -43,7 +43,7 @@ public class Chuchu_IA : CharacterMovement
 		if (coll.gameObject.tag == "Player")
 		{
 			//when the player leaves the sight zone
-			inputVector = Vector2.zero;
+			direction = Vector2.zero;
 		}
 	}
 }

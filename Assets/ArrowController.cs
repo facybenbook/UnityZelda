@@ -35,7 +35,6 @@ public class ArrowController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        print("yo"+coll.gameObject);
         if (coll.isTrigger == false)
         {
             if (coll.gameObject.GetComponent<LifeController>())
@@ -45,7 +44,6 @@ public class ArrowController : MonoBehaviour
             }
             else
             {
-                print("yop");
                 stop = true;
                 GetComponent<Animator>().SetTrigger("stuck");
             }

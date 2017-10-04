@@ -5,56 +5,40 @@ public class PlayerMovement : CharacterMovement
 {
     public bool lockedDirection;
     public GameObject arrow;
+	public  Vector2 lookingTowards;
+	public Vector2 lastInput;
 	protected override void Action ()
 	{
 		rbody.velocity = Vector3.zero;
 		//is busy if a blocking animation is playing
 		if (!anim.GetBool ("is_busy") && !GameController.control.gamePaused) {
-			inputVector = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
-            
-                //If direction changed
-                if (inputVector != lastInputVector)
-                {
-                    //If a key is pressed
-                    if (inputVector != Vector2.zero)
-                    {
-                        //If double key input
-                        if (inputVector.x != 0 && inputVector.y != 0)
-                        {
-                            if (lastInputVector.x != inputVector.x)
-                            {
-                                direction.x = inputVector.x;
-                                direction.y = 0;
-                            }
-                            else
-                            {
-                                direction.x = 0;
-                                direction.y = inputVector.y;
-                            }
-                        }
-                        //simple key
-                        else if (inputVector.x != 0)
-                        {
-                            direction.x = inputVector.x;
-                            direction.y = 0;
-                        }
-                        else
-                        {
-                            direction.x = 0;
-                            direction.y = inputVector.y;
-                        }
-                    }
-                    lastInputVector = inputVector;
-                   
-            }
+			direction = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
+			if (lockedDirection == false) {
+				//If direction changed
+				if (direction != lastInput) {
+					//If a key is pressed
+					if (direction != Vector2.zero) {
+						if (direction.y == 0) {
+							lookingTowards.x = direction.x;
+							if (direction.x != 0)
+								lookingTowards.y = 0;
+						}
+						else if (direction.x == 0) {
+								lookingTowards.y = direction.y;
+							if (direction.y != 0)
+								lookingTowards.x = 0;
+						}
+						anim.SetFloat ("input_x", lookingTowards.x);
+						anim.SetFloat ("input_y", lookingTowards.y);
+
+						lastInput = direction;
+					}
+				}
+			}
             //if the direction is not locked, update direction for the animator
-            if (lockedDirection == false)
-            {
-                anim.SetFloat("input_x", direction.x);
-                anim.SetFloat("input_y", direction.y);
-            }
+            
             //i is the A button used for the first equipment slot
-            if (Input.GetKeyDown ("i")) {
+            if (Input.GetKeyDown (GameKeys.A)) {
 				switch (GameController.control.playerStats.slotA) {
 				case PlayerStats.Equipments.Sword: 
 					{
@@ -73,7 +57,7 @@ public class PlayerMovement : CharacterMovement
 					}
 				}
 			}
-			else if (Input.GetKeyDown ("o")) {
+			else if (Input.GetKeyDown (GameKeys.B)) {
 				switch (GameController.control.playerStats.slotB) {
 				case PlayerStats.Equipments.Sword: 
 					{
@@ -92,7 +76,7 @@ public class PlayerMovement : CharacterMovement
 					}
 				}
 			}
-			if (inputVector != Vector2.zero) {
+			if (direction != Vector2.zero) {
 				if (Input.GetKeyDown ("space")) {
 					//roll
 					anim.SetTrigger ("is_rolling");
