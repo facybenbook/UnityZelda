@@ -6,7 +6,7 @@ public class BowState : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-		if (!Input.GetKey ((GameController.control.playerStats.slotA == PlayerStats.Equipments.Bow) ? GameKeys.A: GameKeys.B))
+		if (!Input.GetKey ((GameController.control.playerStats.slotA == Equipments.Bow) ? GameKeys.A: GameKeys.B))
 		{
 			animator.SetTrigger("Arrow_Shoot");
 			animator.SetBool("is_bow", false);
@@ -15,7 +15,7 @@ public class BowState : StateMachineBehaviour {
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		if (!Input.GetKey ((GameController.control.playerStats.slotA == PlayerStats.Equipments.Bow) ? GameKeys.A: GameKeys.B))
+		if (!Input.GetKey ((GameController.control.playerStats.slotA == Equipments.Bow) ? GameKeys.A: GameKeys.B))
 		{
             animator.SetTrigger("Arrow_Shoot");
 			animator.SetBool("is_bow", false);

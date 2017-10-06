@@ -132,6 +132,7 @@
      <None Include="Assets\Extensions\PixelPerfectCamera\background_art_license.txt" />
      <None Include="Assets\Extensions\Tiled2Unity\Shaders\shaDiffuseDepth.shader" />
      <None Include="Assets\Extensions\Tiled2Unity\Imported\horon-2.tiled2unity.xml" />
+     <None Include="Assets\Scripts\PaletteSwappingShader.shader" />
      <None Include="Assets\Extensions\Tiled2Unity\Materials\_ReadMe.txt" />
      <None Include="Assets\Extensions\Tiled2Unity\Textures\_ReadMe.txt" />
      <None Include="Assets\Extensions\Tiled2Unity\Imported\horon.tiled2unity.xml" />

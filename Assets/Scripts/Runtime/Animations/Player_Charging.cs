@@ -11,7 +11,7 @@ public class Player_Charging : StateMachineBehaviour {
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		animator.SetInteger ("charge", animator.GetInteger ("charge") + 1);
-		if (Input.GetKeyUp ((GameController.control.playerStats.slotA == PlayerStats.Equipments.Sword) ? "i": "o"))
+		if (Input.GetKeyUp ((GameController.control.playerStats.slotA == Equipments.Sword) ? GameKeys.A: GameKeys.B))
 		{
 			if (animator.GetInteger("charge") >= 60)
 			{

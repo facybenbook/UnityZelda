@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BombController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PaletteSwappingShader.shader">
     <Files>
       <File FileName="Assets\Scripts\Runtime\PlayerMovement.cs" Line="11" Column="3" />
-      <File FileName="Assets\Scripts\Runtime\CharacterMovement.cs" Line="19" Column="16" />
-      <File FileName="Assets\BombController.cs" Line="6" Column="30" />
+      <File FileName="Assets\Scripts\Runtime\CharacterMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\BombController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PaletteSwappingShader.shader" Line="18" Column="3" />
+      <File FileName="Temp\Compiled-Sprites-Default.shader" Line="15" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

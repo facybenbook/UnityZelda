@@ -5,6 +5,84 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
+public enum Equipments { None, Sword, Bow, MoleClaws, Bottle, Bomb, RemoteBomb };
+[Serializable]
+public class PlayerStats
+{
+    //public Scene scene;
+    public String name;
+    public Equipments slotA = Equipments.Sword;
+    public Equipments slotB;
+    public int health;
+    public int maxHealth;
+    public int rupees;
+    public int rupeeLimit;
+    public int keys;
+    public bool bossKey;
+    public bool[] elements;
+    public int containerPieces;
+    public List<InventorySlot> inventorySlots;
+    public List<InventorySlot> bottleSlots;
+
+    public PlayerStats()
+    {
+        name = "Link";
+        containerPieces = 0;
+        health = 12;
+        maxHealth = 12;
+        rupees = 0;
+        rupeeLimit = 100;
+        keys = 0;
+        bossKey = false;
+        elements = new bool[8];
+        slotA = Equipments.None;
+        slotB = Equipments.None;
+        inventorySlots = new List<InventorySlot>();
+        inventorySlots.Add(new InventorySlot(0, Equipments.Sword));
+
+        bottleSlots = new List<InventorySlot>();
+        bottleSlots.Add(new InventorySlot(0, Equipments.Bottle));
+
+    }
+    public bool HaveEquipment(Equipments equipment)
+    {
+        foreach (InventorySlot item in inventorySlots)
+        {
+            if (item.item == equipment)
+                return true;
+        }
+        return false;
+    }
+
+    public class InventorySlot
+    {
+        public enum BottleContent : int { None = -1, Empty = 0, Fairy = 1, Water = 2, RedPotion = 3, BluePotion = 4 };
+
+        public int position;
+        public Equipments item;
+        public BottleContent content = BottleContent.Fairy;
+
+        public InventorySlot(int position, Equipments item)
+        {
+            this.position = position;
+            this.item = item;
+            if (item == Equipments.Bottle)
+                content = BottleContent.Fairy;
+        }
+        
+    }
+
+}
+public class GameKeys
+{
+    public const KeyCode A = KeyCode.I;
+    public const KeyCode B = KeyCode.O;
+    public const KeyCode R = KeyCode.L;
+    public const KeyCode L = KeyCode.R;
+    public const KeyCode START = KeyCode.Delete;
+    public const KeyCode ENTER = KeyCode.Return;
+}
 public class GameController : MonoBehaviour {
 	
 	public static GameController control;
@@ -19,6 +97,7 @@ public class GameController : MonoBehaviour {
 	public bool firstFiveRupee;
 	public  GameObject[] objects;
 	public bool pauseMenu;
+    public ZIndex zIndexManager;
 
 	//singleton pattern
 	void Awake () {
@@ -34,6 +113,7 @@ public class GameController : MonoBehaviour {
 		if (gameGUI)
 			hudController = gameGUI.transform.Find("HUD").GetComponent<HUDController>();
 		objects = (GameObject[])FindObjectsOfType (typeof(GameObject));
+        zIndexManager = GameObject.Find("ZIndexManager").GetComponent<ZIndex>();
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;
 	}
@@ -127,8 +207,17 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
+    public void AddToZIndex(GameObject obj, Vector3 position, Quaternion rotation, Transform parent)
+    {
+        zIndexManager.layerZObjects.Add(Instantiate(obj, position, rotation, parent));
+    }
 
-	void WaitForNextFrame()
+    public void AddToZIndex(GameObject obj, Vector3 position, Quaternion rotation)
+    {
+        zIndexManager.layerZObjects.Add(Instantiate(obj, position, rotation));
+    }
+
+    void WaitForNextFrame()
 	{
 		float timer = 0;
 		while(timer < 1/60f)
@@ -275,68 +364,4 @@ public class GameController : MonoBehaviour {
 		hudController.UpdateRupees ();
 		ResumeGame ();
 	}
-}
-[Serializable]
-public class PlayerStats {
-	//public Scene scene;
-	public enum Equipments {None, Sword, Bow, MoleClaws, Bottle};
-	public String name;
-	public Equipments slotA = Equipments.Sword;
-	public Equipments slotB;
-	public int health;
-	public int maxHealth;
-	public int rupees;
-	public int rupeeLimit;
-	public int keys;
-	public bool bossKey;
-	public bool[] elements;
-	public int containerPieces;
-	public List<InventorySlot> inventorySlots;
-	public List<InventorySlot> bottleSlots;
-
-	public PlayerStats()
-	{
-		name = "Link";
-		containerPieces = 0;
-		health = 12;
-		maxHealth = 12;
-		rupees = 0;
-		rupeeLimit = 100;
-		keys = 0;
-		bossKey = false;
-		elements = new bool[8];
-		slotA = Equipments.None;
-		slotB = Equipments.None;
-		inventorySlots = new List<InventorySlot>();
-		inventorySlots.Add (new InventorySlot (0, Equipments.Sword));
-
-		bottleSlots = new List<InventorySlot>();
-		bottleSlots.Add (new InventorySlot (0, Equipments.Bottle));
-	}
-
-	public class InventorySlot {
-		public enum BottleContent: int {None = -1, Empty = 0, Fairy = 1, Water = 2, RedPotion = 3, BluePotion = 4};
-
-		public int position;
-		public Equipments item;
-		public BottleContent content = BottleContent.Fairy;
-
-		public InventorySlot(int position, Equipments item)
-		{
-			this.position = position;
-			this.item = item;
-			if (item == Equipments.Bottle)
-				content = BottleContent.Fairy;
-		}
-	}
-
-}
-public class GameKeys
-{
-	public const KeyCode A = KeyCode.I;
-	public const KeyCode B = KeyCode.O;
-	public const KeyCode R = KeyCode.L;
-	public const KeyCode L = KeyCode.R;
-	public const KeyCode START = KeyCode.Delete;
-	public const KeyCode ENTER = KeyCode.Return;
 }

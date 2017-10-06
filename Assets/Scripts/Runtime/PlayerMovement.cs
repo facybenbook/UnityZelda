@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerMovement : CharacterMovement
 {
     public bool lockedDirection;
-    public GameObject arrow;
 	public  Vector2 lookingTowards;
 	public Vector2 lastInput;
 	protected override void Action ()
@@ -39,42 +38,10 @@ public class PlayerMovement : CharacterMovement
             
             //i is the A button used for the first equipment slot
             if (Input.GetKeyDown (GameKeys.A)) {
-				switch (GameController.control.playerStats.slotA) {
-				case PlayerStats.Equipments.Sword: 
-					{
-						anim.SetBool ("is_sword", true);
-						return;
-					}
-				case PlayerStats.Equipments.Bow: 
-					{
-						anim.SetBool ("is_bow", true);
-						return;
-					}
-				case PlayerStats.Equipments.MoleClaws: 
-					{
-						anim.SetTrigger ("is_digging");
-						return;
-					}
-				}
+                EquipmentSwitch(GameController.control.playerStats.slotA);
 			}
 			else if (Input.GetKeyDown (GameKeys.B)) {
-				switch (GameController.control.playerStats.slotB) {
-				case PlayerStats.Equipments.Sword: 
-					{
-						anim.SetBool ("is_sword", true);
-						return;
-					}
-				case PlayerStats.Equipments.Bow: 
-					{
-						anim.SetBool ("is_bow", true);
-						return;
-					}
-				case PlayerStats.Equipments.MoleClaws: 
-					{
-						anim.SetTrigger ("is_digging");
-						return;
-					}
-				}
+                EquipmentSwitch(GameController.control.playerStats.slotB);
 			}
 			if (direction != Vector2.zero) {
 				if (Input.GetKeyDown ("space")) {
@@ -96,15 +63,67 @@ public class PlayerMovement : CharacterMovement
 		GetComponent<Animator> ().SetTrigger ("stop_action");
 	}
 
-    public void CreateArrow(int direction)
+    public void CreateArrow()
     {
-        if (direction == 0)
-            GameObject.Instantiate(arrow, transform.position + new Vector3(-0.5f, 0.28125f, 0), Quaternion.Euler(0, 0, 90));
-        else if (direction == 1)
-            GameObject.Instantiate(arrow, transform.position + new Vector3(0.5625f, 0.40625f, 0), Quaternion.Euler(0, 0, 270));
-        else if (direction == 2)
-            GameObject.Instantiate(arrow, transform.position + new Vector3(-0.09375f, 1, 0), Quaternion.Euler(0, 0, 0));
-        else if (direction == 3)
-            GameObject.Instantiate(arrow, transform.position + new Vector3(0.09375f, 0, 0), Quaternion.Euler(0, 0, 180));
+        GameObject arrow = Resources.Load("Prefabs/Arrow") as GameObject;
+
+        if (lookingTowards == Vector2.left)
+            GameController.control.AddToZIndex(arrow, transform.position + new Vector3(-0.5f, 0.28125f, 0), Quaternion.Euler(0, 0, 90));
+        else if (lookingTowards == Vector2.right)
+            GameController.control.AddToZIndex(arrow, transform.position + new Vector3(0.5625f, 0.40625f, 0), Quaternion.Euler(0, 0, 270));
+        else if (lookingTowards == Vector2.up)
+            GameController.control.AddToZIndex(arrow, transform.position + new Vector3(-0.09375f, 1, 0), Quaternion.Euler(0, 0, 0));
+        else if (lookingTowards == Vector2.down)
+            GameController.control.AddToZIndex(arrow, transform.position + new Vector3(0.09375f, 0, 0), Quaternion.Euler(0, 0, 180));
+    }
+
+    public void CreateBomb()
+    {
+        GameObject bomb;
+        if (GameController.control.playerStats.HaveEquipment(Equipments.RemoteBomb))
+            bomb = Resources.Load("Prefabs/RemoteBomb") as GameObject;
+        else
+            bomb = Resources.Load("Prefabs/Bomb") as GameObject;
+        if (lookingTowards == Vector2.right)
+            GameController.control.AddToZIndex(bomb, transform.position + new Vector3(+0.75f, 0.25f, 0), Quaternion.Euler(0, 0, 0));
+        else if (lookingTowards == Vector2.left)
+            GameController.control.AddToZIndex(bomb, transform.position + new Vector3(-0.75f, 0.25f, 0), Quaternion.Euler(0, 0, 0));
+        else if (lookingTowards == Vector2.down)
+            GameController.control.AddToZIndex(bomb, transform.position + new Vector3(0, -0.25f, 0), Quaternion.Euler(0, 0, 0));
+        else if (lookingTowards == Vector2.up)
+            GameController.control.AddToZIndex(bomb, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 0));
+        
+    }
+
+    void EquipmentSwitch(Equipments slot)
+    {
+        switch (slot)
+        {
+            case Equipments.Sword:
+                {
+                    anim.SetBool("is_sword", true);
+                    return;
+                }
+            case Equipments.Bow:
+                {
+                    anim.SetBool("is_bow", true);
+                    return;
+                }
+            case Equipments.MoleClaws:
+                {
+                    anim.SetTrigger("is_digging");
+                    return;
+                }
+            case Equipments.Bomb:
+                {
+                    CreateBomb();
+                    return;
+                }
+            case Equipments.RemoteBomb:
+                {
+                    CreateBomb();
+                    return;
+                }
+        }
     }
 }

@@ -15,6 +15,7 @@ TagManager:
   - Weapon
   - Sword
   - GUI
+  - Explosion
   layers:
   - Default
   - TransparentFX
