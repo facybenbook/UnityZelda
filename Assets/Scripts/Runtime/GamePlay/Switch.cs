@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch : MonoBehaviour {
+public class Switch : Conditionable {
 	
-	public bool state;
 	public Sprite on;
 	public Sprite off;
 

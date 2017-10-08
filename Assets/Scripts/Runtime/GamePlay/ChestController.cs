@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChestController : MonoBehaviour
+public class ChestController : Conditionable
 {
 	public GameObject content;
-	bool state;
 	private IEnumerator coroutine;
-	public Sprite close;
 	public Sprite open;
-	void Start()
-	{
-		state = false;
-	}
+    public bool visible = true;
 
-	IEnumerator OnTriggerEnter2D(Collider2D coll)
+    private void Start()
+    {
+        state = false;
+        if (visible == false)
+        { 
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    IEnumerator OnTriggerEnter2D(Collider2D coll)
 	{
 		if (state == false){
 			if (coll.gameObject.name == "PlayerShadow") {
@@ -25,11 +30,11 @@ public class ChestController : MonoBehaviour
 
 	IEnumerator WaitForEnterWhileUp(Collider2D coll)
 	{
-		while (!(Input.GetKeyDown (GameKeys.ENTER) && coll.transform.parent.GetComponent<PlayerMovement>().direction.y == 1))
+		while (!(Input.GetKeyDown (GameKeys.ENTER) && coll.transform.parent.GetComponent<PlayerMovement>().lookingTowards.y == 1))
 			yield return null;
 		state = true;
 		GetComponent<SpriteRenderer> ().sprite = open;
-		GameObject.Instantiate (content, transform.position + new Vector3(0,0.5f,0), new Quaternion(0,0,0,0), transform);
+		GameController.control.AddToZIndex(content, transform.position + new Vector3(0,0.5f,0), new Quaternion(0,0,0,0), transform);
         GetComponent<AudioSource> ().Play ();
 	}
 
@@ -39,6 +44,14 @@ public class ChestController : MonoBehaviour
 			StopCoroutine (coroutine);
 		}
 	}
+
+    protected override void DoSomething()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+
 
 
 

@@ -149,6 +149,7 @@
     <None Include="Assets\Extensions\PixelPerfectCamera\README.txt" />
     <None Include="Assets\Extensions\PixelPerfectCamera\background_art_license.txt" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\_ReadMe.txt" />
+    <None Include="Assets\Extensions\Tiled2Unity\Imported\cave.tiled2unity.xml" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\horon-2.tiled2unity.xml" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\horon.tiled2unity.xml" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\map test.tiled2unity.xml" />

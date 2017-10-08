@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 38929a7a77bf8d94e9275255aefe932d
-timeCreated: 1506962244
+timeCreated: 1507487277
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -101,19 +101,19 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 0.5, y: 7}
-        - {x: -0.5, y: 7}
+      - - {x: -0.5, y: 7}
         - {x: -3.5, y: 4}
         - {x: -3.5, y: -4}
         - {x: -0.5, y: -7}
         - {x: 0.5, y: -7}
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
-      tessellationDetail: 1
+        - {x: 0.5, y: 7}
+      tessellationDetail: 0
     - serializedVersion: 2
       name: Rupees_1
       rect:
@@ -123,7 +123,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -141,7 +141,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -159,18 +159,18 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -0.5, y: 7}
+      - - {x: 0.5, y: 7}
+        - {x: -0.5, y: 7}
         - {x: -3.5, y: 4}
         - {x: -3.5, y: -4}
         - {x: -0.5, y: -7}
         - {x: 0.5, y: -7}
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
-        - {x: 0.5, y: 7}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Rupees_4
@@ -181,7 +181,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -199,7 +199,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -217,18 +217,18 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -0.5, y: 7}
+      - - {x: 0.5, y: 7}
+        - {x: -0.5, y: 7}
         - {x: -3.5, y: 4}
         - {x: -3.5, y: -4}
         - {x: -0.5, y: -7}
         - {x: 0.5, y: -7}
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
-        - {x: 0.5, y: 7}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Rupees_7
@@ -239,7 +239,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -257,7 +257,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -275,7 +275,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -297,7 +297,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -315,7 +315,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -333,7 +333,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -355,7 +355,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -373,7 +373,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -391,7 +391,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -413,7 +413,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -431,7 +431,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 9
-      pivot: {x: 0.5625, y: 0.5}
+      pivot: {x: 0.5623, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:

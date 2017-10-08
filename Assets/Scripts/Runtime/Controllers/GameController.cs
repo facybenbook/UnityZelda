@@ -90,9 +90,8 @@ public class GameController : MonoBehaviour {
 	public bool gameOverState = false;
 	public bool gamePaused = false;
 	//GameObject player;
-	//GameObject mainCamera;
-	GameObject gameGUI;
-	public HUDController hudController;
+	public CameraController cameraController;
+	public GUIController guiController;
 	public bool firstOneRupee;
 	public bool firstFiveRupee;
 	public  GameObject[] objects;
@@ -107,11 +106,9 @@ public class GameController : MonoBehaviour {
 		}
 		else if (control != this)
 			Destroy (gameObject);
-		//player = GameObject.Find("Player");
-		//mainCamera = GameObject.Find("MainCamera");
-		gameGUI = GameObject.Find("GUI");
-		if (gameGUI)
-			hudController = gameGUI.transform.Find("HUD").GetComponent<HUDController>();
+        //player = GameObject.Find("Player");
+        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
+		guiController = GameObject.Find("GUI").GetComponent<GUIController>();
 		objects = (GameObject[])FindObjectsOfType (typeof(GameObject));
         zIndexManager = GameObject.Find("ZIndexManager").GetComponent<ZIndex>();
 		//globally set the FPS to 60 maximum;
@@ -170,9 +167,6 @@ public class GameController : MonoBehaviour {
 			playerStats = data;
 		}
 	}
-	public void CameraFocus(GameObject target, bool transitionToTarget) {
-		
-	}
 	public void GameOver()	{
 		gameOverState = true;
 	}
@@ -228,7 +222,7 @@ public class GameController : MonoBehaviour {
 
 	public IEnumerator DisplayMessage(string text)
 	{
-		yield return hudController.messageBox.DisplayMessage (text);
+		yield return guiController.hud.messageBox.DisplayMessage (text);
 	}
 	public IEnumerator NewHeart()
 	{
@@ -240,8 +234,7 @@ public class GameController : MonoBehaviour {
 			yield return DisplayMessage ("Vous avez obtenu un nouveau receptacle de coeur !");
 		playerStats.maxHealth += 4;
 		playerStats.health = playerStats.maxHealth;
-		if (hudController)
-			hudController.UpdateLife();
+        guiController.hud.UpdateLife();
 		ResumeGame ();
 	}
 	public IEnumerator NewHeartPiece()
@@ -263,8 +256,7 @@ public class GameController : MonoBehaviour {
 		playerStats.health += amount;
 		if (playerStats.health > playerStats.maxHealth)
 			playerStats.health = playerStats.maxHealth;
-		if (hudController)
-			hudController.UpdateLife ();
+        guiController.hud.UpdateLife ();
 	}
 //	static public void Hurt(int damage, Vector3 positionToEscape)
 //	{
@@ -307,7 +299,7 @@ public class GameController : MonoBehaviour {
 				playerStats.rupees = playerStats.rupeeLimit;
 			} else
 				playerStats.rupees += amount;
-			hudController.UpdateRupees ();
+            guiController.hud.UpdateRupees ();
 		}
 	}
 	public void ChangeRupeeStash(string size)
@@ -361,7 +353,7 @@ public class GameController : MonoBehaviour {
 				break;
 			}
 		}
-		hudController.UpdateRupees ();
+        guiController.hud.UpdateRupees ();
 		ResumeGame ();
 	}
 }

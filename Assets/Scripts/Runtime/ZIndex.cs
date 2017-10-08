@@ -43,7 +43,7 @@ public class ZIndex : MonoBehaviour {
 		int zIndex = 2;
 		float lastY = layerZObjects [0].transform.position.y;
 		for (int i = 1; i < layerZObjects.Count; i++) {
-			if (layerZObjects [i].transform.position.y != lastY) {
+			if (layerZObjects [i].transform.position.y <= lastY) {
 				zIndex++;
 				if (zIndex >= 100)
 					print ("Zindex error");
