@@ -15,13 +15,16 @@ public class Conditionable : MonoBehaviour
     {
         if (state == false)
         {
-            foreach (Conditionable trigger in conditions)
+            if (conditions.Count > 0)
             {
-                if (trigger.state == false)
-                    return;
-            }
+                foreach (Conditionable trigger in conditions)
+                {
+                    if (trigger.state == false)
+                        return;
+                }
             DoSomething();
             state = true;
+            }
         }
     }
 

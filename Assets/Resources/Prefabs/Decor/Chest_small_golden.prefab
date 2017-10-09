@@ -187,8 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   conditions: []
-  content: {fileID: 1000012040908616, guid: 4156a23b05680c140a115d276dbe1b66, type: 2}
-  open: {fileID: 21300010, guid: 9834ede0f57e1124a8d6cfc6441bb977, type: 3}
+  content: {fileID: 0}
+  openSprite: {fileID: 21300010, guid: 9834ede0f57e1124a8d6cfc6441bb977, type: 3}
   visible: 1
 --- !u!212 &212000012667987942
 SpriteRenderer:

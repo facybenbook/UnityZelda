@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -80,8 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ArrowController.cs" />
-    <Compile Include="Assets\BombController.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\ArcCollider2D.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\BezierCurveCollider2D.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\CapsuleCollider2D.cs" />
@@ -111,6 +107,9 @@
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileLayer.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileObject.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
+    <Compile Include="Assets\RollingAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\ArrowController.cs" />
+    <Compile Include="Assets\Scripts\BombController.cs" />
     <Compile Include="Assets\Scripts\PaletteSwapping-Unity5-master\Scripts\ColorPalette.cs" />
     <Compile Include="Assets\Scripts\PaletteSwapping-Unity5-master\Scripts\CustomAssetUtil.cs" />
     <Compile Include="Assets\Scripts\PaletteSwapping-Unity5-master\Scripts\PaletteChanger.cs" />
@@ -122,12 +121,13 @@
     <Compile Include="Assets\Scripts\Runtime\Animations\waitForFrames.cs" />
     <Compile Include="Assets\Scripts\Runtime\Attacking_sword.cs" />
     <Compile Include="Assets\Scripts\Runtime\BackgroundImageOffset.cs" />
-    <Compile Include="Assets\Scripts\Runtime\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Runtime\Chuchu_IA.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Controllers\CharactersController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\ExplosionController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\HUDController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\LifeController.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\SoundController.cs" />
     <Compile Include="Assets\Scripts\Runtime\ElementsBarScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameEvent.cs" />
@@ -150,7 +150,6 @@
     <Compile Include="Assets\Scripts\Runtime\MenuHeartContainerScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\Pixelation.cs" />
     <Compile Include="Assets\Scripts\Runtime\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Runtime\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Runtime\RupeeStash.cs" />
     <Compile Include="Assets\Scripts\Runtime\SlotDetailsScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\SwordScript.cs" />

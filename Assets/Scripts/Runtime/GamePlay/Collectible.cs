@@ -5,6 +5,7 @@ public class Collectible : MonoBehaviour {
 	public enum CollectibleType{Rupee, Heart, Container, ContainerPiece, RupeeStash, Other};
 	public CollectibleType type = CollectibleType.Other;
 	public int amount;
+    public bool BigItem;
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{

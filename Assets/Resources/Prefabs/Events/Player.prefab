@@ -72,7 +72,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4497634058534536}
-  - component: {fileID: 60608518226660876}
   - component: {fileID: 212808422787620864}
   - component: {fileID: 60543017989560720}
   m_Layer: 8
@@ -102,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012171294870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23, y: -210, z: 0}
+  m_LocalPosition: {x: 23.83, y: -8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000010874051278}
@@ -185,35 +184,6 @@ PolygonCollider2D:
       - {x: -0.25, y: 0.09375}
       - {x: 0, y: -0.21875}
       - {x: 0.25, y: 0.09375}
---- !u!60 &60608518226660876
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872121979699474}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 0.4375}
-    newSize: {x: 0.875, y: 0.4375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.25, y: 0.46875}
-      - {x: -0.25, y: -0.21875}
-      - {x: 0.25, y: -0.21875}
-      - {x: 0.24866486, y: 0.3426361}
-      - {x: 0.25, y: 0.46875}
 --- !u!61 &61000010080328768
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -318,10 +288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelPerFrameSpeed: 8
-  direction: {x: 0, y: 0}
+  movementDirection: {x: 0, y: 0}
+  hitbox: {fileID: 0}
   lockedDirection: 0
-  arrow: {fileID: 1260441012429076, guid: 469893e61d570dc48a1f838ce20f9fea, type: 2}
-  lookingTowards: {x: 0, y: 0}
+  characterOrientation: {x: 0, y: 0}
   lastInput: {x: 0, y: 0}
 --- !u!212 &212000011160380334
 SpriteRenderer:
@@ -378,7 +348,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d3e0a7253950258489ade5c728988928, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -396,7 +366,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bf02a914c8cd25941a9e287acaf400f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

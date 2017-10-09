@@ -86,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   amount: 0
+  BigItem: 1
 --- !u!212 &212781058936789132
 SpriteRenderer:
   m_ObjectHideFlags: 1

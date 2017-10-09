@@ -179,11 +179,9 @@ public class GameController : MonoBehaviour {
 				{
 					if (go.GetComponent<Animator> () != null) 
 					{
-						if (go.tag == "Player")
-							go.GetComponent<Animator> ().SetTrigger ("stop_action");
-						go.GetComponent<Animator> ().speed = 0;
 						go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
-					}
+                        go.GetComponent<Animator>().speed = 0;
+                    }
 				}
 			}
 		}
@@ -201,24 +199,10 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-    public void AddToZIndex(GameObject obj, Vector3 position, Quaternion rotation, Transform parent)
+    public void AddToZIndex(GameObject obj)
     {
-        zIndexManager.layerZObjects.Add(Instantiate(obj, position, rotation, parent));
+        zIndexManager.layerZObjects.Add(obj);
     }
-
-    public void AddToZIndex(GameObject obj, Vector3 position, Quaternion rotation)
-    {
-        zIndexManager.layerZObjects.Add(Instantiate(obj, position, rotation));
-    }
-
-    void WaitForNextFrame()
-	{
-		float timer = 0;
-		while(timer < 1/60f)
-		{
-			timer += Time.deltaTime;
-		}
-	}
 
 	public IEnumerator DisplayMessage(string text)
 	{

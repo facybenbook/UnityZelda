@@ -32,12 +32,12 @@ public class LifeController : MonoBehaviour {
 				Vector2 direction = new Vector2 (positionToEscape.x, positionToEscape.y).normalized;
 				GetComponent<Animator> ().SetFloat ("input_x", -direction.x);
 				GetComponent<Animator> ().SetFloat ("input_y", -direction.y);
-				this.gameObject.GetComponent<CharacterMovement> ().Jump(positionToEscape, 2);
+				this.gameObject.GetComponent<CharactersController> ().Jump(positionToEscape, 2);
 			}
 			else
 			{
 				positionToEscape = this.transform.position - positionToEscape;
-				GetComponent<CharacterMovement> ().direction = Vector2.zero;
+				GetComponent<CharactersController> ().movementDirection = Vector2.zero;
 			}
 			audioSource.PlayOneShot (hurtSound);
 			if (health == 0) {

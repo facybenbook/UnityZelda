@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013038169242}
-  - component: {fileID: 61000010882808746}
+  - component: {fileID: 60230657226894010}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Hitbox
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114000010897702280}
   - component: {fileID: 114000011188914716}
   - component: {fileID: 50000011186287128}
-  - component: {fileID: 58000013319815930}
+  - component: {fileID: 60709725308009422}
   m_Layer: 8
   m_Name: Green Chuchu
   m_TagString: Enemy
@@ -113,8 +113,40 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
---- !u!58 &58000013319815930
-CircleCollider2D:
+--- !u!60 &60230657226894010
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011497365788}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.375, y: 0.375}
+      - {x: 0.375, y: 0.75}
+      - {x: 0.125, y: 0.9375}
+      - {x: -0.1875, y: 0.9375}
+      - {x: -0.375, y: 0.75}
+      - {x: -0.375, y: 0.375}
+      - {x: -0.125, y: 0.1875}
+      - {x: 0.125, y: 0.1875}
+--- !u!60 &60709725308009422
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -126,33 +158,21 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
---- !u!61 &61000010882808746
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011497365788}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 1.25, y: 1.25}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.25}
+      - {x: -0.3125, y: 0}
+      - {x: 0, y: -0.25}
+      - {x: 0.3125, y: 0}
 --- !u!61 &61000011327071708
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -223,8 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9800ffdb20a0bfa45b3b7434a2d134ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelPerFrameSpeed: 0
-  direction: {x: 0, y: 0}
+  pixelPerFrameSpeed: 1
+  movementDirection: {x: 0, y: 0}
+  characterOrientation: {x: 0, y: 0}
 --- !u!114 &114000011188914716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damages: 2
+  useTrigger: 0
 --- !u!212 &212000013150485014
 SpriteRenderer:
   m_ObjectHideFlags: 1

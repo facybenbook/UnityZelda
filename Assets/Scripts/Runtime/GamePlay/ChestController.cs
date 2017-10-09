@@ -3,9 +3,9 @@ using System.Collections;
 
 public class ChestController : Conditionable
 {
-	public GameObject content;
+	public Collectible content;
 	private IEnumerator coroutine;
-	public Sprite open;
+	public Sprite openSprite;
     public bool visible = true;
 
     private void Start()
@@ -22,21 +22,26 @@ public class ChestController : Conditionable
 	{
 		if (state == false){
 			if (coll.gameObject.name == "PlayerShadow") {
-				coroutine = WaitForEnterWhileUp (coll);
+				coroutine = WaitForEnterWhileUp (coll.transform.parent);
 				yield return StartCoroutine(coroutine);
 			}
 		}
 	}
 
-	IEnumerator WaitForEnterWhileUp(Collider2D coll)
+	IEnumerator WaitForEnterWhileUp(Transform player)
 	{
-		while (!(Input.GetKeyDown (GameKeys.ENTER) && coll.transform.parent.GetComponent<PlayerMovement>().lookingTowards.y == 1))
+		while (!(Input.GetKeyDown (GameKeys.ENTER) && player.GetComponent<PlayerController>().characterOrientation.y == 1))
 			yield return null;
 		state = true;
-		GetComponent<SpriteRenderer> ().sprite = open;
-		GameController.control.AddToZIndex(content, transform.position + new Vector3(0,0.5f,0), new Quaternion(0,0,0,0), transform);
+		GetComponent<SpriteRenderer> ().sprite = openSprite;
+
+//refactor maybe ??
+        player.GetComponent<PlayerController>().GetItem(content.gameObject);
+        //GameController.control.AddToZIndex(content, transform.position + new Vector3(0,0.5f,0), new Quaternion(0,0,0,0), transform);
         GetComponent<AudioSource> ().Play ();
-	}
+        player.GetComponent<Animator>().SetBool("is_busy", false);
+
+    }
 
 	void OnTriggerExit2D(Collider2D coll)
 	{
