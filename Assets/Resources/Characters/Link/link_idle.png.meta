@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ac73e52264823b64ca8f44653a86728b
-timeCreated: 1506961036
+timeCreated: 1507642367
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -99,11 +99,11 @@ TextureImporter:
         - {x: 11, y: 9}
         - {x: 3, y: 15}
       physicsShape:
-      - - {x: 0, y: -5}
-        - {x: 0, y: -5}
-        - {x: 0, y: -5}
-        - {x: 0, y: -5}
-      tessellationDetail: 0
+      - - {x: 5, y: -7}
+        - {x: 5, y: -1}
+        - {x: -5, y: -1}
+        - {x: -5, y: -7}
+      tessellationDetail: 1
     - serializedVersion: 2
       name: link_idle_1
       rect:

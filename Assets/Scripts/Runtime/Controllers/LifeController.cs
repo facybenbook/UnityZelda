@@ -13,6 +13,7 @@ public class LifeController : MonoBehaviour {
 	void Start ()
 	{
 		dead = false;
+        health = maxHealth;
 		audioSource = gameObject.AddComponent<AudioSource>();
 		health = maxHealth;
 	}

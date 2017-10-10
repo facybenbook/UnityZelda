@@ -6,7 +6,6 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
-public enum Equipments { None, Sword, Bow, MoleClaws, Bottle, Bomb, RemoteBomb };
 [Serializable]
 public class PlayerStats
 {

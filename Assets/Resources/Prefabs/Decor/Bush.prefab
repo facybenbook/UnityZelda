@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 21234496}
   - component: {fileID: 114000012303562060}
   - component: {fileID: 60239169704915454}
+  - component: {fileID: 95244931626836354}
   m_Layer: 8
   m_Name: Bush
   m_TagString: Destructible
@@ -116,6 +117,23 @@ PolygonCollider2D:
       - {x: 0.375, y: 0.375}
       - {x: 0, y: 0.5}
       - {x: -0.125, y: 0.5}
+--- !u!95 &95244931626836354
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155970}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000012303562060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244394740abe0f7409acdcb47a85b183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   loot: 1
   lootList:
   - {fileID: 1000011228816596, guid: 1ad52b2fe329bfa4e84e4c24b9d16ce3, type: 2}

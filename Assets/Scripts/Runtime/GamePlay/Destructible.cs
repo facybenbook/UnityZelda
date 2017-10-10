@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+// defines the 
+public enum DestructibleType {small, medium, big}
 public class Destructible : MonoBehaviour {
+    //affects the interaction with the destructors
+    public DestructibleType type;
 	public bool loot = true;
 	public GameObject[] lootList;
 	public int[] lootChances = new int[10];
 
-	public void DestroyObject ()
+	public void DestructionPhase ()
 	{
 		//if it's something that drops objects
 		if (loot)
@@ -18,7 +22,7 @@ public class Destructible : MonoBehaviour {
 				objet.transform.position = gameObject.transform.localPosition;
 				//objet.GetComponentInChildren<Animator> ().SetBool ("is_bouncing", true);
 			}
-			Destroy (this.gameObject);
+            gameObject.GetComponent<Animator>().SetBool("Destroyed", true);
 		}
 	}
 	GameObject RandomItem() {

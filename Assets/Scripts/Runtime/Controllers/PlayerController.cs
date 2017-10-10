@@ -5,16 +5,7 @@ public class PlayerController : CharactersController
 {
     public bool lockedDirection;
 	public Vector2 lastInput;
-
-    protected override void Start()
-    {
-        base.Start();
-        characterOrientation = Vector2.down;
-        movementDirection = Vector2.down;
-        rbody = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        rbody.velocity = Vector3.zero;
-    }
+    
     protected override void Action ()
 	{
 		rbody.velocity = Vector3.zero;

@@ -34,7 +34,12 @@ public class CharactersController : MonoBehaviour
     /// </summary>
     protected virtual void Action ()
 	{
-	}
+        if (anim.GetBool("is_hurt") == false)
+        {
+            rbody.velocity = Vector3.zero;
+            Move(1);
+        }
+    }
     /// <summary>
     /// Move the gameObject along its movement vector
     /// </summary>
