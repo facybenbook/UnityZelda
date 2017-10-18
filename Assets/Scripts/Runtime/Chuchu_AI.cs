@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Chuchu_IA : CharactersController
+public class Chuchu_AI : CharactersController
 {
 	bool hidden;
     protected Collider2D visionCollider;

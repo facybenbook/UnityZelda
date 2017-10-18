@@ -5,19 +5,24 @@ using UnityEngine;
 public class Switch : Conditionable {
 	
 	public Sprite on;
-	public Sprite off;
-
-	//stores the state of the trigger, used to know if a change happens
-
+	Sprite off;
+    
 	// Use this for initialization
 	void Start ()
 	{
+        off = GetComponent<SpriteRenderer>().sprite;
 		state = false;
 	}
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            ChangeState(true);
+        }
+    }
 
-
-	public void ChangeState(bool state)
+    public void ChangeState(bool state)
 	{
 		if (state != this.state)
 		{

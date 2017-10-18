@@ -24,7 +24,6 @@ public class CameraController : MonoBehaviour
 		maxY = (minY - mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesHigh) * mapTarget.transform.lossyScale.x;
 		speed = 6;
 		target = GameObject.Find("Player").transform;
-
 	}
 	// Update is called once per frame
 	void Update ()
@@ -52,7 +51,6 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            print(minX + maxX + minY + maxY);
             minX = 0;
             maxX = 15;
             minY = 0;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - itemName: 0
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300006, guid: 38929a7a77bf8d94e9275255aefe932d, type: 3}
     usesAmmo: 0
   - itemName: 1
     itemIcon: {fileID: 21300000, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}

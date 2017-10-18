@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E1A52925-95AC-2FA8-5BE2-E86B2F0D1DBF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp.dll</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -50,36 +50,37 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
-      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AI_Vision.cs" />
     <Compile Include="Assets\CreateInventoryItemList.cs" />
+    <Compile Include="Assets\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\ArcCollider2D.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\BezierCurveCollider2D.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\CapsuleCollider2D.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileLayer.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileObject.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
+    <Compile Include="Assets\FollowPlayer.cs" />
     <Compile Include="Assets\InventoryItem.cs" />
     <Compile Include="Assets\InventoryItemEditor.cs" />
     <Compile Include="Assets\InventoryItemList.cs" />
@@ -120,7 +122,7 @@
     <Compile Include="Assets\Scripts\Runtime\Animations\WaitForEnd.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\waitForFrames.cs" />
     <Compile Include="Assets\Scripts\Runtime\BackgroundImageOffset.cs" />
-    <Compile Include="Assets\Scripts\Runtime\Chuchu_IA.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Chuchu_AI.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\ArrowController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\BombController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\CharactersController.cs" />
@@ -155,6 +157,8 @@
     <Compile Include="Assets\Scripts\Runtime\SlotDetailsScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\SwordScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\ZIndex.cs" />
+    <Compile Include="Assets\WarpCentralizer.cs" />
+    <Compile Include="Assets\WarpControllerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extensions\PixelPerfectCamera\README.txt" />

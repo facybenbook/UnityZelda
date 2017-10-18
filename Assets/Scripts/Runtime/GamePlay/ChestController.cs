@@ -6,7 +6,6 @@ public class ChestController : Conditionable
 	public Collectible content;
 	private IEnumerator coroutine;
 	public Sprite openSprite;
-    public bool visible = true;
 
     private void Start()
     {
@@ -42,8 +41,10 @@ public class ChestController : Conditionable
         player.GetComponent<Animator>().SetBool("is_busy", false);
 
     }
+    
 
-	void OnTriggerExit2D(Collider2D coll)
+
+    void OnTriggerExit2D(Collider2D coll)
 	{
 		if (coll.gameObject.name == "PlayerShadow") {
 			StopCoroutine (coroutine);

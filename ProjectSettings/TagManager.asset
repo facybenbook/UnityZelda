@@ -16,6 +16,8 @@ TagManager:
   - Sword
   - GUI
   - Explosion
+  - Warp
+  - Map
   layers:
   - Default
   - TransparentFX

@@ -1168,7 +1168,6 @@ MonoBehaviour:
   state: 0
   conditions: []
   on: {fileID: 21300008, guid: 485459d4d14cfda4fbc0f5effb927664, type: 3}
-  off: {fileID: 21300010, guid: 485459d4d14cfda4fbc0f5effb927664, type: 3}
 --- !u!212 &212032226923706244
 SpriteRenderer:
   m_ObjectHideFlags: 1

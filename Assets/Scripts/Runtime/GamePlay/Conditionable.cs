@@ -5,6 +5,7 @@ using UnityEngine;
 public class Conditionable : MonoBehaviour
 {
     public bool state;
+    public bool visible = true;
     public List<Conditionable> conditions = new List<Conditionable>();
     void Start()
     {
@@ -13,17 +14,25 @@ public class Conditionable : MonoBehaviour
 
     public void OnCheckConditions()
     {
-        if (state == false)
+        if (visible == false)
         {
-            if (conditions.Count > 0)
+            if (state == false)
             {
-                foreach (Conditionable trigger in conditions)
+                if (conditions.Count > 0)
                 {
-                    if (trigger.state == false)
-                        return;
+                    foreach (Conditionable trigger in conditions)
+                    {
+                        if (trigger == null)
+                        {
+                            Debug.Log(gameObject.name + ", " + gameObject.transform.position + " condition not set");
+                            return;
+                        }
+                        if (trigger.state == false)
+                            return;
+                    }
+                    DoSomething();
+                    state = true;
                 }
-            DoSomething();
-            state = true;
             }
         }
     }

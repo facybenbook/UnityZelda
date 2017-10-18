@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/FirstMap.unity
+- path: Assets/MasterScene.unity
   isLoaded: 1
   isActive: 1

@@ -1534,7 +1534,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &114017773840729734
 MonoBehaviour:
@@ -2082,7 +2082,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationWarp: {fileID: 0}
-  playerLookAtArrival: 0
+  playerLookAtArrival: 1
+  insideMap: 1
 --- !u!114 &114916598627104578
 MonoBehaviour:
   m_ObjectHideFlags: 1

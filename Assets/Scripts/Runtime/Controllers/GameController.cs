@@ -4,8 +4,20 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
+public class SceneStats
+{
+    public Scene currentScene;
+    public GameObject[] objects;
+    public WarpController lastWarp;
 
+    public SceneStats()
+    {
+        objects = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+    }
+
+}
 [Serializable]
 public class PlayerStats
 {
@@ -88,13 +100,14 @@ public class GameController : MonoBehaviour {
 	public PlayerStats playerStats;
 	public bool gameOverState = false;
 	public bool gamePaused = false;
-	//GameObject player;
-	public CameraController cameraController;
+    public SceneStats sceneStats;
+    //GameObject player;
+    public CameraController cameraController;
 	public GUIController guiController;
 	public bool firstOneRupee;
 	public bool firstFiveRupee;
-	public  GameObject[] objects;
 	public bool pauseMenu;
+    public GameObject[] warps;
     public ZIndex zIndexManager;
 
 	//singleton pattern
@@ -107,11 +120,11 @@ public class GameController : MonoBehaviour {
 			Destroy (gameObject);
         //player = GameObject.Find("Player");
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
-		guiController = GameObject.Find("GUI").GetComponent<GUIController>();
-		objects = (GameObject[])FindObjectsOfType (typeof(GameObject));
+        guiController = GameObject.Find("GUI").GetComponent<GUIController>();
         zIndexManager = GameObject.Find("ZIndexManager").GetComponent<ZIndex>();
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;
+        sceneStats = new SceneStats();
 	}
 	// Update is called once per frame
 	void Update () {
@@ -171,7 +184,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void PauseGame() {
 		gamePaused = true;
-		foreach (GameObject go in objects) {
+		foreach (GameObject go in sceneStats.objects) {
 			if (go != null)
 			{
 				if (go.tag != "GUI") 
@@ -187,7 +200,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void ResumeGame() {
 		gamePaused = false;
-		foreach (GameObject go in objects) {
+		foreach (GameObject go in sceneStats.objects) {
 			//don't affect the GUI when pausing
 			if (go != null) {
 				if (go.tag != "GUI") {				

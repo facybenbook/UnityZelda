@@ -8,13 +8,15 @@ public class GUIController : MonoBehaviour {
     public HUDController hud;
     public GameObject inventory;
     public GameObject transitionLayer;
+    public GameObject reducedVisionLayer;
 	// Use this for initialization
 	void Start () {
 		pausedState = false;
         hud = transform.Find("HUD").gameObject.GetComponent<HUDController>();
         inventory = transform.Find("Inventory").gameObject;
         transitionLayer = transform.Find("TransitionLayer").gameObject;
-	}
+        reducedVisionLayer = transform.Find("ReducedVisionLayer").gameObject;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,23 +42,29 @@ public class GUIController : MonoBehaviour {
         tmp.a = 0;
         while (tmp.a <= 1)
         {
-            print(tmp.a);
-            tmp.a += time / 60f;
+            tmp.a += 1/time / 60f;
             transitionLayer.GetComponent<Image>().color = tmp;
-            yield return new WaitForSeconds(time / 60f * Time.deltaTime);
+            yield return new WaitForSeconds(1/time / 60f * Time.deltaTime);
         }
     }
     public IEnumerator FadeOut(float time)
     {
         Color tmp;
         tmp = transitionLayer.GetComponent<Image>().color;
-        print("d" + tmp.a);
         while (tmp.a >= 0)
         {
-            print("d"+tmp.a);
-            tmp.a -= time / 60f;
+            tmp.a -= 1/time / 60f;
             transitionLayer.GetComponent<Image>().color = tmp;
-            yield return new WaitForSeconds(time / 60f * Time.deltaTime);
+            yield return new WaitForSeconds(1/time / 60f * Time.deltaTime);
         }
+    }
+    /// <summary>
+    /// Displays the circular vision field, i.e: too dark to see
+    /// </summary>
+    /// <returns></returns>
+    public void ReducedVision()
+    {
+        reducedVisionLayer.SetActive(true);
+        transitionLayer.GetComponent<Image>().color = new Color(transitionLayer.GetComponent<Image>().color.r, transitionLayer.GetComponent<Image>().color.g, transitionLayer.GetComponent<Image>().color.b, 254);
     }
 }
