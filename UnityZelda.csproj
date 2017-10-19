@@ -115,6 +115,7 @@
     <Compile Include="Assets\InventoryItemEditor.cs" />
     <Compile Include="Assets\InventoryItemList.cs" />
     <Compile Include="Assets\ItemButtonScript.cs" />
+    <Compile Include="Assets\MushroomScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\BowState.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\DestroyAfterAnimation.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\EndOfRecoverTime.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Assets\Scripts\Runtime\SlotDetailsScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\SwordScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\ZIndex.cs" />
+    <Compile Include="Assets\stretchBetween.cs" />
     <Compile Include="Assets\WarpCentralizer.cs" />
     <Compile Include="Assets\WarpControllerEditor.cs" />
   </ItemGroup>

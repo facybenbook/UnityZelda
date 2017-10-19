@@ -10,6 +10,7 @@ public class Chuchu_AI : CharactersController
 	{
         base.Start();
 		hidden = true;
+        movementDirection = Vector2.zero;
     }
     //if the monster sees the player (visual radius), appears
     void OnTriggerEnter2D(Collider2D coll)
