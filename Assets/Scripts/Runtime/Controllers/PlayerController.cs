@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerController : CharactersController
 {
     public bool lockedDirection;
-	public Vector2 lastInput;
+    private bool lockedMovement;
+    public Vector2 lastInput;
+    Transform target;
+    Transform grabbed;
+    Transform targetParent;
     
     protected override void Action ()
 	{
+        GetObjectInFront();
 		rbody.velocity = Vector3.zero;
 		//is busy if a blocking animation is playing
 		if (!anim.GetBool ("is_busy") && !GameController.control.gamePaused) {
-			movementDirection = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
-			if (lockedDirection == false) {
+            if (lockedMovement)
+                movementDirection = new Vector2(Mathf.Abs(characterOrientation.x) * Input.GetAxisRaw("Horizontal"), Mathf.Abs(characterOrientation.y) * Input.GetAxisRaw("Vertical"));
+            else
+                movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (lockedDirection == false) {
 				//If direction changed
 				if (movementDirection != lastInput) {
 					//If a key is pressed
@@ -39,8 +48,12 @@ public class PlayerController : CharactersController
 			else if (Input.GetKeyDown (GameKeys.B)) {
                 EquipmentInSlot(GameController.control.playerStats.slotB);
 			}
-			if (movementDirection != Vector2.zero) {
-				if (Input.GetKeyDown ("space")) {
+            else if (Input.GetKeyDown(GameKeys.L))
+            {
+                LActions();
+            }
+            if (movementDirection != Vector2.zero) {
+				if (Input.GetKeyDown ("space") && !target) {
 					//roll
 					anim.SetTrigger ("is_rolling");
                 } else {
@@ -151,7 +164,144 @@ public class PlayerController : CharactersController
         }
     }
 
+    private void GetObjectInFront()
+    {
+        if (!anim.GetBool("is_busy"))
+        {
+            Debug.DrawLine(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + characterOrientation);
+            target = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + characterOrientation).transform;
+            string text = "";
+            if (target)
+            {
+                print(target.transform.gameObject.name);
+                if (target.transform.gameObject.tag == "MapObject")
+                {
+                    text = "";
+                }
+                else if (target.transform.gameObject.tag == "Grabbable")
+                {
+                    text = "Grab";
+                }
+                else if (target.transform.gameObject.GetComponent<Throwable>())
+                {
+                    text = "Lift";
+                }
+            }
+            else
+                text = "Roll";
+            GameController.control.guiController.hud.UpdateRButton(text);
+        }
+    }
+ 
+    private void LActions()
+    {
+        if (anim.GetBool("is_carrying"))
+        {
+            Throw();
+        }
+        else if (target)
+        {
+            if (target.gameObject.tag == "Grabbable")
+            {
+                Grab();
+            }
+            else if (target.transform.gameObject.GetComponent<Throwable>() != null)
+            {
+                Lift();
+            }
+        }
+    }
 
-    
+    void Grab()
+    {
+        targetParent = target.parent;
 
+        target.SetParent(transform);
+        target.position = transform.position + new Vector3 (characterOrientation.x, characterOrientation.y, 0);
+
+        lockedDirection = true;
+        lockedMovement = true;
+
+        grabbed = target;
+        StartCoroutine(WaitForKeyRelease(GameKeys.L, Release));
+    }
+
+    void Release()
+    {
+        target.parent = targetParent;
+        lockedDirection = false;
+        lockedMovement = false;
+    }
+
+    void Lift()
+    {
+        anim.SetBool("is_carrying", true);
+
+        targetParent = target.parent;
+
+       target.GetComponent<SpriteRenderer>().sortingLayerName = "Overall";
+       target.GetComponent<Collider2D>().enabled = false;
+       target.SetParent(transform);
+       target.localPosition = new Vector3(0, 1, 0);
+       grabbed = target;
+        StartCoroutine(WaitForKeyPress(GameKeys.L, Throw));
+    }
+
+    void Throw()
+    {
+        print(grabbed);
+        if (grabbed != null)
+        {
+            print("throwed");
+            anim.SetBool("is_carrying", false);
+
+            grabbed.GetComponent<Collider2D>().enabled = true;
+            grabbed.GetComponent<Collider2D>().isTrigger = true;
+            grabbed.SetParent(targetParent);
+
+            StartCoroutine(Propulse());
+        }
+    }
+
+    IEnumerator Propulse()
+    {
+        Vector3 position;
+        Vector2 orientation = characterOrientation;
+        float speed = 4;
+        float z = 1f;
+        Vector2 fallingVector;
+
+        position = grabbed.localPosition;
+        if (orientation == Vector2.zero)
+            fallingVector = Vector2.down;
+        else
+        {
+            fallingVector = orientation * 6;
+            if (fallingVector.y == 0)
+                fallingVector.y = -z;
+        }
+        while (z > 0)
+        {
+            yield return null;
+            grabbed.transform.localPosition += new Vector3(fallingVector.x * speed * Time.deltaTime, fallingVector.y * speed * Time.deltaTime, 0);
+            z -= speed * Time.deltaTime;
+        }
+        grabbed.transform.localPosition = position + new Vector3(fallingVector.x, fallingVector.y, 0);
+        grabbed = null;
+    }
+
+    IEnumerator WaitForKeyRelease(KeyCode key, Action function)
+    {
+        while (Input.GetKey(key))
+            yield return null;
+        function();
+    }
+
+    IEnumerator WaitForKeyPress(KeyCode key, Action function)
+    {
+        yield return new WaitForSeconds(1/60f);
+        while (!Input.GetKeyDown(key))
+            yield return new WaitForEndOfFrame();
+        function();
+    }
 }

@@ -16,6 +16,7 @@ public class ItemButtonScript : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        //Which button is the script attached to ?
         switch (whichButton)
         {
             case WhichButton.A:

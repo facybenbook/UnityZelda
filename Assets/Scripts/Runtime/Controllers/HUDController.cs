@@ -174,4 +174,8 @@ public class HUDController : MonoBehaviour
 		else
 			soundSource.PlayOneShot (rupeeSound);
 	}
+    public void UpdateRButton(string text)
+    {
+        transform.Find("Buttons/RButton/Text").GetComponent<Text>().text = text;
+    }
 }

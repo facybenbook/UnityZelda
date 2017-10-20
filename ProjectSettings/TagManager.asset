@@ -4,20 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Deco
   - Destructible
   - Enemy
   - Collectible
-  - Container
-  - Rupee
   - Hitbox
   - Trigger
   - Weapon
-  - Sword
   - GUI
   - Explosion
   - Warp
   - Map
+  - MapObject
+  - Grabbable
+  - Activable
   layers:
   - Default
   - TransparentFX

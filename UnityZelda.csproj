@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -159,6 +161,7 @@
     <Compile Include="Assets\Scripts\Runtime\SwordScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\ZIndex.cs" />
     <Compile Include="Assets\stretchBetween.cs" />
+    <Compile Include="Assets\Throwable.cs" />
     <Compile Include="Assets\WarpCentralizer.cs" />
     <Compile Include="Assets\WarpControllerEditor.cs" />
   </ItemGroup>

@@ -40,4 +40,9 @@ public class Destructible : MonoBehaviour {
 		}
 		return null;
 	}
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        print(collision);
+        //Destroy(gameObject);
+    }
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 07aba0583a804bf4e9425546e95980ab
-timeCreated: 1508423057
+timeCreated: 1508503047
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -95,14 +95,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: 7}
-        - {x: -8, y: 3}
-        - {x: -8, y: -4}
-        - {x: -4, y: -8}
-        - {x: 4, y: -8}
-        - {x: 8, y: -4}
-        - {x: 8, y: 3}
-        - {x: 3, y: 7}
+      - - {x: -5, y: 5}
+        - {x: -5, y: -5}
+        - {x: 5, y: -5}
+        - {x: 5, y: 5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Mushroom_Cap_1
@@ -112,13 +108,14 @@ TextureImporter:
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.625, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
       - - {x: -7, y: 8}
         - {x: -8, y: 7}
+        - {x: -8, y: 2.8087387}
         - {x: -8, y: -4}
         - {x: -5, y: -6}
         - {x: 8, y: -6}

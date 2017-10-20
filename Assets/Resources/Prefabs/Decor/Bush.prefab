@@ -10,8 +10,11 @@ GameObject:
   - component: {fileID: 442566}
   - component: {fileID: 21234496}
   - component: {fileID: 114000012303562060}
-  - component: {fileID: 60239169704915454}
+  - component: {fileID: 114549595722432952}
   - component: {fileID: 95244931626836354}
+  - component: {fileID: 61611657531374776}
+  - component: {fileID: 50790826822482228}
+  - component: {fileID: 114367305577567112}
   m_Layer: 8
   m_Name: Bush
   m_TagString: Destructible
@@ -61,8 +64,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2118922261
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300002, guid: ec3e7b0cd7ee93b4cbcefee8e49c1137, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,8 +88,28 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155970}
   m_IsPrefabParent: 1
---- !u!60 &60239169704915454
-PolygonCollider2D:
+--- !u!50 &50790826822482228
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155970}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &61611657531374776
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -107,16 +130,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 1
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.4375, y: 0.4375}
-      - {x: -0.5, y: 0.125}
-      - {x: -0.5, y: -0.4375}
-      - {x: 0.5, y: -0.4375}
-      - {x: 0.5, y: 0}
-      - {x: 0.375, y: 0.375}
-      - {x: 0, y: 0.5}
-      - {x: -0.125, y: 0.5}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!95 &95244931626836354
 Animator:
   serializedVersion: 3
@@ -154,3 +170,30 @@ MonoBehaviour:
   - {fileID: 1000012408103004, guid: f38dc06240a2cf14f88e829309c40587, type: 2}
   - {fileID: 0}
   lootChances: 190000000a000000050000000100000032000000
+--- !u!114 &114367305577567112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff64f17c162efd47a7760fb6a66b56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damages: 1
+  useTrigger: 0
+  destroys: 0
+  hurtsPlayer: 0
+  hurtsEnemies: 1
+--- !u!114 &114549595722432952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7da8255c0cba954db44cc88967c2798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
