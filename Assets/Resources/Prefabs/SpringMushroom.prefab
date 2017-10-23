@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 231688433902570220}
   - component: {fileID: 61923728048167372}
   m_Layer: 0
-  m_Name: Mushroom_Cap
+  m_Name: Head
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -331,7 +331,7 @@ Animator:
   m_GameObject: {fileID: 1983123395890876}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3aed6848295c42a4b84219abaf1c7fc6, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
