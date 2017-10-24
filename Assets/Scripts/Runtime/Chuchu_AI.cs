@@ -4,6 +4,7 @@ using System.Collections;
 public class Chuchu_AI : CharactersController
 {
 	bool hidden;
+
     protected Collider2D visionCollider;
 
     protected override void Start ()
@@ -27,7 +28,7 @@ public class Chuchu_AI : CharactersController
     void OnTriggerStay2D(Collider2D coll)
     {
         //verify if the object in the radius is the player
-        if (coll.gameObject.tag == "Player" && hidden == false)
+        if (coll.gameObject.tag == "Player" && hidden == false && lifeController.dead == false)
         {
             //move toward the player
             movementDirection.x = (coll.gameObject.transform.position.x - rbody.position.x);
@@ -40,7 +41,6 @@ public class Chuchu_AI : CharactersController
     {
         if (coll.gameObject.tag == "Player")
         {
-            
             movementDirection = Vector2.zero;
         }
     }

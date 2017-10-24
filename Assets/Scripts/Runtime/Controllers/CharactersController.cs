@@ -6,13 +6,16 @@ public class CharactersController : MonoBehaviour
 	public int pixelPerFrameSpeed;
 	public Vector2 movementDirection;
     public Vector2 characterOrientation;
+    public bool dead;
     protected Collider2D hitbox;
-
+    protected LifeController lifeController;
     protected Rigidbody2D rbody;
-    protected Animator anim;
+    public Animator anim;
 
     protected virtual void Start ()
 	{
+        dead = false;
+        lifeController = GetComponent<LifeController>();
         characterOrientation = Vector2.down;
 		movementDirection = Vector2.down;
 		rbody = GetComponent<Rigidbody2D> ();
@@ -34,7 +37,7 @@ public class CharactersController : MonoBehaviour
     /// </summary>
     protected virtual void Action ()
 	{
-        if (anim.GetBool("is_hurt") == false)
+        if (anim.GetBool("is_hurt") == false && lifeController.dead == false)
         {
             rbody.velocity = Vector3.zero;
             Move(1);
@@ -69,6 +72,10 @@ public class CharactersController : MonoBehaviour
     /// Actions to perform when the GameController pauses the game
     /// </summary>
     protected virtual void OnPause()
+    {
+    }
+
+    protected virtual void OnResume()
     {
     }
 }

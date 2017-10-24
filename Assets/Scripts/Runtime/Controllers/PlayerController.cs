@@ -14,6 +14,7 @@ public class PlayerController : CharactersController
     protected override void Start()
     {
         base.Start();
+        
         anim.SetFloat("input_x", characterOrientation.x);
         anim.SetFloat("input_y", characterOrientation.y);
     }
@@ -76,20 +77,12 @@ public class PlayerController : CharactersController
 	}
     protected override void OnPause()
     {
-        GetComponent<Animator>().SetTrigger("stop_action");
+        GetComponent<Animator>().SetBool("is_busy", true);
     }
 
-    /// <summary>
-    /// W.I.P
-    /// Triggers the GetItem animations in the player's animator and...?
-    /// </summary>
-    /// <param name="item"></param>
-    public void GetItem(GameObject item)
+    protected override void OnResume()
     {
-        if (item.GetComponent<Collectible>().BigItem == true)
-            anim.SetTrigger("BigItemGot");
-        else
-            anim.SetTrigger("SmallItemGot");
+        GetComponent<Animator>().SetBool("is_busy", false);
     }
     
     /// <summary>
@@ -193,6 +186,14 @@ public class PlayerController : CharactersController
                 {
                     text = "Lift";
                 }
+                else if (target.transform.gameObject.GetComponent<ChestController>())
+                {
+                    text = "Open";
+                }
+                else if (target.transform.gameObject.GetComponent<Activable>())
+                {
+                    text = "Activate";
+                }
             }
             else
                 text = "Roll";
@@ -206,7 +207,7 @@ public class PlayerController : CharactersController
         {
             Throw();
         }
-        else if (target)
+        else if (target != null)
         {
             if (target.gameObject.tag == "Grabbable")
             {
@@ -216,7 +217,12 @@ public class PlayerController : CharactersController
             {
                 Lift();
             }
-        }
+            //if the object in front is interactible
+            else if (target.GetComponent<Conditionable>())
+            {
+                target.GetComponent<Conditionable>().action();
+            }
+        }      
     }
 
     void Grab()

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 61000010478673220}
   m_Layer: 0
   m_Name: Chest_small_golden
-  m_TagString: Untagged
+  m_TagString: Activable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,10 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  visible: 1
   conditions: []
   content: {fileID: 0}
   openSprite: {fileID: 21300010, guid: 9834ede0f57e1124a8d6cfc6441bb977, type: 3}
-  visible: 1
 --- !u!212 &212000012667987942
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -14,16 +14,12 @@ public class Activable : Conditionable
             anim = GetComponent<Animator>();
             anim.SetBool("activated", false);
         }
-    }
-
-    protected override void DoSomething()
-    {
-        actions.Invoke();
+        action = actions.Invoke;
     }
 
     public void EnableAnimator()
 	{
-		if (GetComponent<Animator> ()) {
+		if (anim) {
 			anim.enabled = true;
 			anim.SetBool ("activated", true);
 		}

@@ -35,18 +35,15 @@ public class ArrowController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.isTrigger == false)
+        if (coll.gameObject.GetComponent<LifeController>())
         {
-            if (coll.gameObject.GetComponent<LifeController>())
-            {
-                coll.gameObject.GetComponent<LifeController>().Hurt(damages, transform.position);
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                stop = true;
-                GetComponent<Animator>().SetTrigger("stuck");
-            }
+            coll.gameObject.GetComponent<LifeController>().Hurt(damages, transform.position);
+            Destroy(this.gameObject);
+        }
+        else if (coll.isTrigger == false)
+        {
+            stop = true;
+            GetComponent<Animator>().SetTrigger("stuck");
         }
     }
 }

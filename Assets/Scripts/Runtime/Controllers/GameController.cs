@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour {
 	public bool gameOverState = false;
 	public bool gamePaused = false;
     public SceneStats sceneStats;
-    //GameObject player;
+    GameObject player;
     public CameraController cameraController;
 	public GUIController guiController;
 	public bool firstOneRupee;
@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour {
 		}
 		else if (control != this)
 			Destroy (gameObject);
-        //player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         guiController = GameObject.Find("GUI").GetComponent<GUIController>();
         zIndexManager = GameObject.Find("ZIndexManager").GetComponent<ZIndex>();
@@ -126,7 +126,6 @@ public class GameController : MonoBehaviour {
 		Application.targetFrameRate = 60;
         sceneStats = new SceneStats();
 	}
-	// Update is called once per frame
 	void Update () {
 		if (playerStats.health <= 0)
 			GameOver ();
@@ -142,25 +141,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-
-	void OnGUI ()
-	{
-		if (GUI.Button (new Rect ( 10, 10,  50, 15), "health up"))
-			Heal (1);
-		if (GUI.Button (new Rect ( 10, 40,  50, 15), "health down"))
-			Heal (-1);
-		if (GUI.Button (new Rect (110, 10,  50, 15), "maxhealth up"))
-			NewHeart ();
-		if (GUI.Button (new Rect ( 10, 70,  50, 15), "save1"))
-			Save(1);
-		if (GUI.Button (new Rect ( 10, 100, 50, 15), "save2"))
-			Save(2);
-		if (GUI.Button (new Rect ( 10, 130, 50, 15), "save3"))
-			Save(3);
-		if (GUI.Button (new Rect ( 10, 160, 50, 15), "load"))
-			Load(1);
-	}
-
+	
 	public void Save(int saveNumber) {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Create (Application.persistentDataPath + "/save"+ saveNumber +".dat");
@@ -179,6 +160,7 @@ public class GameController : MonoBehaviour {
 			playerStats = data;
 		}
 	}
+
 	public void GameOver()	{
 		gameOverState = true;
 	}
@@ -211,10 +193,6 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-    public void AddToZIndex(GameObject obj)
-    {
-        zIndexManager.layerZObjects.Add(obj);
-    }
 
 	public IEnumerator DisplayMessage(string text)
 	{
@@ -246,8 +224,50 @@ public class GameController : MonoBehaviour {
 			yield return DisplayMessage("Vous avez obtenu un nouveau quart de coeur, vous en avez maintenant " + playerStats.containerPieces + " rassemblez en 4 pour obtenir un receptacle entier.");
 		if (gamePaused == true)
 			ResumeGame ();
-	}
-	public void Heal(int amount)
+    }
+	public IEnumerator AddRupees(int amount, bool isDrop)
+    {
+        if (amount != 0)
+        {
+            if (isDrop && amount == 1 && firstOneRupee == false)
+            {
+                yield return DisplayMessage("Vous avez obtenu un rubis, c'est le début de la richesse !");
+                firstOneRupee = true;
+            }
+            else if (isDrop && amount == 5 && firstFiveRupee == false)
+            {
+                yield return DisplayMessage("Vous avez obtenu 5 rubis, c'est pas mal !");
+                firstFiveRupee = true;
+            }
+            if ((playerStats.rupees + amount) < 0)
+            {
+                playerStats.rupees = 0;
+            }
+            else if (playerStats.rupees + amount > playerStats.rupeeLimit)
+            {
+                playerStats.rupees = playerStats.rupeeLimit;
+            }
+            else
+                playerStats.rupees += amount;
+            guiController.hud.UpdateRupees();
+        }
+    }
+
+    public IEnumerator GetItem(Collectible item)
+    {
+        if (item.GetComponent<Collectible>().BigItem == true)
+            player.GetComponent<PlayerController>().anim.SetTrigger("BigItemGot");
+        else
+            player.GetComponent<PlayerController>().anim.SetTrigger("SmallItemGot");
+        PauseGame();
+        yield return DisplayMessage("Item got");
+        ResumeGame();
+    }
+    public void AddToZIndex(GameObject obj)
+    {
+        zIndexManager.layerZObjects.Add(obj);
+    }
+    public void Heal(int amount)
 	{
 		playerStats.health += amount;
 		if (playerStats.health > playerStats.maxHealth)
@@ -278,26 +298,6 @@ public class GameController : MonoBehaviour {
 //			}
 //		}
 //	}
-	public IEnumerator AddRupees(int amount, bool isDrop) {
-		if (amount != 0)
-		{
-			if (isDrop && amount == 1 && firstOneRupee == false) {
-				yield return DisplayMessage ("Vous avez obtenu un rubis, c'est le début de la richesse !");
-				firstOneRupee = true;
-			}
-			else if (isDrop && amount == 5 && firstFiveRupee == false) {
-				yield return DisplayMessage ("Vous avez obtenu 5 rubis, c'est pas mal !");
-				firstFiveRupee = true;
-			}
-			if ((playerStats.rupees + amount) < 0) {
-				playerStats.rupees = 0;
-			} else if (playerStats.rupees + amount > playerStats.rupeeLimit) {
-				playerStats.rupees = playerStats.rupeeLimit;
-			} else
-				playerStats.rupees += amount;
-            guiController.hud.UpdateRupees ();
-		}
-	}
 	public void ChangeRupeeStash(string size)
 	{
 		PauseGame ();

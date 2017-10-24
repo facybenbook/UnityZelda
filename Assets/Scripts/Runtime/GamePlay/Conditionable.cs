@@ -7,8 +7,10 @@ public class Conditionable : MonoBehaviour
     public bool state;
     public bool visible = true;
     public List<Conditionable> conditions = new List<Conditionable>();
+    public DoSomething action;
     void Start()
     {
+        action = Nothing;
         state = false;
     }
 
@@ -30,13 +32,15 @@ public class Conditionable : MonoBehaviour
                         if (trigger.state == false)
                             return;
                     }
-                    DoSomething();
+                    action();
                     state = true;
                 }
             }
         }
     }
 
-    protected virtual void DoSomething()
+    public delegate void DoSomething();
+
+    void Nothing()
     { }
 }
