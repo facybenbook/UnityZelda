@@ -35,7 +35,7 @@ public class ArrowController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.GetComponent<LifeController>())
+        if (!coll.isTrigger && coll.gameObject.GetComponent<LifeController>())
         {
             coll.gameObject.GetComponent<LifeController>().Hurt(damages, transform.position);
             Destroy(this.gameObject);

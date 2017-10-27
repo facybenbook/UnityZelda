@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class WarpController : MonoBehaviour {
     public enum direction {up, down, left, right};
 	public WarpController destinationWarp;
+    public GameObject destinationMap;
     public direction playerLookAtArrival;
     public bool insideMap;
-    public Tiled2Unity.TiledMap map;
+    private static int mapPlacement; 
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
@@ -29,6 +30,20 @@ public class WarpController : MonoBehaviour {
         tmp.a = 0;
         GameController.control.guiController.transitionLayer.GetComponent<Image>().color = tmp;
         yield return GameController.control.guiController.FadeIn(0.2f);
+        //GameObject go = GameController.control.LoadMap(destinationMap);
+        //warps must be places in a GameObjects in the map prefab
+        Transform thisMap = transform.parent.parent;
+        if (mapPlacement == 1)
+        {
+            destinationMap.transform.position = new Vector3(0, thisMap.position.y + destinationMap.gameObject.GetComponent<Tiled2Unity.TiledMap>().TileHeight, 0);
+            mapPlacement = 0;
+        }
+        else
+        {
+            destinationMap.transform.position = new Vector3(0, thisMap.position.y - thisMap.gameObject.GetComponent<Tiled2Unity.TiledMap>().TileHeight, 0);
+            mapPlacement = 1;
+        }
+
         //position the player depending on which direction the warp is
         switch (destinationWarp.playerLookAtArrival)
         {
@@ -47,7 +62,8 @@ public class WarpController : MonoBehaviour {
             default:
                 break;
         }
-        GameController.control.cameraController.ChangeMap(destinationWarp.map.gameObject);
+        //WIP
+        //MapManager.control.ChangeMap(destinationWarp.destinationMap.gameObject);
         player.SetParent(destinationWarp.transform.parent);
         yield return StartCoroutine(GameController.control.guiController.FadeOut(0.2f));
         GameController.control.ResumeGame();

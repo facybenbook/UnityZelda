@@ -8,14 +8,53 @@ using UnityEngine.SceneManagement;
 
 public class SceneStats
 {
-    public Scene currentScene;
-    public GameObject[] objects;
+    public Tiled2Unity.TiledMap map;
+    public List<GameObject> objects;
+    public List<bool> objectsState;
     public WarpController lastWarp;
 
     public SceneStats()
     {
-        objects = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
     }
+
+    void MapSaveState()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + map.gameObject.name + "_meta" + ".dat");
+        GameObject gameObjects = map.transform.Find("GameObjects").gameObject;
+        List<GameObject> data = new List<GameObject>();
+        foreach (Transform child in gameObjects.transform)
+        {
+            if (child.gameObject.GetComponent<Conditionable>())
+            {
+                data.Add(child.gameObject);
+            }
+        }
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
+    public void Load(Tiled2Unity.TiledMap newMap)
+    {
+        //save the old state
+        MapSaveState();
+        map = newMap;
+        if (File.Exists(Application.persistentDataPath + map.gameObject.name + "_meta" + ".dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + map.gameObject.name + "_meta" + ".dat", FileMode.Open);
+            List<GameObject> data = (List<GameObject>)bf.Deserialize(file);
+            file.Close();
+            GameObject gameObjects = map.transform.Find("GameObjects").gameObject;
+            foreach (GameObject obj in data)
+            {
+                GameObject tmp;
+                tmp = gameObjects.transform.Find(obj.name).gameObject;
+                tmp = obj;
+            }
+        }
+    }
+
 
 }
 [Serializable]
@@ -100,14 +139,14 @@ public class GameController : MonoBehaviour {
 	public PlayerStats playerStats;
 	public bool gameOverState = false;
 	public bool gamePaused = false;
-    public SceneStats sceneStats;
+    public SceneStats currentScene;
     GameObject player;
     public CameraController cameraController;
 	public GUIController guiController;
 	public bool firstOneRupee;
 	public bool firstFiveRupee;
 	public bool pauseMenu;
-    public GameObject[] warps;
+
     public ZIndex zIndexManager;
 
 	//singleton pattern
@@ -124,7 +163,7 @@ public class GameController : MonoBehaviour {
         zIndexManager = GameObject.Find("ZIndexManager").GetComponent<ZIndex>();
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;
-        sceneStats = new SceneStats();
+        currentScene = new SceneStats();
 	}
 	void Update () {
 		if (playerStats.health <= 0)
@@ -161,12 +200,20 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+    public GameObject LoadMap(GameObject map)
+    {
+        GameObject go = Instantiate(map);
+
+
+        return go;
+    }
+
 	public void GameOver()	{
 		gameOverState = true;
 	}
 	public void PauseGame() {
 		gamePaused = true;
-		foreach (GameObject go in sceneStats.objects) {
+		foreach (GameObject go in currentScene.objects) {
 			if (go != null)
 			{
 				if (go.tag != "GUI") 
@@ -182,7 +229,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void ResumeGame() {
 		gamePaused = false;
-		foreach (GameObject go in sceneStats.objects) {
+		foreach (GameObject go in currentScene.objects) {
 			//don't affect the GUI when pausing
 			if (go != null) {
 				if (go.tag != "GUI") {				

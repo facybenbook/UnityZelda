@@ -271,7 +271,7 @@ public class PlayerController : CharactersController
             grabbed.GetComponent<Collider2D>().isTrigger = true;
             grabbed.SetParent(targetParent);
 
-            StartCoroutine(grabbed.GetComponent<Throwable>().Propulse(characterOrientation));
+            StartCoroutine(grabbed.GetComponent<Throwable>().Propulse(movementDirection));
             grabbed = null;
         }
     }

@@ -71,7 +71,6 @@
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Editor\Tiled2UnityMenuItems.cs" />
      <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Editor\TiledAssetPostProcessor.cs" />
      <Compile Include="Assets\Scripts\Editor\BitmapFontImporter.cs" />
-     <Compile Include="Assets\Scripts\Editor\GameEventEditor.cs" />
      <None Include="Assets\Extensions\Tiled2Unity\Shaders\shaDefault.shader" />
      <None Include="Assets\Extensions\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Extensions\Tiled2Unity\Shaders\shaTiledMap.shader" />
