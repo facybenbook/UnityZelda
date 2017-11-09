@@ -3,21 +3,20 @@ using System.Collections;
 
 public class ChestController : Conditionable
 {
-	public Collectible content;
+    public bool startsVisible = true;
+    public Collectible content;
 	public Sprite openSprite;
 
-    private void Start()
+    protected override void Start()
     {
-        state = false;
-        if (visible)
-        {
-            action = OpenChest;
-        }
-        else
+        base.Start();
+        if (startsVisible == false)
         {
             ToggleVisible();
             action = ToggleVisible;
         }
+        else
+            action = OpenChest;
     }
 
     void OpenChest()
@@ -27,14 +26,19 @@ public class ChestController : Conditionable
         StartCoroutine(GameController.control.GetItem(content));
         GetComponent<AudioSource>().Play();
     }
-    
+
+    public override void OnCheckConditions()
+    {
+        if (startsVisible == false)
+        {
+            base.OnCheckConditions();
+        }
+    }
+
     void ToggleVisible()
     {
         GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
         GetComponent<BoxCollider2D>().enabled = !GetComponent<BoxCollider2D>().enabled;
         action = OpenChest;
     }
-
-
-
 }

@@ -4,7 +4,7 @@ using System;
 
 public class PlayerController : CharactersController
 {
-    public bool lockedDirection;
+    public bool lockedOrientation;
     public bool lockedMovement;
     public Vector2 lastInput;
     Transform target;
@@ -21,34 +21,15 @@ public class PlayerController : CharactersController
 
     protected override void Action ()
 	{
+        //update the label for the R button action
         GetObjectInFront();
+
 		rbody.velocity = Vector3.zero;
 		//is busy if a blocking animation is playing
-		if (!anim.GetBool ("is_busy") && !GameController.control.gamePaused) {
-            if (lockedMovement)
-                movementDirection = new Vector2(Mathf.Abs(characterOrientation.x) * Input.GetAxisRaw("Horizontal"), Mathf.Abs(characterOrientation.y) * Input.GetAxisRaw("Vertical"));
-            else
-                movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (lockedDirection == false) {
-				//If direction changed
-				if (movementDirection != characterOrientation) {
-					//If a key is pressed
-					if (movementDirection != Vector2.zero) {
-						if (movementDirection.y == 0) {
-							characterOrientation.x = movementDirection.x;
-							if (movementDirection.x != 0)
-								characterOrientation.y = 0;
-						}
-						else if (movementDirection.x == 0) {
-								characterOrientation.y = movementDirection.y;
-							if (movementDirection.y != 0)
-								characterOrientation.x = 0;
-						}
-						anim.SetFloat ("input_x", characterOrientation.x);
-						anim.SetFloat ("input_y", characterOrientation.y);
-						lastInput = movementDirection;
-					}
-				}
+		if (!GameController.control.gamePaused && !anim.GetBool ("is_busy")) {
+            //get the axis
+            UpdateMovementDirection();
+            UpdateOrientation();
 			}
             if (Input.GetKeyDown (GameKeys.A)) {
                 EquipmentInSlot(GameController.control.playerStats.slotA);
@@ -60,6 +41,8 @@ public class PlayerController : CharactersController
             {
                 LActions();
             }
+
+            //if the player moves by input
             if (movementDirection != Vector2.zero) {
 				if (Input.GetKeyDown ("space") && !target) {
 					//roll
@@ -74,7 +57,48 @@ public class PlayerController : CharactersController
 				anim.SetBool ("is_walking", false);
 			}
 		}
-	}
+
+    void UpdateMovementDirection()
+    {
+        movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (lockedMovement)
+        {
+            //just in case
+            if (lastInput == Vector2.zero)
+                lastInput = movementDirection;
+            movementDirection = new Vector2(lastInput.x == 0 ? 0 : movementDirection.x, lastInput.y == 0 ? 0 : movementDirection.y);
+        }
+    }
+
+    void UpdateOrientation()
+    {
+        if (lockedOrientation == false)
+        {
+            //If direction changed
+            if (movementDirection != characterOrientation)
+            {
+                //If a key is pressed
+                if (movementDirection != Vector2.zero)
+                {
+                    if (movementDirection.y == 0)
+                    {
+                        characterOrientation.x = movementDirection.x;
+                        if (movementDirection.x != 0)
+                            characterOrientation.y = 0;
+                    }
+                    else if (movementDirection.x == 0)
+                    {
+                        characterOrientation.y = movementDirection.y;
+                        if (movementDirection.y != 0)
+                            characterOrientation.x = 0;
+                    }
+                    anim.SetFloat("input_x", characterOrientation.x);
+                    anim.SetFloat("input_y", characterOrientation.y);
+                    lastInput = movementDirection;
+                }
+            }
+        }
+    }
     protected override void OnPause()
     {
         GetComponent<Animator>().SetBool("is_busy", true);
@@ -232,7 +256,7 @@ public class PlayerController : CharactersController
 
         grabbed.SetParent(transform);
 
-        lockedDirection = true;
+        lockedOrientation = true;
         lockedMovement = true;
 
        
@@ -242,7 +266,7 @@ public class PlayerController : CharactersController
     void Release()
     {
         grabbed.SetParent(targetParent);
-        lockedDirection = false;
+        lockedOrientation = false;
         lockedMovement = false;
     }
 

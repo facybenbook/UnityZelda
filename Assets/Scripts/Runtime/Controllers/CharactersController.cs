@@ -23,7 +23,7 @@ public class CharactersController : MonoBehaviour
 		rbody.velocity = Vector3.zero;
 	}
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		if (!GameController.control.gamePaused) {
 			GetComponent<Animator> ().speed = 1;

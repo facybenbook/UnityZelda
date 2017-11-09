@@ -675,11 +675,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4311677123889170, guid: 32ab4a0bc51130a4795e3ead0271a2ff, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.5
+      value: 10.45
       objectReference: {fileID: 0}
     - target: {fileID: 4311677123889170, guid: 32ab4a0bc51130a4795e3ead0271a2ff, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.5
+      value: -12.55
       objectReference: {fileID: 0}
     - target: {fileID: 4311677123889170, guid: 32ab4a0bc51130a4795e3ead0271a2ff, type: 2}
       propertyPath: m_LocalPosition.z
@@ -860,6 +860,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114682614095894142, guid: 6d670652ff9628e4b8c0207da46f4a8a,
+        type: 2}
+      propertyPath: conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013623744026, guid: 6d670652ff9628e4b8c0207da46f4a8a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -900,6 +905,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114682614095894142, guid: 6d670652ff9628e4b8c0207da46f4a8a,
+        type: 2}
+      propertyPath: staysOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114970221291115578, guid: 6d670652ff9628e4b8c0207da46f4a8a,
+        type: 2}
+      propertyPath: staysOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682614095894142, guid: 6d670652ff9628e4b8c0207da46f4a8a,
+        type: 2}
+      propertyPath: visible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682614095894142, guid: 6d670652ff9628e4b8c0207da46f4a8a,
+        type: 2}
+      propertyPath: conditions.Array.data[0]
+      value: 
+      objectReference: {fileID: 107554513}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d670652ff9628e4b8c0207da46f4a8a, type: 2}
   m_IsPrefabParent: 0
@@ -1149,8 +1174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cacea7d898b5c408ab9250804df37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollVector: {x: -0.25, y: -0.1}
-  speed: 0.5
 --- !u!1001 &398601385
 Prefab:
   m_ObjectHideFlags: 0
@@ -1334,12 +1357,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000011907998012, guid: 6d670652ff9628e4b8c0207da46f4a8a,
     type: 2}
   m_PrefabInternal: {fileID: 300224336}
---- !u!114 &491129038 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000011752586536, guid: 6d670652ff9628e4b8c0207da46f4a8a,
-    type: 2}
-  m_PrefabInternal: {fileID: 300224336}
-  m_Script: {fileID: 11500000, guid: c0619e460a775cc458d37cb4a214a189, type: 3}
 --- !u!4 &541853431 stripped
 Transform:
   m_PrefabParentObject: {fileID: 442566, guid: 3db20eb6246dba94bad73fa6c27b8b3a, type: 2}
@@ -1430,11 +1447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d3f9fb263789244842a4bd69d16e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images:
-  - {fileID: 21300000, guid: c010402491177914ab40e874a5efe935, type: 3}
-  - {fileID: 21300002, guid: c010402491177914ab40e874a5efe935, type: 3}
-  - {fileID: 21300004, guid: c010402491177914ab40e874a5efe935, type: 3}
-  - {fileID: 21300006, guid: c010402491177914ab40e874a5efe935, type: 3}
 --- !u!1 &594158208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,9 +2768,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationWarp: {fileID: 945375759}
+  destinationMap: {fileID: 0}
   playerLookAtArrival: 0
   insideMap: 0
-  map: {fileID: 491129038}
 --- !u!61 &1203932152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3834,7 +3846,6 @@ MonoBehaviour:
   firstOneRupee: 0
   firstFiveRupee: 0
   pauseMenu: 0
-  warps: []
   zIndexManager: {fileID: 0}
 --- !u!4 &1534305243
 Transform:
@@ -4973,10 +4984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba56c26373e257469b1f9ee0a8d804c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItem: {fileID: 1472931575282148, guid: 04d4c6aef0e187b459de52c760e2e775,
-    type: 2}
-  inventoryBottle: {fileID: 1575607475603950, guid: bf8507d2435fa764b876b9eb1a8f81bf,
-    type: 2}
 --- !u!1 &1831739816
 GameObject:
   m_ObjectHideFlags: 0
