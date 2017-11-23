@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class WarpController : MonoBehaviour {
     public enum direction {up, down, left, right};
 	public WarpController destinationWarp;
-    public GameObject destinationMap;
+    public GameObject currentMap;
     public direction playerLookAtArrival;
     public bool insideMap;
     private static int mapPlacement; 
@@ -30,42 +30,34 @@ public class WarpController : MonoBehaviour {
         tmp.a = 0;
         GameController.control.guiController.transitionLayer.GetComponent<Image>().color = tmp;
         yield return GameController.control.guiController.FadeIn(0.2f);
-        //GameObject go = GameController.control.LoadMap(destinationMap);
-        //warps must be places in a GameObjects in the map prefab
-        Transform thisMap = transform.parent.parent;
-        if (mapPlacement == 1)
-        {
-            destinationMap.transform.position = new Vector3(0, thisMap.position.y + destinationMap.gameObject.GetComponent<Tiled2Unity.TiledMap>().TileHeight, 0);
-            mapPlacement = 0;
-        }
-        else
-        {
-            destinationMap.transform.position = new Vector3(0, thisMap.position.y - thisMap.gameObject.GetComponent<Tiled2Unity.TiledMap>().TileHeight, 0);
-            mapPlacement = 1;
-        }
-
+        destinationWarp.currentMap.SetActive(true);
+        GameController.control.cameraController.ChangeMap(destinationWarp.currentMap);
+        player.SetParent(destinationWarp.transform.parent);
         //position the player depending on which direction the warp is
         switch (destinationWarp.playerLookAtArrival)
         {
             case direction.up:
-                player.position = new Vector3(destinationWarp.transform.position.x, destinationWarp.transform.position.y - 1.25f, 0);
+                player.position = new Vector3(destinationWarp.transform.position.x, destinationWarp.transform.position.y + 1.25f, 0);
+                player.GetComponent<PlayerController>().CharacterOrientation = Vector2.up;
                 break;
             case direction.down:
-                player.position = new Vector3(destinationWarp.transform.position.x, destinationWarp.transform.position.y + 1.25f, 0);
+                player.position = new Vector3(destinationWarp.transform.position.x, destinationWarp.transform.position.y - 1.25f, 0);
+                player.GetComponent<PlayerController>().CharacterOrientation = Vector2.down;
                 break;
             case direction.right:
                 player.position = new Vector3(destinationWarp.transform.position.x + 1.25f, destinationWarp.transform.position.y, 0);
+                player.GetComponent<PlayerController>().CharacterOrientation = Vector2.right;
                 break;
             case direction.left:
                 player.position = new Vector3(destinationWarp.transform.position.x - 1.25f, destinationWarp.transform.position.y, 0);
+                player.GetComponent<PlayerController>().CharacterOrientation = Vector2.left;
                 break;
             default:
                 break;
         }
         //WIP
-        //MapManager.control.ChangeMap(destinationWarp.destinationMap.gameObject);
-        player.SetParent(destinationWarp.transform.parent);
         yield return StartCoroutine(GameController.control.guiController.FadeOut(0.2f));
+        currentMap.SetActive(false);
         GameController.control.ResumeGame();
     }
 }

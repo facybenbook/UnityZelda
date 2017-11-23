@@ -18,7 +18,6 @@ public class MushroomScript : MonoBehaviour
         cap = head.Find("Cap");
         fillerBottom = transform.Find("FillerBottom");
         parent = head.parent;
-        print(parent);
     }
 
     // Update is called once per frame

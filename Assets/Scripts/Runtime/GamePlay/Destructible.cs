@@ -25,6 +25,7 @@ public class Destructible : MonoBehaviour
                 //objet.GetComponentInChildren<Animator> ().SetBool ("is_bouncing", true);
             }
         }
+        GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<Animator>().SetTrigger("Destroyed");
     }
     GameObject RandomItem()

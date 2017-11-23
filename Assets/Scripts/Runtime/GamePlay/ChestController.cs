@@ -1,44 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[RequireComponent(typeof(Conditionable))]
 public class ChestController : Conditionable
 {
-    public bool startsVisible = true;
+    public Conditionable conditionable;
     public Collectible content;
-	public Sprite openSprite;
-
+    public string messageOnOpen;
+    
     protected override void Start()
     {
         base.Start();
-        if (startsVisible == false)
-        {
-            ToggleVisible();
-            action = ToggleVisible;
-        }
-        else
-            action = OpenChest;
+        if (conditionable == null)
+            conditionable = GetComponent<Conditionable>();
+    }
+    public void OpenChest()
+    {
+        StartCoroutine(_OpenChest());
     }
 
-    void OpenChest()
-    { 
-		state = true;
-		GetComponent<SpriteRenderer> ().sprite = openSprite;
-        StartCoroutine(GameController.control.GetItem(content));
+    private IEnumerator _OpenChest()
+    {
+        ChangeState(true);
+        GameController.control.GetItem(content);
+        yield return StartCoroutine((WaitForAnimation("Open")));
         GetComponent<AudioSource>().Play();
+        yield return StartCoroutine(GameController.control.DisplayMessage(messageOnOpen));
+        yield return null;
     }
 
-    public override void OnCheckConditions()
+    private IEnumerator WaitForAnimation(string name)
     {
-        if (startsVisible == false)
+        if (anim)
         {
-            base.OnCheckConditions();
+            while (!anim.GetCurrentAnimatorStateInfo(0).IsName(name))
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
         }
     }
-
-    void ToggleVisible()
-    {
-        GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-        GetComponent<BoxCollider2D>().enabled = !GetComponent<BoxCollider2D>().enabled;
-        action = OpenChest;
-    }
+    
 }

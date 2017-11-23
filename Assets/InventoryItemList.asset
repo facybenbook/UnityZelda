@@ -12,27 +12,51 @@ MonoBehaviour:
   m_Name: InventoryItemList
   m_EditorClassIdentifier: 
   itemList:
-  - itemName: 0
-    itemIcon: {fileID: 21300006, guid: 38929a7a77bf8d94e9275255aefe932d, type: 3}
+  - name: sword
+    icon: {fileID: 21300008, guid: d96ec472490262940a1ce30717fd3472, type: 3}
+    itemType: 1
+    afterConsumed: 0
     usesAmmo: 0
-  - itemName: 1
-    itemIcon: {fileID: 21300000, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
-    usesAmmo: 0
-  - itemName: 4
-    itemIcon: {fileID: 21300020, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
-    usesAmmo: 0
-  - itemName: 2
-    itemIcon: {fileID: 21300070, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    stackable: 0
+    maxStack: 0
+    unique: 0
+  - name: bomb
+    icon: {fileID: 21300002, guid: c06acacf49dfba24daf2f7bf0a35c2fd, type: 3}
+    itemType: 1
+    afterConsumed: 0
     usesAmmo: 1
-  - itemName: 5
-    itemIcon: {fileID: 21300048, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    stackable: 0
+    maxStack: 0
+    unique: 0
+  - name: bow
+    icon: {fileID: 21300070, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    itemType: 1
+    afterConsumed: 0
     usesAmmo: 1
-  - itemName: 3
-    itemIcon: {fileID: 21300056, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    stackable: 0
+    maxStack: 0
+    unique: 0
+  - name: mole claws
+    icon: {fileID: 21300056, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    itemType: 1
+    afterConsumed: 0
     usesAmmo: 0
-  - itemName: 6
-    itemIcon: {fileID: 21300050, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    stackable: 0
+    maxStack: 0
+    unique: 0
+  - name: bottle
+    icon: {fileID: 21300020, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    itemType: 1
+    afterConsumed: 0
+    usesAmmo: 0
+    stackable: 0
+    maxStack: 0
+    unique: 0
+  - name: fairy bottle
+    icon: {fileID: 21300024, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
+    itemType: 2
+    afterConsumed: 4
     usesAmmo: 1
-  - itemName: 1
-    itemIcon: {fileID: 21300010, guid: 1d60f3d9383c0444e8c0542a29a3567d, type: 3}
-    usesAmmo: 0
+    stackable: 0
+    maxStack: 0
+    unique: 0

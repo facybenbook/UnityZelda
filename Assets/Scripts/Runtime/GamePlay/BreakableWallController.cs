@@ -11,6 +11,7 @@ public class BreakableWallController : MonoBehaviour {
             {
                 GetComponent<SpriteRenderer>().sprite = sprites[1];
                 GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<SpriteRenderer>().sortingLayerName = "Objects";
                 state = true;
             }
         }

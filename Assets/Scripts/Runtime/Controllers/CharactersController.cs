@@ -1,28 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharactersController : MonoBehaviour
+
+public abstract class CharactersController : MonoBehaviour
 {
 	public int pixelPerFrameSpeed;
 	public Vector2 movementDirection;
-    public Vector2 characterOrientation;
+    [SerializeField]
+    protected Vector2 characterOrientation;
+    public bool lockedOrientation;
+    public bool lockedMovement;
     public bool dead;
     protected Collider2D hitbox;
-    protected LifeController lifeController;
+    public LifeController lifeController;
     protected Rigidbody2D rbody;
     public Animator anim;
 
-    protected virtual void Start ()
-	{
+    protected virtual void Start()
+    {
         dead = false;
         lifeController = GetComponent<LifeController>();
-        characterOrientation = Vector2.down;
-		movementDirection = Vector2.down;
-		rbody = GetComponent<Rigidbody2D> ();
-		anim = GetComponent<Animator> ();
-		rbody.velocity = Vector3.zero;
-	}
+        rbody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        rbody.velocity = Vector3.zero;
+        lockedMovement = false;
+        lockedOrientation = false;
+        CharacterOrientation = Vector2.down;
+        movementDirection = Vector2.down;
+    }
 
+    public Vector2 CharacterOrientation
+    {
+        get
+        {
+            return characterOrientation;
+        }
+
+        set
+        {
+            if (!lockedOrientation)
+            {
+                characterOrientation = value;
+                anim.SetFloat("input_x", CharacterOrientation.x);
+                anim.SetFloat("input_y", CharacterOrientation.y);
+            }
+        }
+    }
+    
 	void FixedUpdate ()
 	{
 		if (!GameController.control.gamePaused) {
@@ -51,7 +75,7 @@ public class CharactersController : MonoBehaviour
 	{
 		if (movementDirection != Vector2.zero)
 			//increment position considering the pixel size, the scale of the object and the number of pixels per frame of deplacement
-			rbody.MovePosition (rbody.position + movementDirection * (0.625f * transform.lossyScale.x * pixelPerFrameSpeed * speedMult * Time.deltaTime));
+			rbody.MovePosition (rbody.position + movementDirection * (0.625f * transform.lossyScale.x * pixelPerFrameSpeed * speedMult * Time.fixedDeltaTime));
 	}
 
     /// <summary>
@@ -64,8 +88,15 @@ public class CharactersController : MonoBehaviour
 	{
 		if (direction != Vector2.zero)
         {
-            rbody.MovePosition (rbody.position + movementDirection * (0.625f * transform.lossyScale.x * 16));
+            rbody.MovePosition (rbody.position + movementDirection * (0.625f * transform.lossyScale.x * pixelPerFrameSpeed * speed));
         }
+    }
+
+    public void Escape(Vector3 positionToEscape, int speed)
+    {
+            positionToEscape = this.transform.position - positionToEscape;
+            Vector2 direction = new Vector2(positionToEscape.x, positionToEscape.y).normalized;
+            rbody.MovePosition(rbody.position + direction);
     }
 
     /// <summary>

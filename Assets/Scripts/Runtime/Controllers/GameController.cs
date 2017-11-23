@@ -4,18 +4,12 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEngine.SceneManagement;
 
 public class SceneStats
 {
     public Tiled2Unity.TiledMap map;
-    public List<GameObject> objects;
     public List<bool> objectsState;
     public WarpController lastWarp;
-
-    public SceneStats()
-    {
-    }
 
     void MapSaveState()
     {
@@ -54,21 +48,21 @@ public class SceneStats
             }
         }
     }
-
-
 }
 [Serializable]
 public class PlayerStats
 {
     //public Scene scene;
     public String name;
-    public Equipments slotA = Equipments.Sword;
-    public Equipments slotB;
+    public InventorySlot slotA;
+    public InventorySlot slotB;
     public int health;
     public int maxHealth;
     public int rupees;
     public int rupeeLimit;
     public int keys;
+    public bool firstOneRupee;
+    public bool firstFiveRupee;
     public bool bossKey;
     public bool[] elements;
     public int containerPieces;
@@ -86,39 +80,37 @@ public class PlayerStats
         keys = 0;
         bossKey = false;
         elements = new bool[8];
-        slotA = Equipments.None;
-        slotB = Equipments.None;
         inventorySlots = new List<InventorySlot>();
-        inventorySlots.Add(new InventorySlot(0, Equipments.Sword));
 
         bottleSlots = new List<InventorySlot>();
-        bottleSlots.Add(new InventorySlot(0, Equipments.Bottle));
-
     }
-    public bool HaveEquipment(Equipments equipment)
+    public bool HaveEquipment(string equipment)
     {
-        foreach (InventorySlot item in inventorySlots)
+        foreach (InventorySlot slot in inventorySlots)
         {
-            if (item.item == equipment)
+            if (slot.item.name.ToLower() == equipment.ToLower())
+                return true;
+        }
+        foreach (InventorySlot slot in bottleSlots)
+        {
+            if (slot.item.name.ToLower() == equipment.ToLower())
                 return true;
         }
         return false;
     }
 
+    [Serializable]
     public class InventorySlot
     {
         public enum BottleContent : int { None = -1, Empty = 0, Fairy = 1, Water = 2, RedPotion = 3, BluePotion = 4 };
 
         public int position;
-        public Equipments item;
+        public InventoryItem item;
         public BottleContent content = BottleContent.Fairy;
 
-        public InventorySlot(int position, Equipments item)
+        public InventorySlot(InventoryItem item)
         {
-            this.position = position;
             this.item = item;
-            if (item == Equipments.Bottle)
-                content = BottleContent.Fairy;
         }
         
     }
@@ -126,13 +118,14 @@ public class PlayerStats
 }
 public class GameKeys
 {
-    public const KeyCode A = KeyCode.I;
-    public const KeyCode B = KeyCode.O;
-    public const KeyCode R = KeyCode.L;
-    public const KeyCode L = KeyCode.R;
+    public const KeyCode A = KeyCode.A;
+    public const KeyCode B = KeyCode.B;
+    public const KeyCode R = KeyCode.R;
+    public const KeyCode L = KeyCode.L;
     public const KeyCode START = KeyCode.Delete;
     public const KeyCode ENTER = KeyCode.Return;
 }
+
 public class GameController : MonoBehaviour {
 	
 	public static GameController control;
@@ -143,11 +136,10 @@ public class GameController : MonoBehaviour {
     GameObject player;
     public CameraController cameraController;
 	public GUIController guiController;
-	public bool firstOneRupee;
-	public bool firstFiveRupee;
 	public bool pauseMenu;
 
     public ZIndex zIndexManager;
+    public InventoryItemList itemDatabase;
 
 	//singleton pattern
 	void Awake () {
@@ -164,7 +156,8 @@ public class GameController : MonoBehaviour {
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;
         currentScene = new SceneStats();
-	}
+        Screen.SetResolution(240, 160, false);
+    }
 	void Update () {
 		if (playerStats.health <= 0)
 			GameOver ();
@@ -213,37 +206,31 @@ public class GameController : MonoBehaviour {
 	}
 	public void PauseGame() {
 		gamePaused = true;
-		foreach (GameObject go in currentScene.objects) {
-			if (go != null)
+		foreach (Animator go in FindObjectsOfType<Animator>()) {
+			if (go.tag != "GUI") 
 			{
-				if (go.tag != "GUI") 
-				{
-					if (go.GetComponent<Animator> () != null) 
-					{
-						go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
-                        go.GetComponent<Animator>().speed = 0;
-                    }
-				}
+				go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
+                go.GetComponent<Animator>().speed = 0;
 			}
 		}
 	}
 	public void ResumeGame() {
 		gamePaused = false;
-		foreach (GameObject go in currentScene.objects) {
-			//don't affect the GUI when pausing
-			if (go != null) {
-				if (go.tag != "GUI") {				
-					if (go.GetComponent<Animator> () != null)
-						go.GetComponent<Animator> ().speed = 1;
-					go.SendMessage ("OnResume", SendMessageOptions.DontRequireReceiver);
-				}
+        foreach (Animator go in FindObjectsOfType<Animator>())
+        {
+            if (go.tag != "GUI")
+            {
+				go.GetComponent<Animator> ().speed = 1;
+				go.SendMessage ("OnResume", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
 
 	public IEnumerator DisplayMessage(string text)
 	{
+        PauseGame();
 		yield return guiController.hud.messageBox.DisplayMessage (text);
+        ResumeGame();
 	}
 	public IEnumerator NewHeart()
 	{
@@ -252,7 +239,7 @@ public class GameController : MonoBehaviour {
 		PauseGame ();
 		//if true, NewHeartPiece has been calling the method
 		if (pausedEnter == false)
-			yield return DisplayMessage ("Vous avez obtenu un nouveau receptacle de coeur !");
+			yield return DisplayMessage ("You got a new heart container, you're harder, better, faster, stronger !");
 		playerStats.maxHealth += 4;
 		playerStats.health = playerStats.maxHealth;
         guiController.hud.UpdateLife();
@@ -263,12 +250,12 @@ public class GameController : MonoBehaviour {
 		PauseGame ();
 		playerStats.containerPieces++;
 		if (playerStats.containerPieces == 4) {
-			yield return DisplayMessage("Vous avez obtenu un nouveau quart de coeur, 4 quarts de coeur forment un nouveau receptacle !");
+			yield return DisplayMessage("You found 4 heart pieces, the 4 pieces make a whole heart container !");
 			yield return NewHeart();
 			playerStats.containerPieces = 0;
 		}
 		else
-			yield return DisplayMessage("Vous avez obtenu un nouveau quart de coeur, vous en avez maintenant " + playerStats.containerPieces + " rassemblez en 4 pour obtenir un receptacle entier.");
+			yield return DisplayMessage("You found a heart piece, you now have " + playerStats.containerPieces + " , gather 4 of them to get a whole heart container.");
 		if (gamePaused == true)
 			ResumeGame ();
     }
@@ -276,15 +263,15 @@ public class GameController : MonoBehaviour {
     {
         if (amount != 0)
         {
-            if (isDrop && amount == 1 && firstOneRupee == false)
+            if (isDrop && amount == 1 && playerStats.firstOneRupee == false)
             {
                 yield return DisplayMessage("Vous avez obtenu un rubis, c'est le début de la richesse !");
-                firstOneRupee = true;
+                playerStats.firstOneRupee = true;
             }
-            else if (isDrop && amount == 5 && firstFiveRupee == false)
+            else if (isDrop && amount == 5 && playerStats.firstFiveRupee == false)
             {
                 yield return DisplayMessage("Vous avez obtenu 5 rubis, c'est pas mal !");
-                firstFiveRupee = true;
+                playerStats.firstFiveRupee = true;
             }
             if ((playerStats.rupees + amount) < 0)
             {
@@ -300,20 +287,21 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public IEnumerator GetItem(Collectible item)
+    public void GetItem(Collectible item)
     {
+        if (item != null) { 
         if (item.GetComponent<Collectible>().BigItem == true)
             player.GetComponent<PlayerController>().anim.SetTrigger("BigItemGot");
         else
             player.GetComponent<PlayerController>().anim.SetTrigger("SmallItemGot");
-        PauseGame();
-        yield return DisplayMessage("Item got");
-        ResumeGame();
+        }
     }
+
     public void AddToZIndex(GameObject obj)
     {
         zIndexManager.layerZObjects.Add(obj);
     }
+
     public void Heal(int amount)
 	{
 		playerStats.health += amount;
@@ -321,30 +309,7 @@ public class GameController : MonoBehaviour {
 			playerStats.health = playerStats.maxHealth;
         guiController.hud.UpdateLife ();
 	}
-//	static public void Hurt(int damage, Vector3 positionToEscape)
-//	{
-//		if (damage > 0)
-//		{
-//			playerStats.health -= damage;
-//			if (playerStats.health < 0)
-//				playerStats.health = 0;
-//			//movement to escape hit && lock animator
-//			GetComponent<Animator> ().SetBool ("is_busy", true);
-//			GetComponent<Animator> ().SetBool ("is_hurt", true);
-//			//sets the objects movement vector to escape
-//			positionToEscape = this.transform.position - positionToEscape;
-//			Vector2 direction = new Vector2 (positionToEscape.x, positionToEscape.y).normalized;
-//			GetComponent<Animator> ().SetFloat ("input_x", -direction.x);
-//			GetComponent<Animator> ().SetFloat ("input_y", -direction.y);
-//			this.gameObject.GetComponent<PlayerMovement> ().Jump(positionToEscape, 2);
-//			audioSource.PlayOneShot (audioClips[5]);
-//			if (playerStats.health == 0) {
-//				GetComponent<Animator> ().SetBool ("is_dead", true);
-//				audioSource.PlayOneShot (audioClips[4]);
-//				gameOver();
-//			}
-//		}
-//	}
+
 	public void ChangeRupeeStash(string size)
 	{
 		PauseGame ();
@@ -399,4 +364,5 @@ public class GameController : MonoBehaviour {
         guiController.hud.UpdateRupees ();
 		ResumeGame ();
 	}
+    
 }

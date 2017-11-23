@@ -29,15 +29,10 @@ public class LifeController : MonoBehaviour {
 			GetComponent<Animator> ().SetTrigger("is_hurt");
 			//sets the objects movement vector to escape
 			if (escape == true) {
-				positionToEscape = this.transform.position - positionToEscape;
-				Vector2 direction = new Vector2 (positionToEscape.x, positionToEscape.y).normalized;
-				GetComponent<Animator> ().SetFloat ("input_x", -direction.x);
-				GetComponent<Animator> ().SetFloat ("input_y", -direction.y);
-				this.gameObject.GetComponent<CharactersController> ().Jump(positionToEscape, 2);
+                this.gameObject.GetComponent<CharactersController> ().Escape(positionToEscape, 4);
 			}
 			else
 			{
-				positionToEscape = this.transform.position - positionToEscape;
 				GetComponent<CharactersController> ().movementDirection = Vector2.zero;
 			}
 			audioSource.PlayOneShot (hurtSound);

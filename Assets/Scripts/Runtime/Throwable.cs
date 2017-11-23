@@ -5,49 +5,59 @@ using UnityEngine;
 public class Throwable : MonoBehaviour {
     public bool throwed;
     public bool hit = false;
-    
-
+    private Rigidbody2D body;
+    private float speed = 4f;
+    private Vector3 movementVector;
     //public IEnumerator Lift(Vector2 destination)
     //{
 
     //}
 
-    public IEnumerator Propulse(Vector2 orientation)
+    private void Start()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        float speed = 4;
-        Vector3 position = transform.localPosition;
-        float z = 0.5f;
-        Vector2 fallingVector = Vector2.zero;
+        body = GetComponent<Rigidbody2D>();
+    }
 
-        if (orientation == Vector2.zero)
-            fallingVector.y = -z;
+    private void FixedUpdate()
+    {
+        if (throwed)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + movementVector.z * speed * Time.fixedDeltaTime);
+            body.MovePosition(body.position + new Vector2(movementVector.x, movementVector.y) * speed * Time.fixedDeltaTime);
+        }
+    }
+
+    public void Throw(Vector2 direction)
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0.5f);
+        movementVector = Vector3.zero;
+
+        if (direction == Vector2.zero)
+            movementVector.y = -0.5f;
         else
         {
-            fallingVector = orientation * 6;
-            if (fallingVector.y == 0)
-                fallingVector.y = -z;
+            movementVector = direction * 6;
+            if (movementVector.y == 0)
+                movementVector.y = -0.5f;
         }
-
-        
-        while (z > 0)
-        {
-            if (hit)
-                break;
-            rb.MovePosition(rb.position + (fallingVector * speed * Time.deltaTime));
-            yield return null;
-            z -= speed * Time.deltaTime;
-        }
+        movementVector.z = -0.5f;
+        throwed = true;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.isTrigger && collision.gameObject.tag != "Player")
+        if (throwed)
         {
-            hit = true;
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            GetComponent<Destructible>().DestructionPhase();
-            //Destroy(gameObject);
+            if (collision.isTrigger == false && collision.gameObject.tag != "Player")
+            {
+                if (transform.position.z <= 0.5f)
+                {
+                    hit = true;
+                    movementVector = Vector3.zero;
+                    GetComponent<Collider2D>().enabled = false;
+                    GetComponent<Destructible>().DestructionPhase();
+                }
+            }
         }
     }
 }

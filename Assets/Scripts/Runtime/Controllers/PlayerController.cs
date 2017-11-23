@@ -4,8 +4,6 @@ using System;
 
 public class PlayerController : CharactersController
 {
-    public bool lockedOrientation;
-    public bool lockedMovement;
     public Vector2 lastInput;
     Transform target;
     Transform grabbed;
@@ -15,48 +13,48 @@ public class PlayerController : CharactersController
     {
         base.Start();
         
-        anim.SetFloat("input_x", characterOrientation.x);
-        anim.SetFloat("input_y", characterOrientation.y);
+        anim.SetFloat("input_x", CharacterOrientation.x);
+        anim.SetFloat("input_y", CharacterOrientation.y);
     }
 
-    protected override void Action ()
-	{
+    protected override void Action()
+    {
         //update the label for the R button action
         GetObjectInFront();
 
-		rbody.velocity = Vector3.zero;
-		//is busy if a blocking animation is playing
-		if (!GameController.control.gamePaused && !anim.GetBool ("is_busy")) {
+        rbody.velocity = Vector3.zero;
+        //is busy if a blocking animation is playing
+        if (!GameController.control.gamePaused && anim.GetBool("is_busy") == false)
+        {
             //get the axis
             UpdateMovementDirection();
             UpdateOrientation();
-			}
-            if (Input.GetKeyDown (GameKeys.A)) {
-                EquipmentInSlot(GameController.control.playerStats.slotA);
-			}
-			else if (Input.GetKeyDown (GameKeys.B)) {
-                EquipmentInSlot(GameController.control.playerStats.slotB);
-			}
-            else if (Input.GetKeyDown(GameKeys.L))
+            if (Input.GetKeyDown(GameKeys.A))
             {
-                LActions();
+                EquipmentInSlot(GameController.control.playerStats.slotA);
             }
-
+            else if (Input.GetKeyDown(GameKeys.B))
+            {
+                EquipmentInSlot(GameController.control.playerStats.slotB);
+            }
+            else if (Input.GetKeyDown(GameKeys.R))
+            {
+                RActions();
+            }
             //if the player moves by input
-            if (movementDirection != Vector2.zero) {
-				if (Input.GetKeyDown ("space") && !target) {
-					//roll
-					anim.SetTrigger ("is_rolling");
-                } else {
-					//walk
-					anim.SetBool ("is_walking", true);
-					Move (1);
-				}
-			} else {
-				//idle
-				anim.SetBool ("is_walking", false);
-			}
-		}
+            else if (movementDirection != Vector2.zero)
+            {
+                //walk
+                anim.SetBool("is_walking", true);
+                Move(1);
+            }
+            else
+            {
+                //idle
+                anim.SetBool("is_walking", false);
+            }
+        }
+    }
 
     void UpdateMovementDirection()
     {
@@ -75,7 +73,7 @@ public class PlayerController : CharactersController
         if (lockedOrientation == false)
         {
             //If direction changed
-            if (movementDirection != characterOrientation)
+            if (movementDirection != CharacterOrientation)
             {
                 //If a key is pressed
                 if (movementDirection != Vector2.zero)
@@ -92,8 +90,8 @@ public class PlayerController : CharactersController
                         if (movementDirection.y != 0)
                             characterOrientation.x = 0;
                     }
-                    anim.SetFloat("input_x", characterOrientation.x);
-                    anim.SetFloat("input_y", characterOrientation.y);
+                    anim.SetFloat("input_x", CharacterOrientation.x);
+                    anim.SetFloat("input_y", CharacterOrientation.y);
                     lastInput = movementDirection;
                 }
             }
@@ -117,22 +115,22 @@ public class PlayerController : CharactersController
     {
         GameObject arrow = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject);
         
-        if (characterOrientation == Vector2.left)
+        if (CharacterOrientation == Vector2.left)
         {
             arrow.transform.position = transform.position + new Vector3(-0.5f, 0.28125f, 0);
             arrow.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
-        else if (characterOrientation == Vector2.right)
+        else if (CharacterOrientation == Vector2.right)
         {
             arrow.transform.position = transform.position + new Vector3(0.5625f, 0.40625f, 0);
             arrow.transform.rotation = Quaternion.Euler(0, 0, 270);
         }
-        else if (characterOrientation == Vector2.up)
+        else if (CharacterOrientation == Vector2.up)
         {
             arrow.transform.position = transform.position + new Vector3(-0.09375f, 1, 0);
             arrow.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (characterOrientation == Vector2.down)
+        else if (CharacterOrientation == Vector2.down)
         {
             arrow.transform.position = transform.position + new Vector3(0.09375f, 0, 0);
             arrow.transform.rotation = Quaternion.Euler(0, 0, 180);
@@ -146,17 +144,17 @@ public class PlayerController : CharactersController
     public void CreateBomb()
     {
         GameObject bomb;
-        if (GameController.control.playerStats.HaveEquipment(Equipments.RemoteBomb))
+        if (GameController.control.playerStats.HaveEquipment("Remote Bomb"))
             bomb = Instantiate(Resources.Load("Prefabs/RemoteBomb") as GameObject);
         else
             bomb = Instantiate(Resources.Load("Prefabs/Bomb") as GameObject);
-        if (characterOrientation == Vector2.right)
+        if (CharacterOrientation == Vector2.right)
             bomb.transform.position = transform.position + new Vector3(+0.75f, 0.25f, 0);
-        else if (characterOrientation == Vector2.left)
+        else if (CharacterOrientation == Vector2.left)
             bomb.transform.position = transform.position + new Vector3(-0.75f, 0.25f, 0);
-        else if (characterOrientation == Vector2.down)
+        else if (CharacterOrientation == Vector2.down)
             bomb.transform.position = transform.position + new Vector3(0, -0.25f, 0);
-        else if (characterOrientation == Vector2.up)
+        else if (CharacterOrientation == Vector2.up)
             bomb.transform.position = transform.position + new Vector3(0, 0.75f, 0);
         bomb.transform.rotation = Quaternion.Euler(0, 0, 0);
         GameController.control.AddToZIndex(bomb);
@@ -166,23 +164,23 @@ public class PlayerController : CharactersController
     /// performs actions according to the item passed in parameter
     /// </summary>
     /// <param name="item"></param>
-    private void EquipmentInSlot(Equipments item)
+    private void EquipmentInSlot(PlayerStats.InventorySlot slot)
     {
-        switch (item)
+        switch (slot.item.name)
         {
-            case Equipments.Sword:
+            case "sword":
                     anim.SetBool("is_sword", true);
                     return;
-            case Equipments.Bow:
+            case "bow":
                     anim.SetBool("is_bow", true);
                     return;
-            case Equipments.MoleClaws:
+            case "mole claws":
                     anim.SetTrigger("is_digging");
                     return;
-            case Equipments.Bomb:
+            case "bomb":
                     CreateBomb();
                     return;
-            case Equipments.RemoteBomb:
+            case "remote bomb":
                     CreateBomb();
                     return;
         }
@@ -192,12 +190,11 @@ public class PlayerController : CharactersController
     {
         if (!anim.GetBool("is_busy"))
         {
-            Debug.DrawLine(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + characterOrientation);
-            target = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + characterOrientation).transform;
+            Debug.DrawLine(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + CharacterOrientation);
+            target = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + CharacterOrientation).transform;
             string text = "";
             if (target)
             {
-                print(target.transform.gameObject.name);
                 if (target.transform.gameObject.tag == "MapObject")
                 {
                     text = "";
@@ -210,11 +207,13 @@ public class PlayerController : CharactersController
                 {
                     text = "Lift";
                 }
-                else if (target.transform.gameObject.GetComponent<ChestController>())
+                else if (target.GetComponent<ChestController>() && 
+                    target.GetComponent<ChestController>().state == false)
                 {
                     text = "Open";
                 }
-                else if (target.transform.gameObject.GetComponent<Activable>())
+                else if (target.GetComponent<Activable>() && 
+                    target.GetComponent<Activable>().state == false)
                 {
                     text = "Activate";
                 }
@@ -225,7 +224,7 @@ public class PlayerController : CharactersController
         }
     }
  
-    private void LActions()
+    private void RActions()
     {
         if (anim.GetBool("is_carrying"))
         {
@@ -237,16 +236,26 @@ public class PlayerController : CharactersController
             {
                 Grab();
             }
-            else if (target.transform.gameObject.GetComponent<Throwable>() != null)
+            else if (target.GetComponent<Throwable>() != null)
             {
                 Lift();
             }
-            //if the object in front is interactible
-            else if (target.GetComponent<Conditionable>())
+            else if (target.GetComponent<ChestController>() &&
+                    target.GetComponent<ChestController>().state == false)
             {
-                target.GetComponent<Conditionable>().action();
+                target.GetComponent<ChestController>().OpenChest();
             }
-        }      
+            else if (target.GetComponent<Activable>() &&
+                target.GetComponent<Activable>().state == false)
+            {
+                target.GetComponent<Activable>().ChangeState(true);
+            }
+        }
+        else if (movementDirection != Vector2.zero)
+        {
+            //roll
+            anim.SetTrigger("is_rolling");
+        }
     }
 
     void Grab()
@@ -258,9 +267,7 @@ public class PlayerController : CharactersController
 
         lockedOrientation = true;
         lockedMovement = true;
-
-       
-        StartCoroutine(WaitForKeyRelease(GameKeys.L, Release));
+        StartCoroutine(WaitForKeyRelease(GameKeys.R, Release));
     }
 
     void Release()
@@ -295,7 +302,7 @@ public class PlayerController : CharactersController
             grabbed.GetComponent<Collider2D>().isTrigger = true;
             grabbed.SetParent(targetParent);
 
-            StartCoroutine(grabbed.GetComponent<Throwable>().Propulse(movementDirection));
+            grabbed.GetComponent<Throwable>().Throw(movementDirection);
             grabbed = null;
         }
     }

@@ -13,7 +13,7 @@ public class Interaction_HurtTouch : MonoBehaviour {
     
     void OnCollisionEnter2D(Collision2D coll)
 	{
-		if ((hurtsPlayer && coll.gameObject.tag == "Player") || (hurtsEnemies && coll.gameObject.tag == "Enemy"))
+        if ((hurtsPlayer && coll.gameObject.tag == "Player") || (hurtsEnemies && coll.gameObject.tag == "Enemy"))
 		{
 			//Hurt the player with damages, and gives the hurter's position for the character to escape
 			coll.gameObject.GetComponent<LifeController>().Hurt(damages, this.transform.position);
@@ -21,7 +21,7 @@ public class Interaction_HurtTouch : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (useTrigger)
+        if (useTrigger && coll.isTrigger == false)
         {
             if ((hurtsPlayer && coll.gameObject.tag == "Player") || (hurtsEnemies && coll.gameObject.tag == "Enemy"))
             {

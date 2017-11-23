@@ -136,9 +136,10 @@ public class HUDController : MonoBehaviour
 	{
 		GameObject newHeart = GameObject.Instantiate (heart);
 		hearts.Add (newHeart);
-		newHeart.transform.SetParent (transform.Find ("LifeBar"));
+		newHeart.transform.SetParent (lifeBar.transform);
 		newHeart.name = "Heart" + heartNumber;
-		newHeart.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (heartNumber % 10 * 8, heartNumber / 10 * -8, 0f);
+        newHeart.transform.localScale = Vector3.one;
+		newHeart.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (heartNumber % 10 * 8, heartNumber / 10 * -8);
 		newHeart.GetComponent<Image> ().sprite = heartSprites [0];
 		if (heartNumber > 0)
 			hearts [heartNumber - 1].GetComponent<Image> ().sprite = heartSprites [5];
