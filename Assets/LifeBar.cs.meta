@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5c6cbda3c51ab104280caeae7823fb09
+timeCreated: 1511530067
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - heart: {fileID: 109628, guid: f9a7e30dd4126c347bbbeda84f4cb126, type: 2}
+  - heartSound: {fileID: 8300000, guid: 676b2a15e6d69a941b7c48c079f54d6b, type: 3}
+  - audioSource: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
