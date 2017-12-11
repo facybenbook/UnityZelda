@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 	public MapArea targetArea;
 	private bool transitionToNewTarget;
     private bool transitionArea;
+    private bool cameraBinding = true;
 	public int speed = 6;
 
 	public Vector2 min;
@@ -17,7 +18,7 @@ public class CameraController : MonoBehaviour
 	{
         if (target == null)
 		    target = GameObject.Find("Player").transform;
-	}
+    }
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
@@ -25,10 +26,6 @@ public class CameraController : MonoBehaviour
         {
             //boundaries from left top corner
             GetBoundaries();
-        }
-        else
-        {
-            Debug.LogWarning("boundary area not set for the camera");
         }
         Move ();
 	}
@@ -60,32 +57,45 @@ public class CameraController : MonoBehaviour
     public void TransitionArea(MapArea newArea)
     {
         transitionArea = true;
-        targetArea = newArea;
+        cameraBinding = false;
+        ChangeMap(newArea);
     }
 
 	private void Move ()
 	{
-        if (transitionArea && targetArea)
+        if (cameraBinding)
         {
-            transform.position = target.position;
-            if (transform.position == BindToArea())
-                transitionArea = false;
-        }
-		else if (transitionToNewTarget && target) {
-			transform.position = Vector3.MoveTowards (transform.position, target.position, pixelUnit);
-			if (transform.position == target.position)
-				transitionToNewTarget = false;
-		}
-        else if (target) {
-			transform.position = target.position;
-			//Bind to map limits
-            if (targetArea)
+            if (target)
             {
-                transform.position = BindToArea();
-                print("ok");
+                if (transitionToNewTarget)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, pixelUnit);
+                    if (transform.position == target.position)
+                        transitionToNewTarget = false;
+                }
+                else
+                {
+                    transform.position = target.position;
+                }
+                //Bind to map limits
+                if (targetArea)
+                {
+                    transform.position = BindToArea();
+                }
             }
-		}
-	}
+        }
+        else if (transitionArea && targetArea)
+        {
+            print(BindToArea());
+            transform.position = Vector3.MoveTowards(transform.position, BindToArea(), pixelUnit);
+            if (transform.position == BindToArea())
+            {
+                transitionArea = false;
+                cameraBinding = true;
+            }
+        }
+
+    }
     
     private Vector3 BindToArea()
     {

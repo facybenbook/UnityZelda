@@ -8,12 +8,6 @@ public class AreaTransitionController : MonoBehaviour
     public MapArea secondArea;
     public int transitionAreaSize;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag == "Player")
@@ -25,11 +19,11 @@ public class AreaTransitionController : MonoBehaviour
     IEnumerator WarpPlayer(Transform player)
     {
         GameController.control.PauseGame();
-        yield return (player.GetComponent<PlayerController>().Walk(transitionAreaSize));
         if (GameController.control.cameraController.targetArea == firstArea)
             GameController.control.cameraController.TransitionArea(secondArea);
         else
             GameController.control.cameraController.TransitionArea(firstArea);
+        yield return (player.GetComponent<PlayerController>().Walk(transitionAreaSize));
         GameController.control.ResumeGame();
     }
 }

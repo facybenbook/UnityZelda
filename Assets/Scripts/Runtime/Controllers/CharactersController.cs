@@ -104,9 +104,12 @@ public abstract class CharactersController : MonoBehaviour
     /// </summary>
     protected virtual void OnPause()
     {
+        anim.speed = 0;
     }
 
     protected virtual void OnResume()
     {
+
+        anim.speed = 1;
     }
 }
