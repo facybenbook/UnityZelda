@@ -7,16 +7,21 @@ public class CameraController : MonoBehaviour
 	public MapArea targetArea;
 	private bool transitionToNewTarget;
     private bool transitionArea;
-	public int speed;
+	public int speed = 6;
 
 	public Vector2 min;
 	public Vector2 max;
-	private float pixelUnit;
+	private float pixelUnit = 0.625f;
 	// Use this for initialization
 	void Start ()
 	{
-		pixelUnit = 0.625f;
-        if (targetArea != null)
+        if (target == null)
+		    target = GameObject.Find("Player").transform;
+	}
+	// Update is called once per frame
+	void FixedUpdate ()
+	{
+        if ((max == Vector2.zero || min == Vector2.zero) && targetArea)
         {
             //boundaries from left top corner
             GetBoundaries();
@@ -25,14 +30,7 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogWarning("boundary area not set for the camera");
         }
-		speed = 6;
-        if (target == null)
-		    target = GameObject.Find("Player").transform;
-	}
-	// Update is called once per frame
-	void FixedUpdate ()
-	{
-		Move ();
+        Move ();
 	}
 
 	public void ChangeTarget (GameObject newTarget, bool transition)
@@ -67,26 +65,24 @@ public class CameraController : MonoBehaviour
 
 	private void Move ()
 	{
-        if (transitionArea)
+        if (transitionArea && targetArea)
         {
-            if (targetArea)
-            {
-                transform.position = target.position;
-                if (transform.position == BindToArea())
-                    transitionArea = false;
-            }
+            transform.position = target.position;
+            if (transform.position == BindToArea())
+                transitionArea = false;
         }
-		else if (transitionToNewTarget) {
+		else if (transitionToNewTarget && target) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, pixelUnit);
 			if (transform.position == target.position)
 				transitionToNewTarget = false;
 		}
-        else if (target != null) {
+        else if (target) {
 			transform.position = target.position;
 			//Bind to map limits
             if (targetArea)
             {
                 transform.position = BindToArea();
+                print("ok");
             }
 		}
 	}
@@ -94,19 +90,19 @@ public class CameraController : MonoBehaviour
     private Vector3 BindToArea()
     {
         Vector3 binding = transform.position;
-
         if (transform.position.x + 7.5f > max.x || transform.position.x - 7.5f < min.x)
             binding.x = transform.position.x + 7.5f > max.x ? max.x - 7.5f : min.x + 7.5f;
-        if (transform.position.y + 5 > min.y || transform.position.y - 5 < max.y)
-            binding.y = transform.position.y + 5 > min.y ? min.y - 5f : max.y + 5f;
+        if (transform.position.y + 5 > max.y || transform.position.y - 5 < min.y)
+            binding.y = transform.position.y + 5 > max.y ? max.y - 5 : min.y + 5;
         return binding;
     }
 
     private void GetBoundaries()
     {
+        //goes in the direction: /
         min.x = targetArea.transform.position.x;
         max.x = (min.x + targetArea.area.x);
-        min.y = targetArea.transform.position.y;
-        max.y = (min.y - targetArea.area.y);
+        max.y = targetArea.transform.position.y;
+        min.y = (max.y - targetArea.area.y);
     }
 }
