@@ -8,50 +8,53 @@ public class PlayerController : CharactersController
     Transform target;
     Transform grabbed;
     Transform targetParent;
+    private bool automatedAction;
 
     protected override void Start()
     {
         base.Start();
-        
+        automatedAction = false;
         anim.SetFloat("input_x", CharacterOrientation.x);
         anim.SetFloat("input_y", CharacterOrientation.y);
     }
 
     protected override void Action()
     {
-        //update the label for the R button action
-        GetObjectInFront();
-
-        rbody.velocity = Vector3.zero;
-        //is busy if a blocking animation is playing
-        if (!GameController.control.gamePaused && anim.GetBool("is_busy") == false)
+        if (!automatedAction && !anim.GetBool("stop_action"))
         {
-            //get the axis
-            UpdateMovementDirection();
-            UpdateOrientation();
-            if (Input.GetKeyDown(GameKeys.A))
+            //update the label for the R button action
+            GetObjectInFront();
+            rbody.velocity = Vector3.zero;
+            //is busy if a blocking animation is playing
+            if (!GameController.control.gamePaused && !anim.GetBool("is_busy"))
             {
-                EquipmentInSlot(GameController.control.playerStats.slotA);
-            }
-            else if (Input.GetKeyDown(GameKeys.B))
-            {
-                EquipmentInSlot(GameController.control.playerStats.slotB);
-            }
-            else if (Input.GetKeyDown(GameKeys.R))
-            {
-                RActions();
-            }
-            //if the player moves by input
-            else if (movementDirection != Vector2.zero)
-            {
-                //walk
-                anim.SetBool("is_walking", true);
-                Move(1);
-            }
-            else
-            {
-                //idle
-                anim.SetBool("is_walking", false);
+                //get the axis
+                UpdateMovementDirection();
+                UpdateOrientation();
+                if (Input.GetKeyDown(GameKeys.A))
+                {
+                    EquipmentInSlot(GameController.control.playerStats.slotA);
+                }
+                else if (Input.GetKeyDown(GameKeys.B))
+                {
+                    EquipmentInSlot(GameController.control.playerStats.slotB);
+                }
+                else if (Input.GetKeyDown(GameKeys.R))
+                {
+                    RActions();
+                }
+                //if the player moves by input
+                else if (movementDirection != Vector2.zero)
+                {
+                    //walk
+                    anim.SetBool("is_walking", true);
+                    Move(1);
+                }
+                else
+                {
+                    //idle
+                    anim.SetBool("is_walking", false);
+                }
             }
         }
     }
@@ -66,6 +69,22 @@ public class PlayerController : CharactersController
                 lastInput = movementDirection;
             movementDirection = new Vector2(lastInput.x == 0 ? 0 : movementDirection.x, lastInput.y == 0 ? 0 : movementDirection.y);
         }
+    }
+
+    public IEnumerator Walk(float tiles)
+    {
+        GameController.control.PauseGame();
+        automatedAction = true;
+        anim.SetBool("is_walking", true);
+        while (tiles >= 0)
+        {
+            Move(1);
+            tiles -= 0.625f * transform.lossyScale.x * pixelPerFrameSpeed * Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        anim.SetBool("is_walking", false);
+        automatedAction = false;
+        GameController.control.ResumeGame();
     }
 
     void UpdateOrientation()
@@ -164,7 +183,7 @@ public class PlayerController : CharactersController
     /// performs actions according to the item passed in parameter
     /// </summary>
     /// <param name="item"></param>
-    private void EquipmentInSlot(PlayerStats.InventorySlot slot)
+    private void EquipmentInSlot(InventorySlot slot)
     {
         switch (slot.item.name)
         {

@@ -49,6 +49,7 @@ public class SceneStats
         }
     }
 }
+
 [Serializable]
 public class PlayerStats
 {
@@ -99,25 +100,23 @@ public class PlayerStats
         return false;
     }
 
-    [Serializable]
-    public class InventorySlot
-    {
-        public enum BottleContent : int { None = -1, Empty = 0, Fairy = 1, Water = 2, RedPotion = 3, BluePotion = 4 };
-
-        public int position;
-        public InventoryItem item;
-        public BottleContent content = BottleContent.Fairy;
-
-        public InventorySlot(InventoryItem item)
-        {
-            this.item = item;
-        }
-        
-    }
-
 }
-public class GameKeys
+[Serializable]
+public class InventorySlot
 {
+    public enum BottleContent : int { None = -1, Empty = 0, Fairy = 1, Water = 2, RedPotion = 3, BluePotion = 4 };
+
+    public int position;
+    public InventoryItem item;
+    public BottleContent content = BottleContent.Fairy;
+
+    public InventorySlot(InventoryItem item)
+    {
+        this.item = item;
+    }
+}
+
+public class GameKeys {
     public const KeyCode A = KeyCode.A;
     public const KeyCode B = KeyCode.B;
     public const KeyCode R = KeyCode.R;
@@ -156,8 +155,9 @@ public class GameController : MonoBehaviour {
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;
         currentScene = new SceneStats();
-        Screen.SetResolution(240, 160, false);
+        Screen.SetResolution(480, 320, false);
     }
+
 	void Update () {
 		if (playerStats.health <= 0)
 			GameOver ();
@@ -182,7 +182,8 @@ public class GameController : MonoBehaviour {
 		file.Close ();
 
 	}
-	public void Load(int saveNumber) {
+
+    public void Load(int saveNumber) {
 		if (File.Exists (Application.persistentDataPath + "/save"+ saveNumber +".dat")) 
 		{
 			BinaryFormatter bf = new BinaryFormatter ();
@@ -201,55 +202,63 @@ public class GameController : MonoBehaviour {
         return go;
     }
 
+    //-----------------------------------
+
 	public void GameOver()	{
 		gameOverState = true;
 	}
-	public void PauseGame() {
+
+    public void PauseGame() {
 		gamePaused = true;
 		foreach (Animator go in FindObjectsOfType<Animator>()) {
 			if (go.tag != "GUI") 
 			{
 				go.SendMessage ("OnPause", SendMessageOptions.DontRequireReceiver);
-                go.GetComponent<Animator>().speed = 0;
 			}
 		}
 	}
-	public void ResumeGame() {
+
+    public void ResumeGame() {
 		gamePaused = false;
         foreach (Animator go in FindObjectsOfType<Animator>())
         {
             if (go.tag != "GUI")
             {
-				go.GetComponent<Animator> ().speed = 1;
 				go.SendMessage ("OnResume", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
 
-	public IEnumerator DisplayMessage(string text)
+    //-----------------------------------
+
+    public IEnumerator DisplayMessage(string text)
 	{
         PauseGame();
 		yield return guiController.hud.messageBox.DisplayMessage (text);
         ResumeGame();
 	}
-	public IEnumerator NewHeart()
+
+    public IEnumerator NewHeart()
 	{
 		bool pausedEnter = gamePaused;
 		if (gamePaused == false)
 		PauseGame ();
-		//if true, NewHeartPiece has been calling the method
-		if (pausedEnter == false)
+        player.GetComponent<Animator>().SetBool("stop_action", true);
+        //if true, NewHeartPiece has been calling the method
+        if (pausedEnter == false)
 			yield return DisplayMessage ("You got a new heart container, you're harder, better, faster, stronger !");
 		playerStats.maxHealth += 4;
 		playerStats.health = playerStats.maxHealth;
-        guiController.hud.UpdateLife();
+        guiController.hud.lifeBar.UpdateLife();
 		ResumeGame ();
 	}
-	public IEnumerator NewHeartPiece()
+
+    public IEnumerator NewHeartPiece()
 	{
 		PauseGame ();
 		playerStats.containerPieces++;
-		if (playerStats.containerPieces == 4) {
+        player.GetComponent<Animator>().SetBool("stop_action", true);
+        if (playerStats.containerPieces == 4) {
 			yield return DisplayMessage("You found 4 heart pieces, the 4 pieces make a whole heart container !");
 			yield return NewHeart();
 			playerStats.containerPieces = 0;
@@ -259,7 +268,8 @@ public class GameController : MonoBehaviour {
 		if (gamePaused == true)
 			ResumeGame ();
     }
-	public IEnumerator AddRupees(int amount, bool isDrop)
+
+    public IEnumerator AddRupees(int amount, bool isDrop)
     {
         if (amount != 0)
         {
@@ -307,7 +317,7 @@ public class GameController : MonoBehaviour {
 		playerStats.health += amount;
 		if (playerStats.health > playerStats.maxHealth)
 			playerStats.health = playerStats.maxHealth;
-        guiController.hud.UpdateLife ();
+        guiController.hud.lifeBar.UpdateLife ();
 	}
 
 	public void ChangeRupeeStash(string size)

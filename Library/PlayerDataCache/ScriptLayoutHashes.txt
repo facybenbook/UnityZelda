@@ -102,6 +102,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 af723155c251fcfa0e66530a75f3ea4c UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Interaction_PlayerSword
+8311c47aaece6b7ea763d0e170d83d11 Assembly-CSharp.dll:.LifeBar
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -201,6 +202,6 @@ a1a5d6cca21ea046807aed7846c0c177 Assembly-CSharp.dll:.PixelPerfectCamera
 d146d3d8148b2f35a8c7980d63a88f0e Assembly-CSharp.dll:.CanvasWorldScaler
 329bcbf88b3c0197d230f5b9ceb88333 Assembly-CSharp.dll:Tiled2Unity.TmxObject
 701e09fe0804e758b2a6a23c5762ffab Assembly-CSharp.dll:.RoundedBoxCollider2D
-95d09b691a6512b1c3bc62dd7b86e158 Assembly-CSharp.dll:.HUDController
+0557fd2094696c7467cf668691c6dc17 Assembly-CSharp.dll:.HUDController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EndOfRecoverTime
 5a0fa72fbec6e36b88173f6bebf481b1 Assembly-CSharp.dll:.MessageBox

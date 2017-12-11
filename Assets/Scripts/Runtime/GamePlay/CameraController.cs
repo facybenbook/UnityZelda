@@ -4,29 +4,33 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
 	public Transform target;
-	public GameObject mapTarget;
+	public MapArea targetArea;
 	private bool transitionToNewTarget;
+    private bool transitionArea;
 	public int speed;
 
-	private float minX;
-	private float minY;
-	private float maxX;
-	private float maxY;
+	public Vector2 min;
+	public Vector2 max;
 	private float pixelUnit;
 	// Use this for initialization
 	void Start ()
 	{
 		pixelUnit = 0.625f;
-		//boundaries from left top corner
-		minX = mapTarget.transform.position.x * mapTarget.transform.lossyScale.x;
-		maxX = (minX + mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesWide) * mapTarget.transform.lossyScale.x;
-		minY = mapTarget.transform.position.y * mapTarget.transform.lossyScale.y;
-		maxY = (minY - mapTarget.GetComponent<Tiled2Unity.TiledMap> ().NumTilesHigh) * mapTarget.transform.lossyScale.x;
+        if (targetArea != null)
+        {
+            //boundaries from left top corner
+            GetBoundaries();
+        }
+        else
+        {
+            Debug.LogWarning("boundary area not set for the camera");
+        }
 		speed = 6;
-		target = GameObject.Find("Player").transform;
+        if (target == null)
+		    target = GameObject.Find("Player").transform;
 	}
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
 		Move ();
 	}
@@ -39,42 +43,70 @@ public class CameraController : MonoBehaviour
 			transitionToNewTarget = transition;
 		}
 	}
-	public void ChangeMap (GameObject newMap)
+	public void ChangeMap (MapArea newArea)
 	{
-        if (newMap != null)
+        if (newArea != null)
         {
-            mapTarget = newMap;
-            minX = mapTarget.transform.position.x;
-            maxX = (minX + mapTarget.GetComponent<Tiled2Unity.TiledMap>().NumTilesWide);
-            minY = mapTarget.transform.position.y;
-            maxY = (minY - mapTarget.GetComponent<Tiled2Unity.TiledMap>().NumTilesHigh);
+            targetArea = newArea;
+            GetBoundaries();
         }
         else
         {
-            minX = 0;
-            maxX = 15;
-            minY = 0;
-            maxY = 10;
+            min.x = 0;
+            max.x = 15;
+            min.y = 0;
+            max.y = 10;
         }
 	}
 
+    public void TransitionArea(MapArea newArea)
+    {
+        transitionArea = true;
+        targetArea = newArea;
+    }
+
 	private void Move ()
 	{
-		if (transitionToNewTarget) {
+        if (transitionArea)
+        {
+            if (targetArea)
+            {
+                transform.position = target.position;
+                if (transform.position == BindToArea())
+                    transitionArea = false;
+            }
+        }
+		else if (transitionToNewTarget) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, pixelUnit);
 			if (transform.position == target.position)
 				transitionToNewTarget = false;
-		} else if (target != null) {
+		}
+        else if (target != null) {
 			transform.position = target.position;
 			//Bind to map limits
-			if (transform.position.x + 7.5 > maxX) {
-				transform.position = new Vector3 (maxX - 7.5f, transform.position.y, 0);
-			} else if (transform.position.x - 7.5 < minX)
-				transform.position = new Vector3 (minX + 7.5f, transform.position.y, 0);
-			if (transform.position.y - 5 < maxY) {
-				transform.position = new Vector3 (transform.position.x, maxY + 5f, 0);
-			} else if (transform.position.y + 5 > minY)
-				transform.position = new Vector3 (transform.position.x, minY - 5f, 0);
+            if (targetArea)
+            {
+                transform.position = BindToArea();
+            }
 		}
 	}
+    
+    private Vector3 BindToArea()
+    {
+        Vector3 binding = transform.position;
+
+        if (transform.position.x + 7.5f > max.x || transform.position.x - 7.5f < min.x)
+            binding.x = transform.position.x + 7.5f > max.x ? max.x - 7.5f : min.x + 7.5f;
+        if (transform.position.y + 5 > min.y || transform.position.y - 5 < max.y)
+            binding.y = transform.position.y + 5 > min.y ? min.y - 5f : max.y + 5f;
+        return binding;
+    }
+
+    private void GetBoundaries()
+    {
+        min.x = targetArea.transform.position.x;
+        max.x = (min.x + targetArea.area.x);
+        min.y = targetArea.transform.position.y;
+        max.y = (min.y - targetArea.area.y);
+    }
 }

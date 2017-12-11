@@ -28,7 +28,7 @@ TagManager:
   - 
   - SortableZ
   - Map
-  - 
+  - Editor
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Overall
     uniqueID: 635837423
+    locked: 0
+  - name: Editor
+    uniqueID: 3843616101
     locked: 0

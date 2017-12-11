@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WarpController : MonoBehaviour {
+
     public enum direction {up, down, left, right};
 	public WarpController destinationWarp;
-    public GameObject currentMap;
+    public MapArea area;
     public direction playerLookAtArrival;
     public bool insideMap;
-    private static int mapPlacement; 
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
@@ -30,8 +30,9 @@ public class WarpController : MonoBehaviour {
         tmp.a = 0;
         GameController.control.guiController.transitionLayer.GetComponent<Image>().color = tmp;
         yield return GameController.control.guiController.FadeIn(0.2f);
-        destinationWarp.currentMap.SetActive(true);
-        GameController.control.cameraController.ChangeMap(destinationWarp.currentMap);
+        if (destinationWarp.area.map != area.map)
+            destinationWarp.area.map.SetActive(true);
+        GameController.control.cameraController.ChangeMap(destinationWarp.area);
         player.SetParent(destinationWarp.transform.parent);
         //position the player depending on which direction the warp is
         switch (destinationWarp.playerLookAtArrival)
@@ -55,9 +56,9 @@ public class WarpController : MonoBehaviour {
             default:
                 break;
         }
-        //WIP
         yield return StartCoroutine(GameController.control.guiController.FadeOut(0.2f));
-        currentMap.SetActive(false);
+        if (destinationWarp.area.map != area.map)
+            area.map.SetActive(false);
         GameController.control.ResumeGame();
     }
 }

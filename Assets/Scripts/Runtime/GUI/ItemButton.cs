@@ -7,7 +7,7 @@ public class ItemButton : MonoBehaviour {
     public enum WhichButton {A, B, L, R};
     public WhichButton whichButton;
     public Image sprite;
-    protected PlayerStats.InventorySlot currentItem;
+    protected InventorySlot currentItem;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class ItemButton : MonoBehaviour {
         }
     }
 
-    void UpdateSprite(PlayerStats.InventorySlot slot)
+    void UpdateSprite(InventorySlot slot)
     {
         sprite.sprite = slot.item.icon;
     }

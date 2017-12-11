@@ -33,7 +33,6 @@ public class Collectible : MonoBehaviour {
 			    }
 		    case CollectibleType.Container:
 			    {
-                    print("yes");
 				    if (coll.gameObject.name == "Player") {
 					    yield return StartCoroutine (GameController.control.NewHeart ());
 					    Destroy (gameObject);
@@ -44,7 +43,7 @@ public class Collectible : MonoBehaviour {
 			    {
 				    if (coll.gameObject.name == "Player") {
 					    yield return StartCoroutine (GameController.control.NewHeartPiece ());
-					    Destroy (this.gameObject);
+					    Destroy (gameObject);
 				    }
 				    break;
 			    }

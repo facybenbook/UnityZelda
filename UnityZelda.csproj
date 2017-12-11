@@ -219,6 +219,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AreaTransitionController.cs" />
+    <Compile Include="Assets\CleanStates.cs" />
     <Compile Include="Assets\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\ArcCollider2D.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\BezierCurveCollider2D.cs" />
@@ -248,6 +250,8 @@
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileLayer.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileObject.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
+    <Compile Include="Assets\LifeBar.cs" />
+    <Compile Include="Assets\MapArea.cs" />
     <Compile Include="Assets\Scripts\Runtime\AI\Chuchu_AI.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\BowState.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\DestroyAfterAnimation.cs" />
@@ -300,6 +304,7 @@
   <ItemGroup>
     <None Include="Assets\Extensions\PixelPerfectCamera\README.txt" />
     <None Include="Assets\Extensions\PixelPerfectCamera\background_art_license.txt" />
+    <None Include="Assets\Extensions\Tiled2Unity\Imported\MiniDungeon.tiled2unity.xml" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\cave.tiled2unity.xml" />
     <None Include="Assets\Extensions\Tiled2Unity\Imported\horon-2.tiled2unity.xml" />
