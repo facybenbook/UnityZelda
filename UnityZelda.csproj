@@ -252,6 +252,7 @@
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
     <Compile Include="Assets\LifeBar.cs" />
     <Compile Include="Assets\MapArea.cs" />
+    <Compile Include="Assets\RoomController.cs" />
     <Compile Include="Assets\Scripts\Runtime\AI\Chuchu_AI.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\BowState.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\DestroyAfterAnimation.cs" />
