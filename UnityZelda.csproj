@@ -262,14 +262,15 @@
     <Compile Include="Assets\Scripts\Runtime\Animations\SwordAnimation.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\WaitForEnd.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\waitForFrames.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Controllers\ActorController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\ArrowController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\BombController.cs" />
-    <Compile Include="Assets\Scripts\Runtime\Controllers\CharactersController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\GUIController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\HUDController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\LifeController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Controllers\PNJController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\SoundController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\WarpController.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameEvent.cs" />

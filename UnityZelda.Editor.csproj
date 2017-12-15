@@ -298,6 +298,7 @@
     <Compile Include="Assets\Scripts\Editor\BitmapFontImporter.cs" />
     <Compile Include="Assets\Scripts\Editor\CreateInventoryItemList.cs" />
     <Compile Include="Assets\Scripts\Editor\InventoryItemEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\PNJControllerEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\SpritePixelsPerUnitChanger.cs" />
   </ItemGroup>
   <ItemGroup>

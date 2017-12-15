@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Chuchu_AI : CharactersController
+public class Chuchu_AI : ActorController
 {
 	bool hidden;
 

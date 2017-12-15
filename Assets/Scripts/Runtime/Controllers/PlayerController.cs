@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class PlayerController : CharactersController
+public class PlayerController : ActorController
 {
     public Vector2 lastInput;
     Transform target;
