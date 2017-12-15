@@ -9,6 +9,7 @@ public class PNJController : ActorController {
     public MovementPattern movementPattern;
     Pattern pattern;
     public Transform movementTarget;
+    public float frequency;
     public MovementType movementType;
     Type type;
 

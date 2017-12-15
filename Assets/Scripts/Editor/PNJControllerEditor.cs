@@ -21,6 +21,11 @@ public class PNJControllerEditor : Editor {
         {
             myTarget.movementTarget = (Transform)EditorGUILayout.ObjectField("Target", myTarget.movementTarget, typeof(Transform), true);
         }
+        else if (myTarget.movementPattern == MovementPattern.Random)
+        {
+            myTarget.frequency = EditorGUILayout.FloatField("Frequency", myTarget.frequency);
+        }
+
 
         myTarget.movementType = (MovementType)EditorGUILayout.EnumPopup("Movement TYpe", myTarget.movementType);
 
