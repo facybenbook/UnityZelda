@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -80,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AI_Vision.cs" />
     <Compile Include="Assets\CreateInventoryItemList.cs" />
     <Compile Include="Assets\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Extensions\Custom 2D Colliders\Scripts\ArcCollider2D.cs" />
@@ -112,20 +109,19 @@
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileLayer.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TileObject.cs" />
     <Compile Include="Assets\Extensions\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
-    <Compile Include="Assets\FollowPlayer.cs" />
     <Compile Include="Assets\InventoryItem.cs" />
     <Compile Include="Assets\InventoryItemEditor.cs" />
     <Compile Include="Assets\InventoryItemList.cs" />
-    <Compile Include="Assets\ItemButtonScript.cs" />
-    <Compile Include="Assets\MushroomScript.cs" />
+    <Compile Include="Assets\MapManager.cs" />
+    <Compile Include="Assets\Scripts\Runtime\AI\Chuchu_AI.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\BowState.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\DestroyAfterAnimation.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\EndOfRecoverTime.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\Player_Charging.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Animations\RollingAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Animations\SwordAnimation.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\WaitForEnd.cs" />
     <Compile Include="Assets\Scripts\Runtime\Animations\waitForFrames.cs" />
-    <Compile Include="Assets\Scripts\Runtime\BackgroundImageOffset.cs" />
-    <Compile Include="Assets\Scripts\Runtime\Chuchu_AI.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\ArrowController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\BombController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\CharactersController.cs" />
@@ -136,7 +132,6 @@
     <Compile Include="Assets\Scripts\Runtime\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\SoundController.cs" />
     <Compile Include="Assets\Scripts\Runtime\Controllers\WarpController.cs" />
-    <Compile Include="Assets\Scripts\Runtime\ElementsBarScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Runtime\GamePlay\Activable.cs" />
     <Compile Include="Assets\Scripts\Runtime\GamePlay\BreakableWallController.cs" />
@@ -145,25 +140,25 @@
     <Compile Include="Assets\Scripts\Runtime\GamePlay\Collectible.cs" />
     <Compile Include="Assets\Scripts\Runtime\GamePlay\Conditionable.cs" />
     <Compile Include="Assets\Scripts\Runtime\GamePlay\Destructible.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GamePlay\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Runtime\GamePlay\HighlightFix.cs" />
     <Compile Include="Assets\Scripts\Runtime\GamePlay\MessageBox.cs" />
-    <Compile Include="Assets\Scripts\Runtime\GamePlay\Switch.cs" />
-    <Compile Include="Assets\Scripts\Runtime\HealthBarScript.cs" />
-    <Compile Include="Assets\Scripts\Runtime\ImageScroll.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GamePlay\PressurePlate.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\ElementsBarScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\HealthBarScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\HeartContainerScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\ImageScrollScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\InventoryPageScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\ItemButtonScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\GUI\SlotDetailsScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\Interaction_HurtTouch.cs" />
     <Compile Include="Assets\Scripts\Runtime\Interaction_PlayerSword.cs" />
-    <Compile Include="Assets\Scripts\Runtime\InventoryPage.cs" />
-    <Compile Include="Assets\Scripts\Runtime\MenuHeartContainerScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\MushroomScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Runtime\RollingAnimationScript.cs" />
     <Compile Include="Assets\Scripts\Runtime\RupeeStash.cs" />
-    <Compile Include="Assets\Scripts\Runtime\SlotDetailsScript.cs" />
-    <Compile Include="Assets\Scripts\Runtime\SwordScript.cs" />
+    <Compile Include="Assets\Scripts\Runtime\stretchBetween.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Throwable.cs" />
     <Compile Include="Assets\Scripts\Runtime\ZIndex.cs" />
-    <Compile Include="Assets\stretchBetween.cs" />
-    <Compile Include="Assets\Throwable.cs" />
-    <Compile Include="Assets\WarpCentralizer.cs" />
-    <Compile Include="Assets\WarpControllerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extensions\PixelPerfectCamera\README.txt" />

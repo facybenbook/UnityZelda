@@ -6,42 +6,35 @@ using UnityEngine;
 public class Conditionable : MonoBehaviour
 {
     public bool state;
-    public bool visible = true;
     public List<Conditionable> conditions = new List<Conditionable>();
     public DoSomething action;
-    void Start()
+
+    protected virtual void Start()
     {
-        action = Nothing;
         state = false;
     }
 
-    public void OnCheckConditions()
+    public virtual void OnCheckConditions()
     {
-        if (visible == false)
+        if (conditions.Count > 0)
         {
-            if (state == false)
+            state = true;
+            foreach (Conditionable trigger in conditions)
             {
-                if (conditions.Count > 0)
+                if (trigger == null)
                 {
-                    foreach (Conditionable trigger in conditions)
-                    {
-                        if (trigger == null)
-                        {
-                            Debug.Log(gameObject.name + ", " + gameObject.transform.position + " condition not set");
-                            return;
-                        }
-                        if (trigger.state == false)
-                            return;
-                    }
-                    action();
-                    state = true;
+                    Debug.Log(gameObject.name + ", " + gameObject.transform.position + " condition not set");
+                    state = false;
+                }
+                if (trigger.state == false)
+                {
+                    state = false;
                 }
             }
+            action();
         }
     }
 
     public delegate void DoSomething();
-
-    void Nothing()
-    { }
+    
 }
