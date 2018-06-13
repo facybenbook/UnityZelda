@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 38929a7a77bf8d94e9275255aefe932d
-timeCreated: 1507487277
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Rupees_0
@@ -22,7 +20,8 @@ TextureImporter:
     21300030: Rupees_15
     21300032: Rupees_16
     21300034: Rupees_17
-  serializedVersion: 4
+  externalObjects: {}
+  serializedVersion: 5
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -62,33 +61,41 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -114,6 +121,12 @@ TextureImporter:
         - {x: 3.5, y: 4}
         - {x: 0.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2d66acb35671f94aa8720a5b8db743a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_1
       rect:
@@ -132,6 +145,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 159bdd81c53dec34aaddaf65a864fb78
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_2
       rect:
@@ -150,6 +169,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 320883caf309de948b713c2d6661cff0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_3
       rect:
@@ -172,6 +197,12 @@ TextureImporter:
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 96172f8d3c33c7744af603bf03587d47
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_4
       rect:
@@ -190,6 +221,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 1fe052f44c0e4b14490e9492d6ff6a60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_5
       rect:
@@ -208,6 +245,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 685b95cc02b693d4c871ab11dfa1537f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_6
       rect:
@@ -230,6 +273,12 @@ TextureImporter:
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 43088a719366bb9468425de62da4cc38
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_7
       rect:
@@ -248,6 +297,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 187d28cb3e8a6594d8a9364ee1b1d8d4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_8
       rect:
@@ -266,6 +321,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b1012a126db9fe4795268f454127973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_9
       rect:
@@ -288,6 +349,12 @@ TextureImporter:
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: d328e4638501b6248a0f2a68f9038cbc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_10
       rect:
@@ -306,6 +373,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a223e45187055d49b1e90c79d4ff258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_11
       rect:
@@ -324,6 +397,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 18812359f7ce01442abfb295748863ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_12
       rect:
@@ -346,6 +425,12 @@ TextureImporter:
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 78016bf91d7950441868ae14a1348dea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_13
       rect:
@@ -364,6 +449,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 1b0f70281ccb99e4db2066c14ac1962d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_14
       rect:
@@ -382,6 +473,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d05b1faa7ca75e4ca851d606c4ef7d9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_15
       rect:
@@ -404,6 +501,12 @@ TextureImporter:
         - {x: 3.5, y: -4}
         - {x: 3.5, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: b633851419f027547ab8a4d670967da2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_16
       rect:
@@ -422,6 +525,12 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 66bbf02bc22f48445b746bdbd53db06b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_17
       rect:
@@ -440,8 +549,20 @@ TextureImporter:
         - {x: 3.5, y: -7}
         - {x: 3.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 739ac7c583c48574d9f32c3766ceecfe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

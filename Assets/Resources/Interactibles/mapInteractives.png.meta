@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: ec3e7b0cd7ee93b4cbcefee8e49c1137
-timeCreated: 1506963683
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: mapInteractives_0
@@ -9,7 +7,9 @@ TextureImporter:
     21300004: mapInteractives_2
     21300006: mapInteractives_3
     21300008: mapInteractives_4
-  serializedVersion: 4
+    21300010: mapInteractives_5
+  externalObjects: {}
+  serializedVersion: 6
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -27,6 +27,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -37,7 +39,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -49,33 +51,41 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -88,19 +98,17 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 5, y: 8}
-        - {x: -5, y: 8}
-        - {x: -8, y: 6}
-        - {x: -8, y: -6}
-        - {x: -5, y: -8}
-        - {x: 5, y: -8}
-        - {x: 8, y: -6}
-        - {x: 8, y: 6}
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 65d090488fd39fa4bab7a57d0b492a5f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: mapInteractives_1
       rect:
@@ -110,20 +118,17 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -7, y: 7}
-        - {x: -8, y: 2}
-        - {x: -8, y: -2}
-        - {x: -7, y: -6}
-        - {x: 7, y: -6}
-        - {x: 7, y: 0}
-        - {x: 6, y: 6}
-        - {x: 0, y: 8}
-        - {x: -2, y: 8}
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 76b4e84ba9ee43f49a0cf106b0572b58
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: mapInteractives_2
       rect:
@@ -133,15 +138,17 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 7}
-        - {x: -8, y: -5}
-        - {x: 8, y: -5}
-        - {x: 8, y: 7}
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 978660f72a1703f43ae145f7d313f7e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: mapInteractives_3
       rect:
@@ -151,18 +158,39 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 4, y: 8}
-        - {x: -1, y: -2}
-        - {x: 4, y: -2}
-        - {x: 8, y: 4}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 481bcd2f49424fc4892ffd9058c1e8e5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: mapInteractives_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a67155f123af83469aadfc5ca506df0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapInteractives_5
       rect:
         serializedVersion: 2
         x: 48
@@ -170,17 +198,25 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 7254f348d09be884e9a22fb21f7341c9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 37e47bd774fbbe041ad5e9eb0c9dc551
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

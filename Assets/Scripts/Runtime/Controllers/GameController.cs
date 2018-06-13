@@ -25,7 +25,7 @@ public class SceneStats
         List<GameObject> data = new List<GameObject>();
         foreach (Transform child in gameObjects.transform)
         {
-            if (child.gameObject.GetComponent<Conditionable>())
+            if (child.gameObject.GetComponent<LogicMechanism>())
             {
                 data.Add(child.gameObject);
             }
@@ -139,9 +139,9 @@ public class GameController : MonoBehaviour {
 	public PlayerStats playerStats;
 	public bool gameOverState = false;
 	public bool gamePaused = false;
-    public SceneStats currentScene;
-    GameObject player;
-    public CameraController cameraController;
+    public GameObject[] sceneObjects;
+    public PlayerController player;
+    //public CameraController cameraController;
 	public GUIController guiController;
 	public bool firstOneRupee;
 	public bool firstFiveRupee;
@@ -157,13 +157,11 @@ public class GameController : MonoBehaviour {
 		}
 		else if (control != this)
 			Destroy (gameObject);
-        player = GameObject.Find("Player");
-        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
-        guiController = GameObject.Find("GUI").GetComponent<GUIController>();
-        zIndexManager = GameObject.Find("ZIndexManager").GetComponent<ZIndex>();
+        //cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        //guiController = GameObject.Find("GUI").GetComponent<GUIController>();
 		//globally set the FPS to 60 maximum;
 		Application.targetFrameRate = 60;
-        currentScene = new SceneStats();
+        sceneObjects = FindObjectsOfType<GameObject>();
 	}
 	void Update () {
 		if (playerStats.health <= 0)
@@ -213,7 +211,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void PauseGame() {
 		gamePaused = true;
-		foreach (GameObject go in currentScene.objects) {
+		foreach (GameObject go in sceneObjects) {
 			if (go != null)
 			{
 				if (go.tag != "GUI") 
@@ -229,7 +227,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void ResumeGame() {
 		gamePaused = false;
-		foreach (GameObject go in currentScene.objects) {
+		foreach (GameObject go in sceneObjects) {
 			//don't affect the GUI when pausing
 			if (go != null) {
 				if (go.tag != "GUI") {				
@@ -299,7 +297,6 @@ public class GameController : MonoBehaviour {
             guiController.hud.UpdateRupees();
         }
     }
-
     public IEnumerator GetItem(Collectible item)
     {
         if (item.GetComponent<Collectible>().BigItem == true)

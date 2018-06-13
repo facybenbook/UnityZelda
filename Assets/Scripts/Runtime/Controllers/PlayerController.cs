@@ -4,12 +4,16 @@ using System;
 
 public class PlayerController : CharactersController
 {
-    public bool lockedOrientation;
-    public bool lockedMovement;
     public Vector2 lastInput;
     Transform target;
     Transform grabbed;
     Transform targetParent;
+
+    public bool IsBusy
+        {
+        get{ return anim.GetBool("is_busy"); }
+        set{ anim.SetBool("is_busy", value); }
+        }
 
     protected override void Start()
     {
@@ -19,44 +23,58 @@ public class PlayerController : CharactersController
         anim.SetFloat("input_y", characterOrientation.y);
     }
 
-    protected override void Action ()
-	{
+    protected override void Action()
+    {
         //update the label for the R button action
         GetObjectInFront();
 
-		rbody.velocity = Vector3.zero;
-		//is busy if a blocking animation is playing
-		if (!GameController.control.gamePaused && !anim.GetBool ("is_busy")) {
+        rbody.velocity = Vector3.zero;
+        //is busy if a blocking animation is playing
+        if (!GameController.control.gamePaused && !IsBusy)
+        {
             //get the axis
             UpdateMovementDirection();
             UpdateOrientation();
-			}
-            if (Input.GetKeyDown (GameKeys.A)) {
+            if (Input.GetKeyDown(GameKeys.A))
+            {
                 EquipmentInSlot(GameController.control.playerStats.slotA);
-			}
-			else if (Input.GetKeyDown (GameKeys.B)) {
+            }
+            else if (Input.GetKeyDown(GameKeys.B))
+            {
                 EquipmentInSlot(GameController.control.playerStats.slotB);
-			}
+            }
             else if (Input.GetKeyDown(GameKeys.L))
             {
                 LActions();
             }
 
             //if the player moves by input
-            if (movementDirection != Vector2.zero) {
-				if (Input.GetKeyDown ("space") && !target) {
-					//roll
-					anim.SetTrigger ("is_rolling");
-                } else {
-					//walk
-					anim.SetBool ("is_walking", true);
-					Move (1);
-				}
-			} else {
-				//idle
-				anim.SetBool ("is_walking", false);
-			}
-		}
+            if (movementDirection != Vector2.zero)
+            {
+                if (Input.GetKeyDown("space") && !target)
+                {
+                    //roll
+                    anim.SetTrigger("is_rolling");
+                }
+                else
+                {
+                    //walk
+                    anim.SetBool("is_walking", true);
+                    Move(1);
+                }
+            }
+            else
+            {
+                //idle
+                anim.SetBool("is_walking", false);
+            }
+        }
+        else if (movementDirection == Vector2.zero)
+        {
+            //idle
+            anim.SetBool("is_walking", false);
+        }
+    }
 
     void UpdateMovementDirection()
     {
@@ -99,14 +117,15 @@ public class PlayerController : CharactersController
             }
         }
     }
+
     protected override void OnPause()
     {
-        GetComponent<Animator>().SetBool("is_busy", true);
+        IsBusy = true;
     }
 
     protected override void OnResume()
     {
-        GetComponent<Animator>().SetBool("is_busy", false);
+        IsBusy = false;
     }
     
     /// <summary>
@@ -190,7 +209,7 @@ public class PlayerController : CharactersController
 
     private void GetObjectInFront()
     {
-        if (!anim.GetBool("is_busy"))
+        if (!IsBusy)
         {
             Debug.DrawLine(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + characterOrientation);
             target = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y + 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + characterOrientation).transform;
@@ -214,7 +233,7 @@ public class PlayerController : CharactersController
                 {
                     text = "Open";
                 }
-                else if (target.transform.gameObject.GetComponent<Activable>())
+                else if (target.transform.gameObject.GetComponent<AnimatedMechanism>())
                 {
                     text = "Activate";
                 }
@@ -242,10 +261,10 @@ public class PlayerController : CharactersController
                 Lift();
             }
             //if the object in front is interactible
-            else if (target.GetComponent<Conditionable>())
-            {
-                target.GetComponent<Conditionable>().action();
-            }
+            //else if (target.GetComponent<IInteractible>() != null)
+            //{
+            //    target.GetComponent<IInteractible>().Interact();
+            //}
         }      
     }
 
@@ -281,7 +300,7 @@ public class PlayerController : CharactersController
        grabbed = target;
        anim.SetBool("is_carrying", true);
        anim.SetBool("is_walking", true);
-       anim.SetBool("is_busy", true);
+       IsBusy = true;
     }
 
     void Throw()

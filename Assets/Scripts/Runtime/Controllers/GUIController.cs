@@ -11,7 +11,8 @@ public class GUIController : MonoBehaviour {
     public GameObject reducedVisionLayer;
 	// Use this for initialization
 	void Start () {
-		pausedState = false;
+        GetComponent<Canvas>().enabled = true;
+        pausedState = false;
         hud = transform.Find("HUD").gameObject.GetComponent<HUDController>();
         inventory = transform.Find("Inventory").gameObject;
         transitionLayer = transform.Find("TransitionLayer").gameObject;
@@ -35,10 +36,10 @@ public class GUIController : MonoBehaviour {
 			GetComponent<Animator> ().SetTrigger ("Left");
 		}
 	}
-    public IEnumerator FadeIn(float time)
+    public IEnumerator FadeIn(Color transitionTo, float time)
     {
         Color tmp;
-        tmp = transitionLayer.GetComponent<Image>().color;
+        tmp = transitionTo;
         tmp.a = 0;
         while (tmp.a <= 1)
         {

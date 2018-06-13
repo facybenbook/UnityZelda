@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: f6f41ddc39fc1064997425998267e485
-timeCreated: 1506957599
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: link_walk_0
@@ -44,7 +42,8 @@ TextureImporter:
     21300074: link_walk_37
     21300076: link_walk_38
     21300078: link_walk_39
-  serializedVersion: 4
+  externalObjects: {}
+  serializedVersion: 5
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -84,33 +83,41 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -135,6 +142,12 @@ TextureImporter:
         - {x: 0, y: -5}
         - {x: 0, y: -5}
       tessellationDetail: 1
+      bones: []
+      spriteID: c10e832abfb2ee242a6b6adb964b5b79
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_1
       rect:
@@ -156,6 +169,12 @@ TextureImporter:
         - {x: 0, y: -3}
         - {x: 0, y: -3}
       tessellationDetail: 0
+      bones: []
+      spriteID: 46234580435fec24c8c2a6d8ee000640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_2
       rect:
@@ -178,6 +197,12 @@ TextureImporter:
         - {x: 1, y: -2}
         - {x: 1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4fa1636cec9e0da4994af975660e2e66
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_3
       rect:
@@ -200,6 +225,12 @@ TextureImporter:
         - {x: 0, y: -3}
         - {x: 0, y: -3}
       tessellationDetail: 0
+      bones: []
+      spriteID: eb0bd68570a07ee49a2ec9df032f013d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_4
       rect:
@@ -222,6 +253,12 @@ TextureImporter:
         - {x: 0, y: -4}
         - {x: 0, y: -4}
       tessellationDetail: 0
+      bones: []
+      spriteID: adeb03c1b2824fe48a54335c1e986eaa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_5
       rect:
@@ -244,6 +281,12 @@ TextureImporter:
         - {x: 0, y: -5}
         - {x: 0, y: -5}
       tessellationDetail: 0
+      bones: []
+      spriteID: df409c5279d92d4468d941d192f61db4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_6
       rect:
@@ -266,6 +309,12 @@ TextureImporter:
         - {x: 0, y: -4}
         - {x: 0, y: -4}
       tessellationDetail: 0
+      bones: []
+      spriteID: cd111d013fd7fcc40858c06464b7fd15
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_7
       rect:
@@ -288,6 +337,12 @@ TextureImporter:
         - {x: -1, y: -2}
         - {x: -1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: b479051cac234ec47b0219a2b4d06a11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_8
       rect:
@@ -310,6 +365,12 @@ TextureImporter:
         - {x: 0, y: -3}
         - {x: 0, y: -3}
       tessellationDetail: 0
+      bones: []
+      spriteID: f6604bada1a8dc749b186d3a646ea62f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_9
       rect:
@@ -332,6 +393,12 @@ TextureImporter:
         - {x: 0, y: -4}
         - {x: 0, y: -4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c868a707ffbc6a48820d8f29c49c705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_10
       rect:
@@ -354,6 +421,12 @@ TextureImporter:
         - {x: -1, y: -1}
         - {x: -1, y: -1}
       tessellationDetail: 0
+      bones: []
+      spriteID: ab885a78938df454d8dd08b92e3304dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_11
       rect:
@@ -376,6 +449,12 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 0, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 9bd75d8bf6708a64aa39b2c019ead203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_12
       rect:
@@ -398,6 +477,12 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 0, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: d67d3b05deb40d54b8a85dad7e4e54f6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_13
       rect:
@@ -420,6 +505,12 @@ TextureImporter:
         - {x: -1, y: 0}
         - {x: -1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 1f3c7c993c9183f4fb43ce9570c1c9d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_14
       rect:
@@ -442,6 +533,12 @@ TextureImporter:
         - {x: -1, y: -2}
         - {x: -1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2a58314d72741e4585715fac9d9815c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_15
       rect:
@@ -464,6 +561,12 @@ TextureImporter:
         - {x: -1, y: -2}
         - {x: -1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: 91bb7a8f6f0298a4eba596ca45b47cc1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_16
       rect:
@@ -486,6 +589,12 @@ TextureImporter:
         - {x: -1, y: -2}
         - {x: -1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: b16000a2755053e438efb4bad744daa8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_17
       rect:
@@ -508,6 +617,12 @@ TextureImporter:
         - {x: -1, y: 0}
         - {x: -1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 01b1e0009ef753849bf85a2322150c82
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_18
       rect:
@@ -530,6 +645,12 @@ TextureImporter:
         - {x: -1, y: 0}
         - {x: -1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2570b2486afa44140ad4736188c45fc3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_19
       rect:
@@ -552,6 +673,12 @@ TextureImporter:
         - {x: -1, y: -2}
         - {x: -1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: 7a072478907579848afb730050473a74
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_20
       rect:
@@ -574,6 +701,12 @@ TextureImporter:
         - {x: 1, y: 0}
         - {x: 1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: c5513fd899242a04f893db7888e6e4ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_21
       rect:
@@ -596,6 +729,12 @@ TextureImporter:
         - {x: 1, y: 0}
         - {x: 1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 9af685b67f63fb147894839eb4f4aca3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_22
       rect:
@@ -618,6 +757,12 @@ TextureImporter:
         - {x: 0, y: 1}
         - {x: 0, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: d0daae4ddf55aad4d804f38ad7247a25
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_23
       rect:
@@ -640,6 +785,12 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 0, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 1dbcfc5b7b354754d9f791a0ae09e3b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_24
       rect:
@@ -665,6 +816,12 @@ TextureImporter:
         - {x: 0, y: -1}
         - {x: 0, y: -1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22a79bfe0addd9a41bb75ff9fa1e052f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_25
       rect:
@@ -687,6 +844,12 @@ TextureImporter:
         - {x: 1, y: -2}
         - {x: 1, y: -2}
       tessellationDetail: 0
+      bones: []
+      spriteID: 9ec37cef870a2c543b88470cbe3a9c4a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_26
       rect:
@@ -709,6 +872,12 @@ TextureImporter:
         - {x: 1, y: -1}
         - {x: 1, y: -1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6ee3e458aedae654e8efbad47d40df2d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_27
       rect:
@@ -731,6 +900,12 @@ TextureImporter:
         - {x: 1, y: 1}
         - {x: 1, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d3fa0d088910d841898dd31724abc7f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_28
       rect:
@@ -753,6 +928,12 @@ TextureImporter:
         - {x: 1, y: 1}
         - {x: 1, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 3b1569de47864094593c6619fbe4f54a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_29
       rect:
@@ -775,6 +956,12 @@ TextureImporter:
         - {x: 1, y: 0}
         - {x: 1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 7f6cc07f33985c747865579267114abc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_30
       rect:
@@ -797,6 +984,12 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 0, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b601448ed1306747b98430ef3f71962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_31
       rect:
@@ -819,6 +1012,12 @@ TextureImporter:
         - {x: 1, y: 0}
         - {x: 1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 3ec9e89b7efb08c41b7795a1c61ae54e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_32
       rect:
@@ -841,6 +1040,12 @@ TextureImporter:
         - {x: 0, y: 2}
         - {x: 0, y: 2}
       tessellationDetail: 0
+      bones: []
+      spriteID: e1976171b4c30f4409f333aa2019f10e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_33
       rect:
@@ -863,6 +1068,12 @@ TextureImporter:
         - {x: 0, y: 1}
         - {x: 0, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 1d888803cc9adf24888e479c83beae51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_34
       rect:
@@ -885,6 +1096,12 @@ TextureImporter:
         - {x: -1, y: 1}
         - {x: -1, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: e3177add978fac04199d15984127487a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_35
       rect:
@@ -907,6 +1124,12 @@ TextureImporter:
         - {x: 0, y: -1}
         - {x: 0, y: -1}
       tessellationDetail: 0
+      bones: []
+      spriteID: cb36d51e1236e334883592b9373a334d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_36
       rect:
@@ -929,6 +1152,12 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 0, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 24fe34eb304b04048897602640f4b4d0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_37
       rect:
@@ -951,6 +1180,12 @@ TextureImporter:
         - {x: -1, y: 1}
         - {x: -1, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 21ab5f00f9c057a498830d8a988120bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_38
       rect:
@@ -973,6 +1208,12 @@ TextureImporter:
         - {x: 0, y: 1}
         - {x: 0, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 107f1f84a69db184d9899944490efad0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_walk_39
       rect:
@@ -995,8 +1236,20 @@ TextureImporter:
         - {x: 1, y: 0}
         - {x: 1, y: 0}
       tessellationDetail: 0
+      bones: []
+      spriteID: 38e63bd9668485e4d83f6cbb4212e69b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

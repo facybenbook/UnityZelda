@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 07aba0583a804bf4e9425546e95980ab
-timeCreated: 1508503047
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Mushroom_Cap_0
@@ -12,7 +10,8 @@ TextureImporter:
     21300010: Mushroom_Cap_5
     21300012: Mushroom_Cap_6
     21300014: Mushroom_Cap_7
-  serializedVersion: 4
+  externalObjects: {}
+  serializedVersion: 5
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -52,33 +51,41 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -100,6 +107,12 @@ TextureImporter:
         - {x: 5, y: -5}
         - {x: 5, y: 5}
       tessellationDetail: 0
+      bones: []
+      spriteID: d3e3858011ad87e4c9f88ac2c1563a4f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_1
       rect:
@@ -121,6 +134,12 @@ TextureImporter:
         - {x: 8, y: -6}
         - {x: 8, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: ee8e6353e16a61149b9139e1f2d3ef60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_2
       rect:
@@ -141,6 +160,12 @@ TextureImporter:
         - {x: 8, y: 6}
         - {x: 6, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: ace9de3b6647786488b5fd17841089e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_3
       rect:
@@ -159,6 +184,12 @@ TextureImporter:
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8fd4554668b123c4f9695a1098cc695c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_4
       rect:
@@ -180,6 +211,12 @@ TextureImporter:
         - {x: 8, y: 7}
         - {x: 7, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: 84c16f870631a01409d1e68cd2649066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_5
       rect:
@@ -202,6 +239,12 @@ TextureImporter:
         - {x: 8, y: 6}
         - {x: 6, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: c15cb3db24d76784388ebc25329b8ba1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_6
       rect:
@@ -223,6 +266,12 @@ TextureImporter:
         - {x: 8, y: -6}
         - {x: 8, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4f920e6a8ed1a5141be5018ef46b4967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Mushroom_Cap_7
       rect:
@@ -242,8 +291,20 @@ TextureImporter:
         - {x: 8, y: 6}
         - {x: 5, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42b38fa0d4e711e468bc9bbfa0c323e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

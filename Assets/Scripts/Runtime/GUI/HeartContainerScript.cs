@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuHeartContainerScript : MonoBehaviour {
+public class HeartContainerScript : MonoBehaviour {
 	int pieces;
 	public Sprite[] images = new Sprite[4];
 	private Text text;

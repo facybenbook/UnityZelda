@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryPage : MonoBehaviour {
+public class InventoryPageScript : MonoBehaviour {
 	private List<GameObject> inventory;
 	public GameObject inventoryItem;
 	public GameObject inventoryBottle;

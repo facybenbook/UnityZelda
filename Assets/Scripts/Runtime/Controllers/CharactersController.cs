@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Direction { Up, Down, Left, Right }
+
 public class CharactersController : MonoBehaviour
 {
 	public int pixelPerFrameSpeed;
-	public Vector2 movementDirection;
+    public bool lockedOrientation;
+    public bool lockedMovement;
+    public Vector2 movementDirection;
     public Vector2 characterOrientation;
     public bool dead;
     protected Collider2D hitbox;
     protected LifeController lifeController;
-    protected Rigidbody2D rbody;
+    public Rigidbody2D rbody;
     public Animator anim;
 
     protected virtual void Start ()
@@ -25,12 +29,13 @@ public class CharactersController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if (!GameController.control.gamePaused) {
-			GetComponent<Animator> ().speed = 1;
-			if (!GameController.control.gameOverState)
-				Action ();
-		}
-	}
+        if (!GameController.control.gamePaused)
+        {
+            GetComponent<Animator>().speed = 1;
+            if (!GameController.control.gameOverState)
+                Action();
+        }
+    }
 
     /// <summary>
     /// Actions to perform each frame: AI for monsters, managing inputs for player
@@ -43,6 +48,7 @@ public class CharactersController : MonoBehaviour
             Move(1);
         }
     }
+
     /// <summary>
     /// Move the gameObject along its movement vector
     /// </summary>
@@ -53,6 +59,20 @@ public class CharactersController : MonoBehaviour
 			//increment position considering the pixel size, the scale of the object and the number of pixels per frame of deplacement
 			rbody.MovePosition (rbody.position + movementDirection * (0.625f * transform.lossyScale.x * pixelPerFrameSpeed * speedMult * Time.deltaTime));
 	}
+
+    public IEnumerator Move(float steps, Vector2 direction)
+    {
+        movementDirection = direction;
+        while (steps > 0)
+        {
+            var increment = 0.625f * transform.lossyScale.x * pixelPerFrameSpeed * Time.fixedDeltaTime;
+            if (steps < increment)
+                increment = steps;
+            rbody.MovePosition(rbody.position + increment * direction);
+            steps -= increment;
+            yield return null;
+        }
+    }
 
     /// <summary>
     /// WIP
@@ -77,5 +97,22 @@ public class CharactersController : MonoBehaviour
 
     protected virtual void OnResume()
     {
+    }
+
+    public static Vector2 DirectionToVector(Direction direction)
+    {
+        switch(direction)
+        {
+            case Direction.Up:
+                return Vector2.up;
+            case Direction.Down:
+                return Vector2.down;
+            case Direction.Right:
+                return Vector2.right;
+            case Direction.Left:
+                return Vector2.left;
+            default:
+                return Vector2.up;
+        }
     }
 }

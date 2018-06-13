@@ -1332,10 +1332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec84b1db740ea0842ae2eee1eda9552c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  visible: 1
-  conditions: []
-  on: {fileID: 21300008, guid: 485459d4d14cfda4fbc0f5effb927664, type: 3}
+  activationConditions: []
+  visible: 0
+  appearingConditions: []
+  staysOn: 1
+  onSprite: {fileID: 0}
+  offSprite: {fileID: 0}
 --- !u!114 &114970221291115578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1347,10 +1349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec84b1db740ea0842ae2eee1eda9552c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  activationConditions: []
   visible: 1
-  conditions: []
-  on: {fileID: 21300008, guid: 485459d4d14cfda4fbc0f5effb927664, type: 3}
+  appearingConditions: []
+  staysOn: 0
+  onSprite: {fileID: 21300000, guid: 485459d4d14cfda4fbc0f5effb927664, type: 3}
+  offSprite: {fileID: 21300002, guid: 485459d4d14cfda4fbc0f5effb927664, type: 3}
 --- !u!212 &212032226923706244
 SpriteRenderer:
   m_ObjectHideFlags: 1

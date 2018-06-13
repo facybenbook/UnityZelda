@@ -1,14 +1,13 @@
 fileFormatVersion: 2
 guid: ac73e52264823b64ca8f44653a86728b
-timeCreated: 1507642367
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: link_idle_0
     21300002: link_idle_1
     21300004: link_idle_2
     21300006: link_idle_3
-  serializedVersion: 4
+  externalObjects: {}
+  serializedVersion: 6
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -26,6 +25,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -36,7 +37,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -48,33 +49,41 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -104,6 +113,12 @@ TextureImporter:
         - {x: -5, y: -1}
         - {x: -5, y: -7}
       tessellationDetail: 1
+      bones: []
+      spriteID: 1c41b8c2d85f0364f9744d5e89f3ac95
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_idle_1
       rect:
@@ -136,6 +151,12 @@ TextureImporter:
         - {x: 9, y: 13}
         - {x: 5, y: 14}
       tessellationDetail: 0
+      bones: []
+      spriteID: f1fe302f6a157934dbc73b9fa96169c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_idle_2
       rect:
@@ -167,6 +188,12 @@ TextureImporter:
         - {x: 12, y: 8}
         - {x: 10, y: 14}
       tessellationDetail: 0
+      bones: []
+      spriteID: c28a94dca9a82b04989fd86c6a3b50e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: link_idle_3
       rect:
@@ -197,8 +224,20 @@ TextureImporter:
         - {x: 11, y: 9}
         - {x: 7, y: 14}
       tessellationDetail: 0
+      bones: []
+      spriteID: 81890070cdfb8e9409e5d74773eef46e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

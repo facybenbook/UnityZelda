@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ImageScroll : MonoBehaviour 
+public class ImageScrollScript : MonoBehaviour 
 {
 	public Vector2 scrollVector = new Vector2( -1.0f, -1.0f );
 	public float speed = 1;

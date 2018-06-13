@@ -1,14 +1,13 @@
 fileFormatVersion: 2
 guid: 27aedee0d261c7143a35e73ae934a207
-timeCreated: 1506974166
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Rupees_big_0
     21300002: Rupees_big_1
     21300004: Rupees_big_2
     21300006: Rupees_big_3
-  serializedVersion: 4
+  externalObjects: {}
+  serializedVersion: 5
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -48,25 +47,30 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -96,6 +100,12 @@ TextureImporter:
         - {x: 6, y: -5}
         - {x: 6, y: 5}
       tessellationDetail: 0
+      bones: []
+      spriteID: aea5798159a8d934e9d2b66c4d737bd9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_big_1
       rect:
@@ -122,6 +132,12 @@ TextureImporter:
         - {x: 6, y: -5}
         - {x: 6, y: 5}
       tessellationDetail: 0
+      bones: []
+      spriteID: eab675935ae404746a845590579e0bbe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_big_2
       rect:
@@ -148,6 +164,12 @@ TextureImporter:
         - {x: 6, y: 5}
         - {x: 1, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: 64a0bb1b212812441848fc47a4e71c43
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Rupees_big_3
       rect:
@@ -174,8 +196,20 @@ TextureImporter:
         - {x: 6, y: 5}
         - {x: 1, y: 8}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b80c68510a982146a1062fb9b2a01eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

@@ -1,77 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PressurePlate : Conditionable {
-    
-    public bool startsVisible = true;
+public class PressurePlate : HideableMechanism {
+
+    protected bool pressed = false;
     public bool staysOn = true;
-    public Sprite on;
-	Sprite off;
+    public Sprite onSprite;
+	public Sprite offSprite;
     
-    protected override void Start()
-    {
-        base.Start();
-        off = GetComponent<SpriteRenderer>().sprite;
-        if (startsVisible == false)
-        {
-            ToggleVisible();
-            action = ToggleVisible;
-        }
-    }
-
-    public override void OnCheckConditions()
-    {
-        if (startsVisible == false)
-        {
-            base.OnCheckConditions();
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("enter");
-        if (state == false)
+        //DEBUG
+        print("collision");
+        //if is not already activated and collides with a physical object
+        if (pressed == false && collision.isTrigger == false)
         {
-            if (collision.isTrigger == false)
-            {
-                ChangeState(true);
-            }
+            //DEBUG
+            print("enter");
+            SetPressed(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("exit");
-        //return to inactive state if something is not 
-        if (staysOn == false && collision.isTrigger == false)
+        //DEBUG
+        print("exiting");
+        //if the state does not persist when not pressed and the object leaving is physical
+        if (pressed == true && staysOn == false && collision.isTrigger == false)
         {
+            //DEBUG
             print("statechanged");
-            ChangeState(false);
+            SetPressed(false);
         }
     }
 
-    public void ChangeState(bool state)
-	{
-        this.state = state;
-		if (state == true)
-		{
-			GetComponent<SpriteRenderer> ().sprite = on;
-		} 
-		else 
-		{
-			GetComponent<SpriteRenderer> ().sprite = off;
-		}
-		GetComponent<AudioSource>().Play();
-		foreach (Activable obj in FindObjectsOfType<Activable>()) {
-			obj.gameObject.SendMessage ("OnCheckConditions", SendMessageOptions.DontRequireReceiver);
-		}
-	}
-
-    void ToggleVisible()
+    public void SetPressed(bool isPressed)
     {
-        GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-        GetComponent<BoxCollider2D>().enabled = !GetComponent<BoxCollider2D>().enabled;
-        action = null;
+        //if not already pressed or unpressed
+        if (isPressed != pressed)
+        {
+            pressed = isPressed;
+            if (pressed == true)
+            {
+                if (onSprite)
+                    GetComponent<SpriteRenderer>().sprite = onSprite;
+                else
+                    print("error");
+            }
+            else
+            {
+                if (offSprite)
+                    GetComponent<SpriteRenderer>().sprite = offSprite;
+                else
+                    print("error");
+            }
+            GetComponent<AudioSource>().Play();
+            foreach (LogicMechanism mech in FindObjectsOfType<LogicMechanism>())
+            {
+                mech.gameObject.SendMessage("CheckActivationConditions", SendMessageOptions.DontRequireReceiver);
+            }
+        }
     }
 }

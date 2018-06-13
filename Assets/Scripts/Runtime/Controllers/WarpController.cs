@@ -29,7 +29,7 @@ public class WarpController : MonoBehaviour {
             tmp = Color.white;
         tmp.a = 0;
         GameController.control.guiController.transitionLayer.GetComponent<Image>().color = tmp;
-        yield return GameController.control.guiController.FadeIn(0.2f);
+        
         //GameObject go = GameController.control.LoadMap(destinationMap);
         //warps must be places in a GameObjects in the map prefab
         Transform thisMap = transform.parent.parent;
